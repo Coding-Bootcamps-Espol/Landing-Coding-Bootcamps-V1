@@ -233,6 +233,49 @@
 }
 .schedule tbody th { font-weight: 700; }
 .schedule tr:last-child > * { border-bottom: 0; }
+/* Panel de horarios en azul de marca con tabla enmarcada (estilo del sitio anterior) */
+.program-panel--brand {
+  background: var(--surface-dark);
+  border-color: transparent;
+  color: var(--white);
+}
+.program-panel--brand .schedule-note { color: var(--text-inverse-muted); }
+.schedule--boxed {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--white-a40);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  text-align: center;
+}
+.schedule--boxed th,
+.schedule--boxed td {
+  text-align: center;
+  padding: 0.85rem 0.5rem;
+  border-bottom: 1px solid var(--white-a30);
+  border-left: 1px solid var(--white-a30);
+}
+.schedule--boxed th:first-child,
+.schedule--boxed td:first-child { border-left: 0; }
+.schedule--boxed thead th {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  border-left-color: var(--line);
+}
+.schedule--boxed tbody th { font-weight: 600; }
+.schedule--boxed td:nth-child(2) { white-space: nowrap; }
+@media (max-width: 480px) {
+  .schedule--boxed { font-size: 0.8125rem; }
+  .schedule--boxed th,
+  .schedule--boxed td { padding: 0.7rem 0.35rem; }
+  .schedule--boxed thead th { font-size: 0.9rem; }
+}
+.schedule--boxed tbody tr:last-child > * { border-bottom: 0; }
 .schedule-note { margin-top: 0.75rem; font-size: 0.8125rem; color: var(--text-muted); }
 .check-list { list-style: none; display: grid; gap: 0.7rem; }
 .check-list li { display: flex; gap: 0.7rem; color: var(--text-muted); }
