@@ -51,6 +51,18 @@ The contact form on `index.html` is still simulated: it only validates client-si
 
 Every page links only `css/styles.css`, but that file is just an `@import` aggregator (in this order): `variables.css`, `base.css`, `layout.css`, `components.css`, `responsive.css`, then the UI-component partials (`alerts.css`, `botones.css`, `checkboxes-radios.css`, `dialogs.css`, `menus.css`, `toasts.css`), then the backoffice partials (`switches.css`, `badges.css`, `paginacion.css`, `graficos.css`). Add new rules to the matching partial, not to `styles.css` itself — `variables.css` for tokens, `components.css` for component styles (the largest file), `responsive.css` for media queries. `@import` order matters for cascade/specificity, so don't reorder those lines casually.
 
+### Redesign in progress (design system v2)
+
+The site is being redesigned page by page in an "editorial vibrante" style based on the brand of the old WordPress site (bootcamps.espol.edu.ec). **`index.html` is migrated; the other pages still use the old `css/styles.css` and their duplicated inline script** until they are migrated one by one.
+
+- Styles: migrated pages link only `css/site.css`, which imports `css/v2/` in order: `tokens.css` → `base.css` → `layout.css` (sections, header, footer) → `components.css` (buttons, eyebrow, mark, chips, float-card, accordion, form) → `home.css` (index-only sections) → `effects.css`. New page-specific styles go in their own `css/v2/<page>.css`, imported before `effects.css`.
+- **All colors, fonts, sizes, spacing, radii, shadows and easings live in `css/v2/tokens.css`.** Never hardcode a color/rgba elsewhere (the user explicitly asked for this); add a token instead. Fonts: Inter Tight (display) + Inter (body) from Google Fonts. Brand: `--ink` #030541, `--violet` #6255a5, `--blue` #2575fc, `--mint` #2ec58d.
+- Reuse components before writing new CSS: `.section` (+ `--paper-2`, `--ink`), `.section-head`, `.wrap`, `.btn` (+ `--accent`, `--ghost`, `--light`, `--outline-light`, `--lg`, `--block`), `.eyebrow`, `.mark`, `.chip`, `.float-card`, `.accordion`, `.form`/`.field`.
+- Behavior: `ts/sitio.ts` (→ `js/sitio.js`) handles nav drawer, header scroll state, scroll reveal (`data-reveal`, `data-reveal="scale|left"`, stagger with `style="--i:n"`), counters (`data-count`), 3D tilt (`data-tilt`), testimonials carousel (autoplay) and Mixpanel `program_clicked` (`data-program-name`). Every init checks its elements exist, so the same script works on every page. `<head>` adds `html.js` so reveal-hidden content is visible without JS. Everything respects `prefers-reduced-motion`.
+- Icons: inline SVG sprite at the top of `<body>` (`<svg><use href="#i-arrow"/></svg>`).
+- The redesign is light-only (no theme toggle), the expired "Early Bird" promo banner, the placeholder YouTube gallery and the Jelou chatbot were removed from `index.html`.
+- Images: real 2023 event photos from the old site in `img/galeria/*-640.webp` / `*-1200.webp`, hero cutout `img/hero-estudiante.webp`, logos `img/logo-cbe.webp` / `img/logo-cbe-blanco.webp`.
+
 ### Theming
 
 CSS custom properties on `:root` (in `css/variables.css`) define a dark theme by default; a light variant applies either via `prefers-color-scheme: light` or a manual toggle that sets `data-theme="light"` on `<html>` and persists the choice to `localStorage`. Every page has a small blocking inline `<script>` in `<head>` that reads `localStorage` before first paint to avoid a flash of the wrong theme — keep that script in sync across pages if the theming approach ever changes.
