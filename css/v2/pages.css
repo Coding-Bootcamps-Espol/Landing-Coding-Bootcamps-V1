@@ -147,7 +147,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 .prog-kpis dt { font-size: 0.8125rem; font-weight: 600; opacity: 0.85; margin-top: 0.3rem; }
 .prog-hero-art { position: relative; justify-self: center; width: min(100%, 26rem); }
 .prog-hero-art img { width: 100%; border-radius: var(--radius-l); box-shadow: var(--shadow-l); }
-.prog-hero-art figcaption { position: absolute; right: -0.75rem; top: 1.25rem; --rot: 4deg; font-size: 1.35rem; }
 @media (min-width: 960px) { .prog-hero { grid-template-columns: 1.25fr 0.75fr; } }
 
 /* Beneficios: frases cortas, sin tarjetas ni franjas */
@@ -497,7 +496,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
-.about-hero-photo figcaption { position: absolute; left: -0.75rem; bottom: 1.5rem; --rot: -3deg; }
 @media (min-width: 960px) { .about-hero { grid-template-columns: 1.05fr 0.95fr; } }
 
 .link-arrow {
@@ -540,7 +538,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 .mv-card--brand .eyebrow { color: var(--mint); }
 @media (min-width: 900px) { .mv-grid { grid-template-columns: 1fr 1fr; } }
 
-.stats--flush { margin-top: 0; }
 
 .team-grid {
   list-style: none;

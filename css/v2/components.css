@@ -300,3 +300,7 @@
 .numbered h3 { font-size: var(--fs-h3); margin-bottom: 0.4rem; }
 .numbered p { color: var(--text-muted); max-width: 34rem; }
 .numbered .numbered-note { margin-top: 0.6rem; font-size: 0.875rem; font-weight: 600; color: var(--text); }
+
+/* Pie de foto editorial (debajo de la imagen, sin etiquetas de color) */
+.photo-caption { margin-top: 0.85rem; font-size: 0.875rem; color: var(--text-muted); }
+.photo-caption strong { color: var(--text); font-weight: 700; }
