@@ -10,6 +10,7 @@ Static institutional landing site (in Spanish) for Coding Bootcamps ESPOL: promo
 
 - Install deps: `npm install`
 - Build (compile `ts/` → `js/`): `npm run build` (runs `tsc`)
+- Build the deployable site: `npm run build:dist` (`tsc` + `scripts/build-dist.mjs`, which copies an explicit file list plus `css/` and `js/` into `dist/`). `netlify.toml` runs this and publishes `dist/`. `dist/` is gitignored — never commit it. When adding a page, add it to the `files` list in `scripts/build-dist.mjs` or it won't be deployed to Netlify.
 - No lint script is configured.
 - No real test suite: `npm test` only runs a placeholder that exits with an error — there is nothing to execute.
 - No dev server needed: open any `.html` file directly in a browser.
@@ -18,7 +19,7 @@ Static institutional landing site (in Spanish) for Coding Bootcamps ESPOL: promo
 
 ### Page structure
 
-Six standalone HTML pages, each fully self-contained (no shared templates/includes/partials):
+Seven standalone HTML pages (the six below plus the orphaned `inscripcion.html`, see Notes), each fully self-contained (no shared templates/includes/partials):
 
 - `index.html` — home: hero, programs teaser grid, short "Nosotros" teaser, testimonials carousel, photo gallery + lightbox, contact form, chat widget.
 - `programas.html` — full detail for the 3 programs (Full Stack Developer, Ciencia de Datos, Business Data Analytics), each with curriculum bullets and a CTA into `solicita-informacion.html` (passing `?programa=...` to preselect the program).
@@ -46,7 +47,7 @@ The contact form on `index.html` is still simulated: it only validates client-si
 
 ### CSS structure
 
-Every page links only `css/styles.css`, but that file is just an `@import` aggregator (in this order): `variables.css`, `base.css`, `layout.css`, `components.css`, `responsive.css`. Add new rules to the matching partial, not to `styles.css` itself — `variables.css` for tokens, `components.css` for component styles (the largest file), `responsive.css` for media queries. `@import` order matters for cascade/specificity, so don't reorder those lines casually.
+Every page links only `css/styles.css`, but that file is just an `@import` aggregator (in this order): `variables.css`, `base.css`, `layout.css`, `components.css`, `responsive.css`, then the UI-component partials (`alerts.css`, `botones.css`, `checkboxes-radios.css`, `dialogs.css`, `menus.css`, `toasts.css`). Note those six component partials are currently imported twice in `styles.css` (a second block under `/*Componentes del backoffice*/`). Add new rules to the matching partial, not to `styles.css` itself — `variables.css` for tokens, `components.css` for component styles (the largest file), `responsive.css` for media queries. `@import` order matters for cascade/specificity, so don't reorder those lines casually.
 
 ### Theming
 
@@ -58,6 +59,8 @@ CSS custom properties on `:root` (in `css/variables.css`) define a dark theme by
 
 ## Notes
 
-- `PLAN.md` documents an approved iteration. Its post-enrollment confirmation page is now implemented as `gracias.html` (its dedicated "Nosotros" page is still not implemented). Note `PLAN.md` still describes the older native-`<form>`/`ts/inscripcion.ts` design for what is now `solicita-informacion.html` — treat that part of the document as historical, not current, and check the "Page structure" section above instead.
-- `protecto-CB/` at the repo root is an unrelated nested git repository (its own `.git`, no `.gitmodules` entry) — it is not part of the site; `git status` will show it as a modified submodule-like entry.
+- `docs/PLAN.md` documents an approved iteration. Its post-enrollment confirmation page is now implemented as `gracias.html` (its dedicated "Nosotros" page is still not implemented). It still describes the older native-`<form>`/`ts/inscripcion.ts` design for what is now `solicita-informacion.html` — treat that part as historical and check "Page structure" above instead.
+- `inscripcion.html` is a leftover from before the Tally switch: it now also embeds Tally, but nothing links to it (programs CTAs and `sitemap.xml` point to `solicita-informacion.html`). Don't add features to it; it's a candidate for removal.
+- Branches: work happens on `develop` (feature branches merge into it via PR); `master` only receives reviewed merges from `develop`. Every push to `develop` triggers `.github/workflows/deploy-staging.yml`, which fails if `js/` isn't up to date with `ts/` (so always commit the `npm run build` output) and then updates https://landing-staging.codingbootcampslatam.com over SSH (the server-side key is restricted to a fixed `git fetch` + `reset --hard origin/develop`). Staging serves the repo root as-is (not `dist/`). Its nginx denies `.git*`, `ts/`, `docs/`, `node_modules/`, `*.md` and `*.json`; any new folder with non-public content (e.g. `scripts/`) needs a matching deny rule there.
+- Project docs (non-site Markdown) live in `docs/`. The site itself must stay at the repo root: pages, `favicon.png`, `robots.txt`, `sitemap.xml` and `404.html` are referenced by root-relative paths, so don't move HTML into subfolders.
 - `node_modules/` is committed to the repo — the root `.gitignore` only excludes select `.claude/commands/skills/...` files, not `node_modules/` — this is pre-existing, not something to "fix" unprompted.

@@ -18,16 +18,31 @@ proyecto/
 ├── solicita-informacion.html      # Formulario para solicitar información (Tally embebido)
 ├── gracias.html                    # Confirmación tras enviar la solicitud
 ├── 404.html                        # Página de error
+├── playground.html                 # Playground de componentes
+├── inscripcion.html                # Versión anterior del formulario (no enlazada)
 ├── css/
-│   └── styles.css                  # Estilos del sitio
+│   ├── styles.css                  # Agregador (@import) de los parciales
+│   ├── variables.css               # Tokens de diseño y temas
+│   ├── base.css
+│   ├── layout.css
+│   ├── components.css
+│   ├── responsive.css
+│   └── alerts.css, botones.css, checkboxes-radios.css,
+│       dialogs.css, menus.css, toasts.css   # Componentes de UI
 ├── js/                              # Scripts compilados (JavaScript)
 │   ├── animaciones.js
 │   ├── contacto.js
-│   └── gracias.js
+│   ├── gracias.js
+│   └── playground.js
 ├── ts/                              # Código fuente en TypeScript
 │   ├── animaciones.ts
 │   ├── contacto.ts
-│   └── gracias.ts
+│   ├── gracias.ts
+│   └── playground.ts
+├── scripts/
+│   └── build-dist.mjs              # Arma dist/ para publicar en Netlify
+├── docs/
+│   └── PLAN.md                     # Plan de la próxima iteración
 ├── favicon.png
 ├── robots.txt
 └── sitemap.xml
