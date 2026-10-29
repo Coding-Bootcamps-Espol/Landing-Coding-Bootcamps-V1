@@ -30,7 +30,7 @@ Because there is no templating system, the header/nav/footer/chat-widget markup 
 ### TypeScript → JS
 
 - Source of truth is `ts/*.ts`; the committed `js/*.js` is compiled output (`tsconfig.json`: `rootDir: ts`, `outDir: js`, target/module `ES2022`, `strict: true`). Edit the `.ts` files, never the `.js` by hand, then rerun `npm run build`.
-- `ts/inscripcion.ts` — field validators + submit handler for the enrollment form; also reads the `?programa=` query param on load to preselect the `<select>`.
+- `ts/inscripcion.ts` — field validators + submit handler for the enrollment form; also reads the `?programa=` query param on load to preselect the `<select>`. The WhatsApp field is enhanced by `intl-tel-input` loaded from a jsDelivr CDN `<script>` in `inscripcion.html` (initialized inline, default country `ec`); the validator uses `window.intlTelInputGlobals`/`isValidNumber()` when present, so the phone check depends on that CDN script loading.
 - `ts/contacto.ts` — field validators + submit handler for the contact form on `index.html`.
 - `ts/animaciones.ts` — a type-guard helper (`esHTMLElement`) plus `resaltarNavActivo()`, which highlights the current page's nav link on `DOMContentLoaded` by comparing `location.pathname` to each link's `href`. No HTML page actually loads `js/animaciones.js` via `<script>`, so the whole file is still dead code in practice.
 - Each compiled file is loaded via `<script defer>` only on the page(s) that need it — there's no bundler or shared module graph tying them together.
@@ -53,6 +53,7 @@ CSS custom properties on `:root` (in `css/variables.css`) define a dark theme by
 
 ## Notes
 
-- `PLAN.md` documents an approved but not-yet-implemented iteration (a dedicated "Nosotros" page and a post-enrollment confirmation page) — check it for planned scope before starting unrelated redesign work.
-- `protecto-CB/` at the repo root is an unrelated nested git repository (its own `.git`, no `.gitmodules` entry) — it is not part of the site; `git status` will show it as a modified submodule-like entry.
+- `docs/PLAN.md` documents an approved but not-yet-implemented iteration (a dedicated "Nosotros" page and a post-enrollment confirmation page) — check it for planned scope before starting unrelated redesign work.
+- Project docs (non-site Markdown) live in `docs/`. The site itself must stay at the repo root: pages, `favicon.png`, `robots.txt`, `sitemap.xml` and `404.html` are referenced by root-relative paths, so don't move HTML into subfolders.
+- An old divergent site snapshot (`dist/`, with `gracias.html`, `playground.html`, extra CSS partials) was deleted; it's recoverable from git history (commit `5ef3417`) if needed as reference for the planned confirmation page.
 - `node_modules/` is committed to the repo — the root `.gitignore` only excludes select `.claude/commands/skills/...` files, not `node_modules/` — this is pre-existing, not something to "fix" unprompted.

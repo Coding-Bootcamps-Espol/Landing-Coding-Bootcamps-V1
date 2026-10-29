@@ -18,7 +18,12 @@ proyecto/
 ├── inscripcion.html     # Formulario de inscripción
 ├── 404.html              # Página de error
 ├── css/
-│   └── styles.css        # Estilos del sitio
+│   ├── styles.css        # Agregador (@import) de los parciales
+│   ├── variables.css     # Tokens de diseño y temas
+│   ├── base.css
+│   ├── layout.css
+│   ├── components.css
+│   └── responsive.css
 ├── js/                    # Scripts compilados (JavaScript)
 │   ├── animaciones.js
 │   ├── contacto.js
@@ -27,6 +32,8 @@ proyecto/
 │   ├── animaciones.ts
 │   ├── contacto.ts
 │   └── inscripcion.ts
+├── docs/
+│   └── PLAN.md           # Plan de la próxima iteración
 ├── favicon.png
 ├── robots.txt
 └── sitemap.xml
