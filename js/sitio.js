@@ -212,6 +212,74 @@
             pairs.forEach(function (pair) { observer.observe(pair[1]); });
         });
     }
+    /* ── Pestañas ([data-tabs] con botones role="tab" y paneles role="tabpanel") ──
+       Muestra un panel a la vez, soporta flechas/Inicio/Fin y abre el panel
+       indicado en la URL (#id), así funcionan los enlaces desde otras páginas. */
+    function initTabs() {
+        document.querySelectorAll("[data-tabs]").forEach(function (root) {
+            const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
+            if (tabs.length === 0)
+                return;
+            function panelOf(tab) {
+                return document.getElementById(tab.getAttribute("aria-controls") || "");
+            }
+            function select(tab, opts) {
+                tabs.forEach(function (t) {
+                    const on = t === tab;
+                    t.setAttribute("aria-selected", String(on));
+                    t.tabIndex = on ? 0 : -1;
+                    const panel = panelOf(t);
+                    if (!panel)
+                        return;
+                    panel.hidden = !on;
+                    panel.classList.toggle("is-active", on);
+                    if (on && !reduceMotion.matches) {
+                        panel.classList.remove("is-entering");
+                        void panel.offsetWidth;
+                        panel.classList.add("is-entering");
+                    }
+                });
+                // En pantallas chicas la fila de pestañas se desplaza: muestra la elegida
+                const list = tab.parentElement;
+                if (list && list.scrollWidth > list.clientWidth)
+                    list.scrollLeft = tab.offsetLeft - list.offsetLeft;
+                if (opts.focus)
+                    tab.focus();
+                if (opts.updateHash)
+                    history.replaceState(null, "", "#" + (tab.getAttribute("aria-controls") || ""));
+                if (opts.scroll)
+                    root.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+            }
+            tabs.forEach(function (tab, i) {
+                tab.addEventListener("click", function () { select(tab, { updateHash: true }); });
+                tab.addEventListener("keydown", function (e) {
+                    let next = -1;
+                    if (e.key === "ArrowRight")
+                        next = (i + 1) % tabs.length;
+                    else if (e.key === "ArrowLeft")
+                        next = (i - 1 + tabs.length) % tabs.length;
+                    else if (e.key === "Home")
+                        next = 0;
+                    else if (e.key === "End")
+                        next = tabs.length - 1;
+                    if (next >= 0) {
+                        e.preventDefault();
+                        select(tabs[next], { focus: true, updateHash: true });
+                    }
+                });
+            });
+            function fromHash(scroll) {
+                const id = location.hash.slice(1);
+                const tab = tabs.find(function (t) { return t.getAttribute("aria-controls") === id; });
+                if (tab)
+                    select(tab, { scroll: scroll });
+                else
+                    select(tabs.find(function (t) { return t.getAttribute("aria-selected") === "true"; }) || tabs[0], {});
+            }
+            fromHash(true);
+            window.addEventListener("hashchange", function () { fromHash(true); });
+        });
+    }
     /* ── Analítica: clics en programas ── */
     function initProgramTracking() {
         document.querySelectorAll("[data-program-name]").forEach(function (el) {
@@ -228,5 +296,6 @@
     initTilt();
     initCarousel();
     initScrollspy();
+    initTabs();
     initProgramTracking();
 })();

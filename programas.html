@@ -96,233 +96,237 @@
 
   <main id="contenido-principal">
 
-    <section class="page-hero has-pattern has-pattern--light" aria-labelledby="page-heading">
+    <section class="page-hero prog-page-hero has-pattern has-pattern--light" aria-labelledby="page-heading">
       <div class="wrap">
         <div class="page-hero-copy">
           <span class="eyebrow fade-up">Programas 2026 + Applied AI Tools</span>
-          <h1 id="page-heading" class="fade-up" style="--delay:100ms">Tres rutas para entrar a la <span class="mark">industria tech</span></h1>
-          <p class="page-hero-lead fade-up" style="--delay:250ms">Programas intensivos de ESPOL con IA aplicada, aprendizaje basado en proyectos e instructores de la academia y la industria. Clases presenciales y virtuales.</p>
+          <h1 id="page-heading" class="fade-up" style="--delay:100ms">Elige tu ruta hacia la <span class="mark">industria tech</span></h1>
+          <p class="page-hero-lead fade-up" style="--delay:250ms">Tres programas intensivos de ESPOL con IA aplicada, proyectos reales e instructores de la industria. Elige uno para ver todo el detalle.</p>
         </div>
-        <div class="program-picks"><a class="program-pick program-pick--fs" href="#desarrollo-web" data-reveal style="--i:0"><img src="img/programas/full-stack-440.webp" alt="" width="440" height="440" loading="eager"><span><strong>Full Stack Development</strong><span>32 semanas · 9 módulos</span></span><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-arrow-down"/></svg></a><a class="program-pick program-pick--ds" href="#ciencia-de-datos" data-reveal style="--i:1"><img src="img/programas/data-science-440.webp" alt="" width="440" height="440" loading="eager"><span><strong>Data Science</strong><span>26 semanas · M0 + 8 módulos</span></span><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-arrow-down"/></svg></a><a class="program-pick program-pick--bda" href="#business-data-analytics" data-reveal style="--i:2"><img src="img/programas/business-data-analytics-440.webp" alt="" width="440" height="440" loading="eager"><span><strong>Business Data Analytics</strong><span>8 módulos + 3 transversales</span></span><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-arrow-down"/></svg></a></div>
       </div>
     </section>
 
-    <nav class="program-tabs" aria-label="Ir a un programa" data-scrollspy>
-      <div class="wrap"><ul><li><a class="program-tab program-tab--fs" href="#desarrollo-web">Full Stack Development</a></li><li><a class="program-tab program-tab--ds" href="#ciencia-de-datos">Data Science</a></li><li><a class="program-tab program-tab--bda" href="#business-data-analytics">Business Data Analytics</a></li></ul></div>
-    </nav>
+    <div class="wrap prog-switcher" data-tabs>
+      <div class="prog-tabs" role="tablist" aria-label="Programas"><button class="prog-tab program--fs" type="button" role="tab" id="tab-fs" aria-controls="desarrollo-web" aria-selected="true" data-reveal style="--i:0"><img src="img/programas/full-stack-440.webp" alt="" width="440" height="440"><span class="prog-tab-text"><strong>Full Stack Development</strong><span>32 semanas · 9 módulos</span></span></button><button class="prog-tab program--ds" type="button" role="tab" id="tab-ds" aria-controls="ciencia-de-datos" aria-selected="false" tabindex="-1" data-reveal style="--i:1"><img src="img/programas/data-science-440.webp" alt="" width="440" height="440"><span class="prog-tab-text"><strong>Data Science</strong><span>26 semanas · M0 + 8 módulos</span></span></button><button class="prog-tab program--bda" type="button" role="tab" id="tab-bda" aria-controls="business-data-analytics" aria-selected="false" tabindex="-1" data-reveal style="--i:2"><img src="img/programas/business-data-analytics-440.webp" alt="" width="440" height="440"><span class="prog-tab-text"><strong>Business Data Analytics</strong><span>8 módulos + 3 transversales</span></span></button></div>
 
-    <!-- ═══════════ FULL STACK DEVELOPMENT ═══════════ -->
-    <article class="program program--fs" id="desarrollo-web" aria-labelledby="fs-title">
-      <div class="wrap">
-        <div class="program-intro">
-          <figure class="program-art" data-tilt data-reveal="scale">
-            <img src="img/programas/full-stack-800.webp" srcset="img/programas/full-stack-440.webp 440w, img/programas/full-stack-800.webp 800w" sizes="(min-width: 960px) 40vw, 92vw" alt="Dos estudiantes revisando código en una laptop: Certificación en Full Stack Developer" width="800" height="800" loading="lazy">
-          </figure>
-          <div class="program-summary" data-reveal>
-            <span class="program-index">PROGRAMA 01</span>
-            <h2 id="fs-title">Full Stack Development <small>+ Applied AI Tools</small></h2>
-            <p class="program-lead">Programa intensivo para convertirte en desarrollador web, de la mano de profesionales con amplia experiencia en transformación digital en la industria y la academia. Aprende a programar, construye ideas y despliégalas.</p>
-            <dl class="program-facts"><div><dt>Duración</dt><dd>32 semanas · 10 h/semana</dd></div><div><dt>Contenido</dt><dd>9 módulos · +300 h de instrucción y tutoría</dd></div><div><dt>Modalidad</dt><dd>Presencial y virtual</dd></div><div><dt>Requisito</dt><dd>Programación básica (curso propedéutico si no tienes experiencia)</dd></div><div><dt>Inversión</dt><dd>USD 2.800 · plan de pagos</dd></div></dl>
+      <!-- ═══════════ FULL STACK DEVELOPMENT ═══════════ -->
+      <section class="prog-panel program--fs is-active" id="desarrollo-web" role="tabpanel" aria-labelledby="tab-fs">
+        <div class="prog-hero has-pattern">
+          <div class="prog-hero-copy">
+            <span class="eyebrow">Programa 01</span>
+            <h2>Full Stack Development <small>+ Applied AI Tools</small></h2>
+            <p>Programa intensivo para convertirte en desarrollador web, de la mano de profesionales con amplia experiencia en transformación digital en la industria y la academia. Aprende a programar, construye ideas y despliégalas.</p>
+            <dl class="prog-kpis"><div><dt>semanas</dt><dd>32</dd></div><div><dt>módulos</dt><dd>9</dd></div><div><dt>horas</dt><dd>300+</dd></div></dl>
             <div class="program-actions">
-              <a class="btn btn--lg" href="solicita-informacion.html?programa=Full%20Stack%20Developer" data-program-name="Full Stack Developer + Applied AI Tools">Solicitar información <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
-              <a class="btn btn--ghost btn--lg" href="brochures/brochure-full-stack-development.pdf" download aria-label="Descargar brochure de Full Stack Development (PDF, 4,4 MB)">Descargar brochure</a>
+              <a class="btn btn--light btn--lg" href="solicita-informacion.html?programa=Full%20Stack%20Developer" data-program-name="Full Stack Developer + Applied AI Tools">Solicitar información <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="btn btn--outline-light btn--lg" href="brochures/brochure-full-stack-development.pdf" download aria-label="Descargar brochure de Full Stack Development (PDF, 4,4 MB)">Descargar brochure</a>
             </div>
           </div>
+          <figure class="prog-hero-art">
+            <img src="img/programas/full-stack-800.webp" srcset="img/programas/full-stack-440.webp 440w, img/programas/full-stack-800.webp 800w" sizes="(min-width: 960px) 32vw, 80vw" alt="Dos estudiantes revisando código en una laptop: Certificación en Full Stack Developer" width="800" height="800" data-tilt>
+            <figcaption class="sticker sticker--sun">USD 2.800<small>plan de pagos disponible</small></figcaption>
+          </figure>
         </div>
 
-        <ul class="program-benefits"><li data-reveal style="--i:0"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Interfaces y backends.</strong> Construye interfaces modernas, responsivas y accesibles, y conéctalas con APIs y arquitecturas backend robustas y escalables.</span></li><li data-reveal style="--i:1"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>IA en todo el stack.</strong> Consume modelos de IA generativa, crea asistentes y agentes inteligentes, y usa herramientas de desarrollo asistido por IA.</span></li><li data-reveal style="--i:2"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Frameworks de la industria.</strong> HTML, CSS, JavaScript y React en el frontend; Django y Node con Express en el backend.</span></li><li data-reveal style="--i:3"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Código de calidad.</strong> Buenas prácticas de diseño web y desarrollo con instructores expertos de la industria.</span></li></ul>
+        <ul class="prog-benefits"><li data-reveal style="--i:0"><strong>Interfaces y backends.</strong> Construye interfaces modernas, responsivas y accesibles, y conéctalas con APIs y arquitecturas backend robustas y escalables.</li><li data-reveal style="--i:1"><strong>IA en todo el stack.</strong> Consume modelos de IA generativa, crea asistentes y agentes inteligentes, y usa herramientas de desarrollo asistido por IA.</li><li data-reveal style="--i:2"><strong>Frameworks de la industria.</strong> HTML, CSS, JavaScript y React en el frontend; Django y Node con Express en el backend.</li><li data-reveal style="--i:3"><strong>Código de calidad.</strong> Buenas prácticas de diseño web y desarrollo con instructores expertos de la industria.</li></ul>
 
-        <section class="program-block" aria-labelledby="fs-modulos">
-          <h3 class="program-block-title" id="fs-modulos">Plan de estudios <span>9 módulos</span></h3>
-          <div class="module-group"><p class="module-group-label">AI Frontend Engineer</p><ol class="module-grid"><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M1</span><h4>Web Foundations &amp; Agentic Coding</h4></li><li class="module-card" data-reveal style="--i:1"><span class="module-card-num">M2</span><h4>UX/UI with AI &amp; Design Systems</h4></li><li class="module-card" data-reveal style="--i:2"><span class="module-card-num">M3</span><h4>Modern Frameworks &amp; Frontend Architecture</h4></li><li class="module-card" data-reveal style="--i:3"><span class="module-card-num">M4</span><h4>AI Integration &amp; Cloud Deployment</h4></li></ol></div><div class="module-group"><p class="module-group-label">AI Backend Engineer</p><ol class="module-grid"><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M5</span><h4>Databases: SQL and Query Optimization</h4></li><li class="module-card" data-reveal style="--i:1"><span class="module-card-num">M6</span><h4>Backend 101: MERN</h4></li><li class="module-card" data-reveal style="--i:2"><span class="module-card-num">M7</span><h4>Backend Pro: Models &amp; Tools</h4></li><li class="module-card" data-reveal style="--i:3"><span class="module-card-num">M8</span><h4>Cloud Computing Architecture for Web Applications</h4></li><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M9</span><h4>Quality Assurance</h4></li></ol></div>
+        <section class="prog-block prog-plan" aria-labelledby="fs-plan">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Plan de estudios</span>
+            <h3 id="fs-plan">9 módulos, de cero a proyecto real</h3>
+            <p>Cada módulo combina clases, laboratorio y un entregable para tu portafolio.</p>
+          </div>
+          <div><ol class="roadmap"><span class="roadmap-line" data-reveal-line aria-hidden="true"></span><li class="roadmap-phase" data-reveal>AI Frontend Engineer</li><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M1</span><div><h4>Web Foundations &amp; Agentic Coding</h4></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M2</span><div><h4>UX/UI with AI &amp; Design Systems</h4></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M3</span><div><h4>Modern Frameworks &amp; Frontend Architecture</h4></div></li><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M4</span><div><h4>AI Integration &amp; Cloud Deployment</h4></div></li><li class="roadmap-phase" data-reveal>AI Backend Engineer</li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M5</span><div><h4>Databases: SQL and Query Optimization</h4></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M6</span><div><h4>Backend 101: MERN</h4></div></li><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M7</span><div><h4>Backend Pro: Models &amp; Tools</h4></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M8</span><div><h4>Cloud Computing Architecture for Web Applications</h4></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M9</span><div><h4>Quality Assurance</h4></div></li></ol></div>
         </section>
 
-        <div class="program-block program-split">
-          <section class="program-panel program-panel--brand has-pattern" aria-labelledby="fs-horarios" data-reveal>
-            <h3 id="fs-horarios">Horarios</h3>
+        <section class="prog-block prog-week" aria-labelledby="fs-semana">
+          <div class="program-panel program-panel--brand has-pattern" data-reveal>
+            <h3 id="fs-semana">Tu semana</h3>
             <table class="schedule schedule--boxed"><caption class="visually-hidden">Horarios de Full Stack Development</caption><thead><tr><th scope="col">Día</th><th scope="col">Hora</th><th scope="col">Modalidad</th></tr></thead><tbody><tr><th scope="row">Lunes</th><td>19h00 – 20h30</td><td>Revisión de código</td></tr><tr><th scope="row">Martes</th><td>19h00 – 21h00</td><td>Clase virtual</td></tr><tr><th scope="row">Miércoles</th><td>19h00 – 20h30</td><td>Revisión de código</td></tr><tr><th scope="row">Jueves</th><td>19h00 – 21h00</td><td>Clase virtual</td></tr><tr><th scope="row">Sábado</th><td>09h00 – 12h00</td><td>Clase presencial</td></tr></tbody></table>
             
-          </section>
-          <section class="program-panel" aria-labelledby="fs-incluye" data-reveal style="--i:1">
-            <h3 id="fs-incluye">Qué incluye</h3>
+          </div>
+          <div class="prog-includes" data-reveal style="--i:1">
+            <h3>Qué incluye</h3>
             <ul class="check-list"><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>9 módulos dictados por expertos de la industria y la academia.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Más de 300 horas de instrucción y tutoría.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Horas de consulta semanales con instructores y ayudantes.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Laboratorios con plataformas listas para tus proyectos web.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Portafolio en GitHub que certifica tu experiencia.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Proyectos con necesidades reales del mercado, en equipo.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Simulación de entrevistas y asesoría laboral.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Conexión con la industria en eventos de presentación de proyectos.</span></li></ul>
-          </section>
-        </div>
-
-        <section class="program-block" aria-labelledby="fs-tech">
-          <h3 class="program-block-title" id="fs-tech">Tecnologías que usarás</h3>
-          <ul class="tech-grid"><li class="tech-card tech-card--javascript"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-javascript"/></svg>JavaScript</li><li class="tech-card tech-card--react"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-react"/></svg>React</li><li class="tech-card tech-card--nodedotjs"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-nodedotjs"/></svg>Node.js</li><li class="tech-card tech-card--django"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-django"/></svg>Django</li><li class="tech-card tech-card--mongodb"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-mongodb"/></svg>MongoDB</li><li class="tech-card tech-card--postgresql"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-postgresql"/></svg>PostgreSQL</li><li class="tech-card tech-card--githubactions"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-githubactions"/></svg>GitHub Actions</li><li class="tech-card tech-card--openai"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-openai"/></svg>ChatGPT</li></ul>
+            <ul class="tech-grid" aria-label="Tecnologías del programa"><li class="tech-card tech-card--javascript"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-javascript"/></svg>JavaScript</li><li class="tech-card tech-card--react"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-react"/></svg>React</li><li class="tech-card tech-card--nodedotjs"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-nodedotjs"/></svg>Node.js</li><li class="tech-card tech-card--django"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-django"/></svg>Django</li><li class="tech-card tech-card--mongodb"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-mongodb"/></svg>MongoDB</li><li class="tech-card tech-card--postgresql"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-postgresql"/></svg>PostgreSQL</li><li class="tech-card tech-card--githubactions"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-githubactions"/></svg>GitHub Actions</li><li class="tech-card tech-card--openai"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-openai"/></svg>ChatGPT</li></ul>
+          </div>
         </section>
 
-        <div class="program-block program-cert has-pattern" data-reveal>
-          <img src="img/micredencial.webp" alt="Insignia Mi Credencial de ESPOL" width="218" height="343" loading="lazy">
-          <div>
-            <h3>Macro Credencial ESPOL</h3>
-            <p>Certifica tu formación integral en desarrollo frontend, backend, UX y tecnologías de IA. Además, el contenido cubre lo necesario para certificaciones internacionales:</p>
-            <span class="chip">Google UX Design Certificate</span><span class="chip">AWS Certified Cloud Practitioner</span><span class="chip">GitHub Actions</span>
-          </div>
-        </div>
-        <section class="program-block" aria-labelledby="fs-instructores">
-          <h3 class="program-block-title" id="fs-instructores">Instructores <span>academia e industria</span></h3>
-          <ul class="instructor-grid"><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">DS</span><div><strong>Denny Schuldt</strong><span>Product Manager en Jelou · Software, usabilidad y estrategia</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">FM</span><div><strong>Francisco Morales</strong><span>Enterprise Architect · Data Engineer · Consultor en Cloud Computing</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">EM</span><div><strong>Enmanuel Magallanes</strong><span>Senior Consultor en North Highland · Desarrollador Full Stack</span></div></li><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">LB</span><div><strong>Luigi Basantes</strong><span>CTO en Jelou AI · Arquitecto de software</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">VL</span><div><strong>Viviana Laurido</strong><span>Senior Software Developer</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">KZ</span><div><strong>Kevin Zambrano</strong><span>QA Automation Tester · ISTQB Certified</span></div></li><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">AV</span><div><strong>Andrés Vargas</strong><span>Salesforce Developer · React Developer</span></div></li></ul>
-        </section>
-
-        <div class="program-block program-close">
-          <section class="program-panel" aria-labelledby="fs-admision" data-reveal>
-            <h3 id="fs-admision">Proceso de admisión</h3>
-            <ol class="program-steps"><li><span><strong>Entrevista telefónica</strong> con un gestor comercial.</span></li><li><span><strong>Comprobante de pago:</strong> envía el depósito o paga con el link de pago.</span></li><li><span><strong>Propedéutico:</strong> curso de nivelación si no tienes experiencia en programación.</span></li><li><span><strong>Inicio de clases</strong> con el primer módulo core.</span></li></ol>
-          </section>
-          <div class="price-box has-pattern" data-reveal="scale" style="--i:1">
-            <span class="price-box-label">Inversión</span>
-            <span class="price-box-value">USD 2.800</span>
-            <p>Paga con un plan de pagos a lo largo del programa. Pregunta por descuentos y financiamiento.</p>
-            <a class="btn btn--light" href="solicita-informacion.html?programa=Full%20Stack%20Developer" data-program-name="Full Stack Developer + Applied AI Tools">Quiero inscribirme <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- ═══════════ DATA SCIENCE ═══════════ -->
-    <article class="program program--ds program--reverse" id="ciencia-de-datos" aria-labelledby="ds-title">
-      <div class="wrap">
-        <div class="program-intro">
-          <figure class="program-art" data-tilt data-reveal="scale">
-            <img src="img/programas/data-science-800.webp" srcset="img/programas/data-science-440.webp 440w, img/programas/data-science-800.webp 800w" sizes="(min-width: 960px) 40vw, 92vw" alt="Dos estudiantes analizando datos frente a un monitor: Certificación en Data Science" width="800" height="800" loading="lazy">
-          </figure>
-          <div class="program-summary" data-reveal>
-            <span class="program-index">PROGRAMA 02</span>
-            <h2 id="ds-title">Data Science <small>+ Applied AI Tools</small></h2>
-            <p class="program-lead">Programa intensivo para trabajar en ciencia de datos: implementa flujos de analítica, construye visualizaciones efectivas, despliega soluciones en la nube y desarrolla modelos con inteligencia artificial para apoyar la toma de decisiones.</p>
-            <dl class="program-facts"><div><dt>Duración</dt><dd>26 semanas · 12 h/semana</dd></div><div><dt>Contenido</dt><dd>M0 + 8 módulos · +200 h de instrucción y tutoría</dd></div><div><dt>Modalidad</dt><dd>Presencial y virtual</dd></div><div><dt>Requisito</dt><dd>Python básico recomendado (material online para nivelarte)</dd></div><div><dt>Inversión</dt><dd>USD 3.200 · plan de pagos</dd></div></dl>
-            <div class="program-actions">
-              <a class="btn btn--lg" href="solicita-informacion.html?programa=Data%20Science" data-program-name="Ciencia de Datos + Applied AI Tools">Solicitar información <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
-              <a class="btn btn--ghost btn--lg" href="brochures/brochure-data-science.pdf" download aria-label="Descargar brochure de Data Science (PDF, 5,3 MB)">Descargar brochure</a>
+        <section class="prog-block">
+          <div class="program-cert has-pattern" data-reveal>
+            <img src="img/micredencial.webp" alt="Insignia Mi Credencial de ESPOL" width="218" height="343" loading="lazy">
+            <div>
+              <h3>Macro Credencial ESPOL</h3>
+              <p>Certifica tu formación integral en desarrollo frontend, backend, UX y tecnologías de IA. Además, el contenido cubre lo necesario para certificaciones internacionales:</p>
+              <span class="chip">Google UX Design Certificate</span><span class="chip">AWS Certified Cloud Practitioner</span><span class="chip">GitHub Actions</span>
             </div>
           </div>
-        </div>
-
-        <ul class="program-benefits"><li data-reveal style="--i:0"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Alta demanda.</strong> Oportunidades de trabajo en varios sectores de la industria.</span></li><li data-reveal style="--i:1"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Salario competitivo.</strong> Atractivos paquetes de compensación en un campo en crecimiento.</span></li><li data-reveal style="--i:2"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Habilidades versátiles.</strong> Aplicables en diversas industrias para resolver problemas complejos con enfoques analíticos.</span></li><li data-reveal style="--i:3"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Colaboración.</strong> Trabajo interdisciplinario que amplía tu red de contactos.</span></li></ul>
-
-        <section class="program-block" aria-labelledby="ds-modulos">
-          <h3 class="program-block-title" id="ds-modulos">Plan de estudios <span>M0 + 8 módulos</span></h3>
-          <div class="module-group"><ol class="module-grid"><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M0</span><h4>Python and Computational Thinking</h4><p>Python desde cero y pensamiento computacional. De aprobación obligatoria.</p></li><li class="module-card" data-reveal style="--i:1"><span class="module-card-num">M1</span><h4>Business Intelligence</h4><p>Formula las preguntas correctas para los problemas de la industria.</p></li><li class="module-card" data-reveal style="--i:2"><span class="module-card-num">M2</span><h4>Databases: SQL and Query Optimization</h4><p>Consulta y organiza datos con SQL, y optimiza tus consultas.</p></li><li class="module-card" data-reveal style="--i:3"><span class="module-card-num">M3</span><h4>Python for Data Science and Statistics</h4><p>Explora datos con Python e interpreta resultados con estadística aplicada.</p></li><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M4</span><h4>Time Series and Intro to Machine Learning</h4><p>Identifica patrones en el tiempo y anticipa tendencias.</p></li><li class="module-card" data-reveal style="--i:1"><span class="module-card-num">M5</span><h4>Machine Learning and Predictions</h4><p>Modelos de aprendizaje de máquina en Python para cada caso de uso.</p></li><li class="module-card" data-reveal style="--i:2"><span class="module-card-num">M6</span><h4>Data Visualization &amp; Storytelling</h4><p>Dashboards en Google Data Studio y Power BI que cuentan una historia.</p></li><li class="module-card" data-reveal style="--i:3"><span class="module-card-num">M7</span><h4>Data Experiments: A/B Testing</h4><p>Diseño experimental para decidir con evidencia.</p></li><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M8</span><h4>Big Data Analytics</h4><p>Datos a gran escala con Apache Spark en Python.</p></li></ol></div><p class="module-note"><strong>Transversales:</strong> Business Intelligence, Python for Data Science, Introducción a la IA Generativa, DataViz and Storytelling, y Machine Learning – Data Experimentation.</p>
+        </section>
+        <section class="prog-block" aria-labelledby="fs-mentores">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Instructores</span>
+            <h3 id="fs-mentores">Aprende con quienes lo hacen todos los días</h3>
+          </div>
+          <ul class="mentor-grid"><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">DS</span></div><div class="mentor-body"><h4>Denny Schuldt</h4><p>Product Manager en Jelou · Software, usabilidad y estrategia</p></div></li><li class="mentor" data-reveal style="--i:1"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">FM</span></div><div class="mentor-body"><h4>Francisco Morales</h4><p>Enterprise Architect · Data Engineer · Consultor en Cloud Computing</p></div></li><li class="mentor" data-reveal style="--i:2"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">EM</span></div><div class="mentor-body"><h4>Enmanuel Magallanes</h4><p>Senior Consultor en North Highland · Desarrollador Full Stack</p></div></li><li class="mentor" data-reveal style="--i:3"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">LB</span></div><div class="mentor-body"><h4>Luigi Basantes</h4><p>CTO en Jelou AI · Arquitecto de software</p></div></li><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">VL</span></div><div class="mentor-body"><h4>Viviana Laurido</h4><p>Senior Software Developer</p></div></li><li class="mentor" data-reveal style="--i:1"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">KZ</span></div><div class="mentor-body"><h4>Kevin Zambrano</h4><p>QA Automation Tester · ISTQB Certified</p></div></li><li class="mentor" data-reveal style="--i:2"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">AV</span></div><div class="mentor-body"><h4>Andrés Vargas</h4><p>Salesforce Developer · React Developer</p></div></li></ul>
         </section>
 
-        <div class="program-block program-split">
-          <section class="program-panel program-panel--brand has-pattern" aria-labelledby="ds-horarios" data-reveal>
-            <h3 id="ds-horarios">Horarios</h3>
+        <section class="prog-block" aria-labelledby="fs-inscripcion">
+          <div class="prog-enroll has-pattern" data-reveal="scale">
+            <div>
+              <span class="eyebrow">Admisión</span>
+              <h3 id="fs-inscripcion">Así te inscribes</h3>
+              <ol class="enroll-steps"><li><span><strong>Entrevista telefónica</strong> con un gestor comercial.</span></li><li><span><strong>Comprobante de pago:</strong> envía el depósito o paga con el link de pago.</span></li><li><span><strong>Propedéutico:</strong> curso de nivelación si no tienes experiencia en programación.</span></li><li><span><strong>Inicio de clases</strong> con el primer módulo core.</span></li></ol>
+            </div>
+            <div class="enroll-price">
+              <span class="enroll-price-label">Inversión</span>
+              <span class="enroll-price-value">USD 2.800</span>
+              <p>Paga con un plan de pagos a lo largo del programa. Pregunta por descuentos y financiamiento.</p>
+              <a class="btn btn--light btn--lg" href="solicita-informacion.html?programa=Full%20Stack%20Developer" data-program-name="Full Stack Developer + Applied AI Tools">Quiero inscribirme <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="link-arrow link-arrow--light" href="https://wa.me/593979631573?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Full%20Stack%20Developer" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" aria-hidden="true"><use href="img/icons.svg#t-whatsapp"/></svg> ¿Dudas? Escríbenos por WhatsApp</a>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ═══════════ DATA SCIENCE ═══════════ -->
+      <section class="prog-panel program--ds" id="ciencia-de-datos" role="tabpanel" aria-labelledby="tab-ds">
+        <div class="prog-hero has-pattern">
+          <div class="prog-hero-copy">
+            <span class="eyebrow">Programa 02</span>
+            <h2>Data Science <small>+ Applied AI Tools</small></h2>
+            <p>Programa intensivo para trabajar en ciencia de datos: implementa flujos de analítica, construye visualizaciones efectivas, despliega soluciones en la nube y desarrolla modelos con inteligencia artificial para apoyar la toma de decisiones.</p>
+            <dl class="prog-kpis"><div><dt>semanas</dt><dd>26</dd></div><div><dt>módulos</dt><dd>M0+8</dd></div><div><dt>horas</dt><dd>200+</dd></div></dl>
+            <div class="program-actions">
+              <a class="btn btn--light btn--lg" href="solicita-informacion.html?programa=Data%20Science" data-program-name="Ciencia de Datos + Applied AI Tools">Solicitar información <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="btn btn--outline-light btn--lg" href="brochures/brochure-data-science.pdf" download aria-label="Descargar brochure de Data Science (PDF, 5,3 MB)">Descargar brochure</a>
+            </div>
+          </div>
+          <figure class="prog-hero-art">
+            <img src="img/programas/data-science-800.webp" srcset="img/programas/data-science-440.webp 440w, img/programas/data-science-800.webp 800w" sizes="(min-width: 960px) 32vw, 80vw" alt="Dos estudiantes analizando datos frente a un monitor: Certificación en Data Science" width="800" height="800" data-tilt>
+            <figcaption class="sticker sticker--sun">USD 3.200<small>plan de pagos disponible</small></figcaption>
+          </figure>
+        </div>
+
+        <ul class="prog-benefits"><li data-reveal style="--i:0"><strong>Alta demanda.</strong> Oportunidades de trabajo en varios sectores de la industria.</li><li data-reveal style="--i:1"><strong>Salario competitivo.</strong> Atractivos paquetes de compensación en un campo en crecimiento.</li><li data-reveal style="--i:2"><strong>Habilidades versátiles.</strong> Aplicables en diversas industrias para resolver problemas complejos con enfoques analíticos.</li><li data-reveal style="--i:3"><strong>Colaboración.</strong> Trabajo interdisciplinario que amplía tu red de contactos.</li></ul>
+
+        <section class="prog-block prog-plan" aria-labelledby="ds-plan">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Plan de estudios</span>
+            <h3 id="ds-plan">M0 + 8 módulos, de cero a proyecto real</h3>
+            <p>Cada módulo combina clases, laboratorio y un entregable para tu portafolio.</p>
+          </div>
+          <div><ol class="roadmap"><span class="roadmap-line" data-reveal-line aria-hidden="true"></span><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M0</span><div><h4>Python and Computational Thinking</h4><p>Python desde cero y pensamiento computacional. De aprobación obligatoria.</p></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M1</span><div><h4>Business Intelligence</h4><p>Formula las preguntas correctas para los problemas de la industria.</p></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M2</span><div><h4>Databases: SQL and Query Optimization</h4><p>Consulta y organiza datos con SQL, y optimiza tus consultas.</p></div></li><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M3</span><div><h4>Python for Data Science and Statistics</h4><p>Explora datos con Python e interpreta resultados con estadística aplicada.</p></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M4</span><div><h4>Time Series and Intro to Machine Learning</h4><p>Identifica patrones en el tiempo y anticipa tendencias.</p></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M5</span><div><h4>Machine Learning and Predictions</h4><p>Modelos de aprendizaje de máquina en Python para cada caso de uso.</p></div></li><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M6</span><div><h4>Data Visualization &amp; Storytelling</h4><p>Dashboards en Google Data Studio y Power BI que cuentan una historia.</p></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M7</span><div><h4>Data Experiments: A/B Testing</h4><p>Diseño experimental para decidir con evidencia.</p></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M8</span><div><h4>Big Data Analytics</h4><p>Datos a gran escala con Apache Spark en Python.</p></div></li></ol><p class="module-note"><strong>Transversales:</strong> Business Intelligence, Python for Data Science, Introducción a la IA Generativa, DataViz and Storytelling, y Machine Learning – Data Experimentation.</p></div>
+        </section>
+
+        <section class="prog-block prog-week" aria-labelledby="ds-semana">
+          <div class="program-panel program-panel--brand has-pattern" data-reveal>
+            <h3 id="ds-semana">Tu semana</h3>
             <table class="schedule schedule--boxed"><caption class="visually-hidden">Horarios de Data Science</caption><thead><tr><th scope="col">Día</th><th scope="col">Hora</th><th scope="col">Modalidad</th></tr></thead><tbody><tr><th scope="row">Lunes</th><td>19h00 – 21h00</td><td>Revisión online</td></tr><tr><th scope="row">Martes</th><td>19h00 – 21h00</td><td>Virtual</td></tr><tr><th scope="row">Miércoles</th><td>19h00 – 21h00</td><td>Revisión online</td></tr><tr><th scope="row">Jueves</th><td>19h00 – 21h00</td><td>Virtual</td></tr><tr><th scope="row">Sábado</th><td>09h00 – 12h00</td><td>Presencial</td></tr></tbody></table>
             
-          </section>
-          <section class="program-panel" aria-labelledby="ds-incluye" data-reveal style="--i:1">
-            <h3 id="ds-incluye">Qué incluye</h3>
-            <ul class="check-list"><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Módulo introductorio y 8 módulos dictados por expertos.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Más de 200 horas de instrucción y tutoría.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Horas de consulta semanales con instructores y ayudantes.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Laboratorios con plataformas listas para tus proyectos.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Portafolio en GitHub con tus modelos y visualizaciones.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Proyectos con necesidades reales del mercado, en equipo.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Simulación de entrevistas y asesoría laboral.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Conexión con la industria en eventos de presentación de proyectos.</span></li></ul>
-          </section>
-        </div>
-
-        <section class="program-block" aria-labelledby="ds-tech">
-          <h3 class="program-block-title" id="ds-tech">Tecnologías que usarás</h3>
-          <ul class="tech-grid"><li class="tech-card tech-card--python"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-python"/></svg>Python</li><li class="tech-card tech-card--pandas"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-pandas"/></svg>pandas</li><li class="tech-card tech-card--scikitlearn"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-scikitlearn"/></svg>scikit-learn</li><li class="tech-card tech-card--jupyter"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-jupyter"/></svg>Jupyter</li><li class="tech-card tech-card--apachespark"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-apachespark"/></svg>Apache Spark</li><li class="tech-card tech-card--postgresql"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-postgresql"/></svg>PostgreSQL</li><li class="tech-card tech-card--googlegemini"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-googlegemini"/></svg>Gemini</li></ul>
-        </section>
-
-        <section class="program-block" aria-labelledby="ds-instructores">
-          <h3 class="program-block-title" id="ds-instructores">Instructores <span>academia e industria</span></h3>
-          <ul class="instructor-grid"><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">CV</span><div><strong>Ph. D. Carmen Vaca</strong><span>Directora de Coding Bootcamps ESPOL · Ph. D. en Information Engineering (Politécnico de Milán)</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">RM</span><div><strong>Robert Moreno</strong><span>Data Scientist en IA y Machine Learning · Azure & Databricks Specialist</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">AC</span><div><strong>Alejandra Cruz</strong><span>Datos y Machine Learning en retail y banca · Soluciones en la nube</span></div></li><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">EP</span><div><strong>Emanuel Parra</strong><span>Ingeniero de Datos en Banco Guayaquil</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">GC</span><div><strong>Galo Castillo</strong><span>Doctoral Researcher en CEA-List · Machine Learning</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">FL</span><div><strong>Fabricio Layedra</strong><span>Data Scientist · Ex Google (GSoC), AB InBev y Microsoft Research</span></div></li><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">PE</span><div><strong>Pablo Estrada</strong><span>Doctor en Economía · Modelador Cuantitativo en Capital One</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">LK</span><div><strong>Leonardo Kuffó</strong><span>Business Intelligence y Data Experimentation · Ex Google SoC</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">EC</span><div><strong>Eduardo Cruz</strong><span>PhD en Computación Aplicada · Científico de Datos en Banco Guayaquil</span></div></li></ul>
-        </section>
-
-        <div class="program-block program-close">
-          <section class="program-panel" aria-labelledby="ds-admision" data-reveal>
-            <h3 id="ds-admision">Proceso de admisión</h3>
-            <ol class="program-steps"><li><span><strong>Inscripción en línea:</strong> completa el formulario de solicitud.</span></li><li><span><strong>Entrevista</strong> con un asesor de Coding Bootcamps ESPOL.</span></li><li><span><strong>Matriculación:</strong> pago inicial, pago completo o plan de pagos.</span></li></ol>
-          </section>
-          <div class="price-box has-pattern" data-reveal="scale" style="--i:1">
-            <span class="price-box-label">Inversión</span>
-            <span class="price-box-value">USD 3.200</span>
-            <p>Pregunta por nuestros descuentos y planes de financiamiento.</p>
-            <a class="btn btn--light" href="solicita-informacion.html?programa=Data%20Science" data-program-name="Ciencia de Datos + Applied AI Tools">Quiero inscribirme <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
           </div>
-        </div>
-      </div>
-    </article>
+          <div class="prog-includes" data-reveal style="--i:1">
+            <h3>Qué incluye</h3>
+            <ul class="check-list"><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Módulo introductorio y 8 módulos dictados por expertos.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Más de 200 horas de instrucción y tutoría.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Horas de consulta semanales con instructores y ayudantes.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Laboratorios con plataformas listas para tus proyectos.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Portafolio en GitHub con tus modelos y visualizaciones.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Proyectos con necesidades reales del mercado, en equipo.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Simulación de entrevistas y asesoría laboral.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Conexión con la industria en eventos de presentación de proyectos.</span></li></ul>
+            <ul class="tech-grid" aria-label="Tecnologías del programa"><li class="tech-card tech-card--python"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-python"/></svg>Python</li><li class="tech-card tech-card--pandas"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-pandas"/></svg>pandas</li><li class="tech-card tech-card--scikitlearn"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-scikitlearn"/></svg>scikit-learn</li><li class="tech-card tech-card--jupyter"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-jupyter"/></svg>Jupyter</li><li class="tech-card tech-card--apachespark"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-apachespark"/></svg>Apache Spark</li><li class="tech-card tech-card--postgresql"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-postgresql"/></svg>PostgreSQL</li><li class="tech-card tech-card--googlegemini"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-googlegemini"/></svg>Gemini</li></ul>
+          </div>
+        </section>
 
-    <!-- ═══════════ BUSINESS DATA ANALYTICS ═══════════ -->
-    <article class="program program--bda" id="business-data-analytics" aria-labelledby="bda-title">
-      <div class="wrap">
-        <div class="program-intro">
-          <figure class="program-art" data-tilt data-reveal="scale">
-            <img src="img/programas/business-data-analytics-800.webp" srcset="img/programas/business-data-analytics-440.webp 440w, img/programas/business-data-analytics-800.webp 800w" sizes="(min-width: 960px) 40vw, 92vw" alt="Dos profesionales revisando un análisis en pantalla: Certificación en Business Analytics" width="800" height="800" loading="lazy">
-          </figure>
-          <div class="program-summary" data-reveal>
-            <span class="program-index">PROGRAMA 03</span>
-            <h2 id="bda-title">Business Data Analytics <small>+ Applied AI Tools</small></h2>
-            <p class="program-lead">Obtén una ventaja competitiva con casos de estudio del mundo real: analítica para inferir insights, aprendizaje automático y visualización de datos. Diseñado junto a actores de la industria y el departamento de Ciencias de la Computación de ESPOL.</p>
-            <dl class="program-facts"><div><dt>Duración</dt><dd>24 a 30 h por curso</dd></div><div><dt>Contenido</dt><dd>8 módulos core + 3 transversales · +200 h</dd></div><div><dt>Modalidad</dt><dd>Presencial y virtual</dd></div><div><dt>Requisito</dt><dd>Python básico recomendado (curso online para nivelarte)</dd></div><div><dt>Inversión</dt><dd>USD 2.800</dd></div></dl>
-            <div class="program-actions">
-              <a class="btn btn--lg" href="solicita-informacion.html?programa=Business%20Data%20Analytics" data-program-name="Business Data Analytics + Applied AI Tools">Solicitar información <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
-              <a class="btn btn--ghost btn--lg" href="brochures/brochure-business-data-analytics.pdf" download aria-label="Descargar brochure de Business Data Analytics (PDF, 5,5 MB)">Descargar brochure</a>
+        <section class="prog-block" aria-labelledby="ds-mentores">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Instructores</span>
+            <h3 id="ds-mentores">Aprende con quienes lo hacen todos los días</h3>
+          </div>
+          <ul class="mentor-grid"><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">CV</span></div><div class="mentor-body"><h4>Ph. D. Carmen Vaca</h4><p>Directora de Coding Bootcamps ESPOL · Ph. D. en Information Engineering (Politécnico de Milán)</p></div></li><li class="mentor" data-reveal style="--i:1"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">RM</span></div><div class="mentor-body"><h4>Robert Moreno</h4><p>Data Scientist en IA y Machine Learning · Azure & Databricks Specialist</p></div></li><li class="mentor" data-reveal style="--i:2"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">AC</span></div><div class="mentor-body"><h4>Alejandra Cruz</h4><p>Datos y Machine Learning en retail y banca · Soluciones en la nube</p></div></li><li class="mentor" data-reveal style="--i:3"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">EP</span></div><div class="mentor-body"><h4>Emanuel Parra</h4><p>Ingeniero de Datos en Banco Guayaquil</p></div></li><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">GC</span></div><div class="mentor-body"><h4>Galo Castillo</h4><p>Doctoral Researcher en CEA-List · Machine Learning</p></div></li><li class="mentor" data-reveal style="--i:1"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">FL</span></div><div class="mentor-body"><h4>Fabricio Layedra</h4><p>Data Scientist · Ex Google (GSoC), AB InBev y Microsoft Research</p></div></li><li class="mentor" data-reveal style="--i:2"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">PE</span></div><div class="mentor-body"><h4>Pablo Estrada</h4><p>Doctor en Economía · Modelador Cuantitativo en Capital One</p></div></li><li class="mentor" data-reveal style="--i:3"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">LK</span></div><div class="mentor-body"><h4>Leonardo Kuffó</h4><p>Business Intelligence y Data Experimentation · Ex Google SoC</p></div></li><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">EC</span></div><div class="mentor-body"><h4>Eduardo Cruz</h4><p>PhD en Computación Aplicada · Científico de Datos en Banco Guayaquil</p></div></li></ul>
+        </section>
+
+        <section class="prog-block" aria-labelledby="ds-inscripcion">
+          <div class="prog-enroll has-pattern" data-reveal="scale">
+            <div>
+              <span class="eyebrow">Admisión</span>
+              <h3 id="ds-inscripcion">Así te inscribes</h3>
+              <ol class="enroll-steps"><li><span><strong>Inscripción en línea:</strong> completa el formulario de solicitud.</span></li><li><span><strong>Entrevista</strong> con un asesor de Coding Bootcamps ESPOL.</span></li><li><span><strong>Matriculación:</strong> pago inicial, pago completo o plan de pagos.</span></li></ol>
+            </div>
+            <div class="enroll-price">
+              <span class="enroll-price-label">Inversión</span>
+              <span class="enroll-price-value">USD 3.200</span>
+              <p>Pregunta por nuestros descuentos y planes de financiamiento.</p>
+              <a class="btn btn--light btn--lg" href="solicita-informacion.html?programa=Data%20Science" data-program-name="Ciencia de Datos + Applied AI Tools">Quiero inscribirme <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="link-arrow link-arrow--light" href="https://wa.me/593979631573?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Data%20Science" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" aria-hidden="true"><use href="img/icons.svg#t-whatsapp"/></svg> ¿Dudas? Escríbenos por WhatsApp</a>
             </div>
           </div>
+        </section>
+      </section>
+
+      <!-- ═══════════ BUSINESS DATA ANALYTICS ═══════════ -->
+      <section class="prog-panel program--bda" id="business-data-analytics" role="tabpanel" aria-labelledby="tab-bda">
+        <div class="prog-hero has-pattern">
+          <div class="prog-hero-copy">
+            <span class="eyebrow">Programa 03</span>
+            <h2>Business Data Analytics <small>+ Applied AI Tools</small></h2>
+            <p>Obtén una ventaja competitiva con casos de estudio del mundo real: analítica para inferir insights, aprendizaje automático y visualización de datos. Diseñado junto a actores de la industria y el departamento de Ciencias de la Computación de ESPOL.</p>
+            <dl class="prog-kpis"><div><dt>módulos core</dt><dd>8</dd></div><div><dt>transversales</dt><dd>3</dd></div><div><dt>horas</dt><dd>200+</dd></div></dl>
+            <div class="program-actions">
+              <a class="btn btn--light btn--lg" href="solicita-informacion.html?programa=Business%20Data%20Analytics" data-program-name="Business Data Analytics + Applied AI Tools">Solicitar información <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="btn btn--outline-light btn--lg" href="brochures/brochure-business-data-analytics.pdf" download aria-label="Descargar brochure de Business Data Analytics (PDF, 5,5 MB)">Descargar brochure</a>
+            </div>
+          </div>
+          <figure class="prog-hero-art">
+            <img src="img/programas/business-data-analytics-800.webp" srcset="img/programas/business-data-analytics-440.webp 440w, img/programas/business-data-analytics-800.webp 800w" sizes="(min-width: 960px) 32vw, 80vw" alt="Dos profesionales revisando un análisis en pantalla: Certificación en Business Analytics" width="800" height="800" data-tilt>
+            <figcaption class="sticker sticker--sun">USD 2.800<small>consulta descuentos</small></figcaption>
+          </figure>
         </div>
 
-        <ul class="program-benefits"><li data-reveal style="--i:0"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Mejores salarios.</strong> La experiencia en proyectos reales te permite aspirar a mejores salarios.</span></li><li data-reveal style="--i:1"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Oportunidades laborales.</strong> Módulos de habilidades blandas que te preparan para entrevistas.</span></li><li data-reveal style="--i:2"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Networking.</strong> Conexiones valiosas con actores de la industria.</span></li><li data-reveal style="--i:3"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span><strong>Programa competitivo.</strong> Expertos de la academia y la industria con amplia experiencia.</span></li></ul>
+        <ul class="prog-benefits"><li data-reveal style="--i:0"><strong>Mejores salarios.</strong> La experiencia en proyectos reales te permite aspirar a mejores salarios.</li><li data-reveal style="--i:1"><strong>Oportunidades laborales.</strong> Módulos de habilidades blandas que te preparan para entrevistas.</li><li data-reveal style="--i:2"><strong>Networking.</strong> Conexiones valiosas con actores de la industria.</li><li data-reveal style="--i:3"><strong>Programa competitivo.</strong> Expertos de la academia y la industria con amplia experiencia.</li></ul>
 
-        <section class="program-block" aria-labelledby="bda-modulos">
-          <h3 class="program-block-title" id="bda-modulos">Plan de estudios <span>8 módulos + 3 transversales</span></h3>
-          <div class="module-group"><ol class="module-grid"><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M0</span><h4>Python and Computational Thinking</h4><p>Python desde cero. De aprobación obligatoria.</p></li><li class="module-card" data-reveal style="--i:1"><span class="module-card-num">M1</span><h4>Business Intelligence and Storytelling</h4><p>Con la metodología del caso, formula las preguntas correctas.</p></li><li class="module-card" data-reveal style="--i:2"><span class="module-card-num">M2</span><h4>Databases: SQL and Query Optimization</h4><p>Consultas SQL y principios de gobernanza de datos.</p></li><li class="module-card" data-reveal style="--i:3"><span class="module-card-num">M3</span><h4>Python for Business Data Analytics</h4><p>Data wrangling de la operación de un negocio con Python.</p></li><li class="module-card" data-reveal style="--i:0"><span class="module-card-num">M4</span><h4>Data Governance</h4><p>Gestión, calidad y seguridad de los datos en la empresa.</p></li><li class="module-card" data-reveal style="--i:1"><span class="module-card-num">M5</span><h4>Data Visualization</h4><p>Dashboards y visualizaciones geográficas para la industria local.</p></li><li class="module-card" data-reveal style="--i:2"><span class="module-card-num">M6</span><h4>Machine Learning Intro</h4><p>Modelos predictivos con datos reales de negocio.</p></li><li class="module-card" data-reveal style="--i:3"><span class="module-card-num">M7</span><h4>Digital Marketing Analytics</h4><p>Métricas, SEO, segmentación y el rol de la IA en marketing.</p></li></ol></div><p class="module-note"><strong>Transversales:</strong> fundamentos de Python, SCRUM, AI Tools for Business Intelligence y hojas de cálculo para analítica. <strong>Aceleradores de carrera:</strong> comunicación asertiva y liderazgo, y Career Services.</p>
+        <section class="prog-block prog-plan" aria-labelledby="bda-plan">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Plan de estudios</span>
+            <h3 id="bda-plan">8 módulos + 3 transversales, de cero a proyecto real</h3>
+            <p>Cada módulo combina clases, laboratorio y un entregable para tu portafolio.</p>
+          </div>
+          <div><ol class="roadmap"><span class="roadmap-line" data-reveal-line aria-hidden="true"></span><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M0</span><div><h4>Python and Computational Thinking</h4><p>Python desde cero. De aprobación obligatoria.</p></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M1</span><div><h4>Business Intelligence and Storytelling</h4><p>Con la metodología del caso, formula las preguntas correctas.</p></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M2</span><div><h4>Databases: SQL and Query Optimization</h4><p>Consultas SQL y principios de gobernanza de datos.</p></div></li><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M3</span><div><h4>Python for Business Data Analytics</h4><p>Data wrangling de la operación de un negocio con Python.</p></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M4</span><div><h4>Data Governance</h4><p>Gestión, calidad y seguridad de los datos en la empresa.</p></div></li><li class="roadmap-step" data-reveal style="--i:2"><span class="roadmap-num">M5</span><div><h4>Data Visualization</h4><p>Dashboards y visualizaciones geográficas para la industria local.</p></div></li><li class="roadmap-step" data-reveal style="--i:0"><span class="roadmap-num">M6</span><div><h4>Machine Learning Intro</h4><p>Modelos predictivos con datos reales de negocio.</p></div></li><li class="roadmap-step" data-reveal style="--i:1"><span class="roadmap-num">M7</span><div><h4>Digital Marketing Analytics</h4><p>Métricas, SEO, segmentación y el rol de la IA en marketing.</p></div></li></ol><p class="module-note"><strong>Transversales:</strong> fundamentos de Python, SCRUM, AI Tools for Business Intelligence y hojas de cálculo para analítica. <strong>Aceleradores de carrera:</strong> comunicación asertiva y liderazgo, y Career Services.</p></div>
         </section>
 
-        <div class="program-block program-split">
-          <section class="program-panel program-panel--brand has-pattern" aria-labelledby="bda-horarios" data-reveal>
-            <h3 id="bda-horarios">Horarios</h3>
+        <section class="prog-block prog-week" aria-labelledby="bda-semana">
+          <div class="program-panel program-panel--brand has-pattern" data-reveal>
+            <h3 id="bda-semana">Tu semana</h3>
             <table class="schedule schedule--boxed"><caption class="visually-hidden">Horarios de Business Data Analytics</caption><thead><tr><th scope="col">Día</th><th scope="col">Hora</th><th scope="col">Modalidad</th></tr></thead><tbody><tr><th scope="row">Lunes</th><td>19h00 – 21h00</td><td>Virtual</td></tr><tr><th scope="row">Martes</th><td>19h00 – 21h00</td><td>Virtual</td></tr><tr><th scope="row">Miércoles</th><td>19h00 – 21h00</td><td>Virtual</td></tr><tr><th scope="row">Jueves</th><td>19h00 – 21h00</td><td>Virtual</td></tr><tr><th scope="row">Sábado</th><td>09h00 – 12h00</td><td>Presencial</td></tr></tbody></table>
             <p class="schedule-note">Los horarios virtuales están sujetos a cambios según la planificación del curso.</p>
-          </section>
-          <section class="program-panel" aria-labelledby="bda-incluye" data-reveal style="--i:1">
-            <h3 id="bda-incluye">Qué incluye</h3>
-            <ul class="check-list"><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>8 módulos core y 3 contenidos transversales.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Más de 200 horas de instrucción y tutoría.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Horas de consulta semanales con instructores y ayudantes.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Laboratorios con plataformas listas para tus proyectos.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Proyectos con necesidades reales del mercado, en equipo.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Simulación de entrevistas y asesoría laboral.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Conexión con la industria en eventos de presentación de proyectos.</span></li></ul>
-          </section>
-        </div>
-
-        <section class="program-block" aria-labelledby="bda-tech">
-          <h3 class="program-block-title" id="bda-tech">Tecnologías que usarás</h3>
-          <ul class="tech-grid"><li class="tech-card tech-card--python"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-python"/></svg>Python</li><li class="tech-card tech-card--pandas"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-pandas"/></svg>pandas</li><li class="tech-card tech-card--postgresql"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-postgresql"/></svg>PostgreSQL</li><li class="tech-card tech-card--jupyter"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-jupyter"/></svg>Jupyter</li><li class="tech-card tech-card--openai"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-openai"/></svg>ChatGPT</li></ul>
-        </section>
-
-        <section class="program-block" aria-labelledby="bda-instructores">
-          <h3 class="program-block-title" id="bda-instructores">Instructores <span>academia e industria</span></h3>
-          <ul class="instructor-grid"><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">FM</span><div><strong>MSc. Fabricio Layedra Montoya</strong><span>Especialista de datos en Zerebralab · Ex BI en Mall del Sol y analítica en Rappi</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">PV</span><div><strong>Paulette Vázquez</strong><span>Senior Data Scientist en AB InBev</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">DP</span><div><strong>Econ. Denisse Orozco Pereira</strong><span>Científica de datos senior en el sector bancario</span></div></li><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">SC</span><div><strong>MSc. Sergio Suárez Cruz</strong><span>MSc. en Sistemas de Información Geográfica · AWS, Data y BI</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">JC</span><div><strong>MSc. John Granados Cepeda</strong><span>Gerente de Gobierno de Información y Analítica en Banco Guayaquil</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">RM</span><div><strong>Ing. Robert Moreno</strong><span>Machine Learning Engineer · Big Data y MLOps</span></div></li><li class="instructor" data-reveal style="--i:0"><span class="avatar" aria-hidden="true">JG</span><div><strong>Ing. Jonathan Gorotiza</strong><span>Databases: SQL and Query Optimization</span></div></li><li class="instructor" data-reveal style="--i:1"><span class="avatar" aria-hidden="true">JG</span><div><strong>Johanna Gavilanes</strong><span>Digital Marketing Analytics</span></div></li><li class="instructor" data-reveal style="--i:2"><span class="avatar" aria-hidden="true">CR</span><div><strong>Dra. Carmen Vaca Ruiz</strong><span>Directora de Coding Bootcamps ESPOL</span></div></li></ul>
-        </section>
-
-        <div class="program-block program-close">
-          <section class="program-panel" aria-labelledby="bda-admision" data-reveal>
-            <h3 id="bda-admision">Proceso de admisión</h3>
-            <ol class="program-steps"><li><span><strong>Inscripción:</strong> completa el formulario de aplicación.</span></li><li><span><strong>Entrevista</strong> con el coordinador de admisiones.</span></li><li><span><strong>Matriculación:</strong> formaliza tu registro y el acuerdo de financiamiento.</span></li></ol>
-          </section>
-          <div class="price-box has-pattern" data-reveal="scale" style="--i:1">
-            <span class="price-box-label">Inversión</span>
-            <span class="price-box-value">USD 2.800</span>
-            <p>Pregunta por nuestros descuentos y planes de financiamiento.</p>
-            <a class="btn btn--light" href="solicita-informacion.html?programa=Business%20Data%20Analytics" data-program-name="Business Data Analytics + Applied AI Tools">Quiero inscribirme <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
           </div>
-        </div>
-      </div>
-    </article>
+          <div class="prog-includes" data-reveal style="--i:1">
+            <h3>Qué incluye</h3>
+            <ul class="check-list"><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>8 módulos core y 3 contenidos transversales.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Más de 200 horas de instrucción y tutoría.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Horas de consulta semanales con instructores y ayudantes.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Laboratorios con plataformas listas para tus proyectos.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Proyectos con necesidades reales del mercado, en equipo.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Simulación de entrevistas y asesoría laboral.</span></li><li><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>Conexión con la industria en eventos de presentación de proyectos.</span></li></ul>
+            <ul class="tech-grid" aria-label="Tecnologías del programa"><li class="tech-card tech-card--python"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-python"/></svg>Python</li><li class="tech-card tech-card--pandas"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-pandas"/></svg>pandas</li><li class="tech-card tech-card--postgresql"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-postgresql"/></svg>PostgreSQL</li><li class="tech-card tech-card--jupyter"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-jupyter"/></svg>Jupyter</li><li class="tech-card tech-card--openai"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-openai"/></svg>ChatGPT</li></ul>
+          </div>
+        </section>
 
-    <section class="section" aria-labelledby="dudas-heading">
-      <div class="wrap">
-        <div class="cta-panel has-pattern" data-reveal="scale">
-          <div class="contact-copy">
-            <span class="eyebrow">¿Aún tienes dudas?</span>
-            <h2 id="dudas-heading">Te ayudamos a elegir tu programa</h2>
-            <p>Un asesor te cuenta fechas de inicio, horarios, descuentos y planes de pago, sin compromiso.</p>
-            <div class="program-actions">
-              <a class="btn btn--light btn--lg" href="solicita-informacion.html" data-program-name="General">Solicitar información <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
-              <a class="btn btn--outline-light btn--lg" href="https://wa.me/593979631573?text=Hola%2C%20quiero%20ayuda%20para%20elegir%20un%20programa%20de%20Coding%20Bootcamps%20ESPOL" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" aria-hidden="true"><use href="img/icons.svg#t-whatsapp"/></svg> Escríbenos por WhatsApp</a>
+        <section class="prog-block" aria-labelledby="bda-mentores">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Instructores</span>
+            <h3 id="bda-mentores">Aprende con quienes lo hacen todos los días</h3>
+          </div>
+          <ul class="mentor-grid"><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">FM</span></div><div class="mentor-body"><h4>MSc. Fabricio Layedra Montoya</h4><p>Especialista de datos en Zerebralab · Ex BI en Mall del Sol y analítica en Rappi</p></div></li><li class="mentor" data-reveal style="--i:1"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">PV</span></div><div class="mentor-body"><h4>Paulette Vázquez</h4><p>Senior Data Scientist en AB InBev</p></div></li><li class="mentor" data-reveal style="--i:2"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">DP</span></div><div class="mentor-body"><h4>Econ. Denisse Orozco Pereira</h4><p>Científica de datos senior en el sector bancario</p></div></li><li class="mentor" data-reveal style="--i:3"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">SC</span></div><div class="mentor-body"><h4>MSc. Sergio Suárez Cruz</h4><p>MSc. en Sistemas de Información Geográfica · AWS, Data y BI</p></div></li><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">JC</span></div><div class="mentor-body"><h4>MSc. John Granados Cepeda</h4><p>Gerente de Gobierno de Información y Analítica en Banco Guayaquil</p></div></li><li class="mentor" data-reveal style="--i:1"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">RM</span></div><div class="mentor-body"><h4>Ing. Robert Moreno</h4><p>Machine Learning Engineer · Big Data y MLOps</p></div></li><li class="mentor" data-reveal style="--i:2"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">JG</span></div><div class="mentor-body"><h4>Ing. Jonathan Gorotiza</h4><p>Databases: SQL and Query Optimization</p></div></li><li class="mentor" data-reveal style="--i:3"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">JG</span></div><div class="mentor-body"><h4>Johanna Gavilanes</h4><p>Digital Marketing Analytics</p></div></li><li class="mentor" data-reveal style="--i:0"><div class="mentor-top has-pattern"><span class="mentor-initials" aria-hidden="true">CR</span></div><div class="mentor-body"><h4>Dra. Carmen Vaca Ruiz</h4><p>Directora de Coding Bootcamps ESPOL</p></div></li></ul>
+        </section>
+
+        <section class="prog-block" aria-labelledby="bda-inscripcion">
+          <div class="prog-enroll has-pattern" data-reveal="scale">
+            <div>
+              <span class="eyebrow">Admisión</span>
+              <h3 id="bda-inscripcion">Así te inscribes</h3>
+              <ol class="enroll-steps"><li><span><strong>Inscripción:</strong> completa el formulario de aplicación.</span></li><li><span><strong>Entrevista</strong> con el coordinador de admisiones.</span></li><li><span><strong>Matriculación:</strong> formaliza tu registro y el acuerdo de financiamiento.</span></li></ol>
+            </div>
+            <div class="enroll-price">
+              <span class="enroll-price-label">Inversión</span>
+              <span class="enroll-price-value">USD 2.800</span>
+              <p>Pregunta por nuestros descuentos y planes de financiamiento.</p>
+              <a class="btn btn--light btn--lg" href="solicita-informacion.html?programa=Business%20Data%20Analytics" data-program-name="Business Data Analytics + Applied AI Tools">Quiero inscribirme <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="link-arrow link-arrow--light" href="https://wa.me/593979631573?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Business%20Data%20Analytics" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" aria-hidden="true"><use href="img/icons.svg#t-whatsapp"/></svg> ¿Dudas? Escríbenos por WhatsApp</a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      </section>
+
+    </div>
   </main>
 
   <!-- layout:footer -->
