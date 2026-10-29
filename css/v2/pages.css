@@ -202,13 +202,6 @@
   overflow: hidden;
   transition: transform var(--dur) var(--ease-spring), border-color var(--dur);
 }
-.module-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 4px;
-  background: linear-gradient(90deg, var(--p-from), var(--p-to));
-}
 .module-card:hover { transform: translateY(-3px); border-color: var(--p-to); }
 .module-card-num {
   font-family: var(--font-display);
