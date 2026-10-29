@@ -19,7 +19,7 @@ const files = [
   "sitemap.xml",
 ];
 
-const dirs = ["css", "js"];
+const dirs = ["css", "js", "img"];
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });

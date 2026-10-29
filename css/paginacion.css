@@ -1,0 +1,67 @@
+/*Paginación de tablas*/
+.c-pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.c-pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.c-pagination-btn:hover {
+    background: var(--color-surface-alt);
+}
+
+.c-pagination-btn[aria-current="page"] {
+    background: var(--color-accent-solid);
+    color: #fff;
+}
+
+.c-pagination-btn[aria-current="page"]:hover {
+    background: var(--color-accent-solid);
+}
+
+.c-pagination-nav {
+    border-color: var(--color-border);
+}
+
+.c-pagination-nav:hover:not(:disabled) {
+    background: var(--color-surface-alt);
+    border-color: var(--color-accent-hover);
+}
+
+.c-pagination-nav:disabled {
+    color: var(--color-text-muted);
+    border-color: var(--color-border);
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: transparent;
+}
+
+.c-pagination-status {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-inline-start: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .c-pagination-status {
+        width: 100%;
+        margin-inline-start: 0;
+    }
+}

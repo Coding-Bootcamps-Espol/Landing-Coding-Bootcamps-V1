@@ -89,10 +89,13 @@
     border-top: 1px solid var(--color-border);
 }
 
-/*Variante destructiva (ej. "Cerrar sesión"): mismo lenguaje de color que .c-btn--destructive*/
+/*Variante destructiva (ej. "Cerrar sesión"): mismo lenguaje de color que las
+  alertas/toasts de error (--color-error se adapta por tema; el fill sólido
+  de .c-btn--destructive usa --color-error-solid porque va sobre texto blanco,
+  no sobre la superficie del menú)*/
 .c-menu-account-item--danger,
 .c-menu-account-item--danger .c-menu-account-item-icon {
-    color: var(--semantic-error);
+    color: var(--color-error);
 }
 
 .c-menu-account-item--danger:hover,

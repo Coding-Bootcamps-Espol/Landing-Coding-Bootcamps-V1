@@ -11,9 +11,7 @@
 @import url("toasts.css");
 
 /*Componentes del backoffice*/
-@import "alerts.css";
-@import "botones.css";
-@import "checkboxes-radios.css";
-@import "dialogs.css";
-@import "menus.css";
-@import "toasts.css";
+@import url("switches.css");
+@import url("badges.css");
+@import url("paginacion.css");
+@import url("graficos.css");

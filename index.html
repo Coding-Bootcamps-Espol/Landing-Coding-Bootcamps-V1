@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script
+src="https://cdn.jelou.ai/widgets/loader.js"
+data-api-key="NWRmM2ZjOWMtNDYzYS00ZDI3LThjOTYtN2U4MzQ3MjRhMGU4"
+data-init="true">
+</script>
+  <script async src="https://t.contentsquare.net/uxa/91b7a40541008.js"></script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8T00EQ2LKJ"></script>
 <script>
@@ -42,8 +48,21 @@
 
 </script>
 </head>
-<body>
+<body class="has-promo">
   <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <!-- Promo banner (arriba del nav). data-theme="dark": siempre sobre azul oscuro, usa la paleta oscura en ambos temas -->
+  <aside class="promo-banner" data-theme="dark" aria-label="Promoción Early Bird">
+    <div class="container promo-inner">
+      <p class="promo-title">
+        <span class="promo-label">Descuento</span>
+        <span class="c-badge c-badge--success"><span class="c-badge-dot" aria-hidden="true"></span>Early Bird</span>
+      </p>
+      <p class="promo-text promo-text--vip"><strong>VIP PASS:</strong> tu programa + formación en GenAI</p>
+      <p class="promo-text">Hasta el <time datetime="2026-10-04">04 de octubre</time></p>
+      <span class="promo-pill">¡Asegura tu pase VIP ahora!</span>
+    </div>
+  </aside>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -53,15 +72,31 @@
       </a>
 
       <div class="header-actions">
-        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar a modo claro">
-          <svg class="theme-toggle-icon" id="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" fill="currentColor"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <svg class="theme-toggle-icon" id="icon-moon" viewBox="0 0 24 24" aria-hidden="true" hidden>
-            <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/>
-          </svg>
+        <button
+          type="button"
+          class="c-theme-switch c-theme-switch--compact"
+          role="switch"
+          aria-checked="false"
+          aria-label="Cambiar a modo oscuro"
+          id="theme-toggle"
+        >
+          <span class="c-theme-switch-track" aria-hidden="true">
+            <span class="c-theme-switch-thumb">
+              <span class="c-theme-switch-thumb-icon c-theme-switch-thumb-icon--sun">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="c-theme-switch-thumb-icon c-theme-switch-thumb-icon--moon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </span>
+          </span>
         </button>
+        <p class="visually-hidden" role="status" aria-live="polite" id="theme-switch-anuncio"></p>
 
         <button
           class="nav-toggle"
@@ -100,7 +135,19 @@
   <main id="contenido-principal">
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="container hero-grid">
+      <figure class="hero-image">
+        <img
+          src="img/hero-2048.webp"
+          srcset="img/hero-1024.webp 1024w, img/hero-2048.webp 2048w"
+          sizes="(max-width: 767px) 1300px, (min-width: 90rem) 90rem, 100vw"
+          alt="Estudiante sonriendo frente a una laptop, rodeada de íconos de código, gráficos y bases de datos"
+          width="2048"
+          height="1013"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </figure>
+      <div class="container hero-overlay">
         <div class="hero-content">
           <h1 id="hero-heading">Impulsa tu carrera con formación tecnológica de vanguardia</h1>
           <p class="hero-subheadline">
@@ -108,27 +155,8 @@
           </p>
           <a class="btn btn-primary" href="#programas">Elegir mi programa</a>
         </div>
-        <figure class="hero-image">
-          <img
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80"
-            alt="Estudiante de bootcamp tecnológico mirando hacia la información del programa"
-            width="800"
-            height="600"
-            loading="eager"
-          >
-        </figure>
       </div>
     </section>
-
-    <!-- Webinar banner -->
-    <aside class="webinar-banner" aria-label="Anuncio de webinar">
-      <div class="container">
-        <p>
-          Próximo webinar gratuito: <strong>«Cómo iniciar tu carrera en tecnología»</strong> —
-          <a href="#contacto">Regístrate aquí</a> · 15 de agosto, 18:00
-        </p>
-      </div>
-    </aside>
 
     <!-- Programs -->
     <section id="programas" aria-labelledby="programas-heading">
@@ -288,27 +316,6 @@
             </button>
             <p class="video-caption">Workshop de Data Science con mentores expertos</p>
           </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_4" aria-label="Reproducir video: Graduación de bootcampers">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Graduación: la celebración de nuestros egresados</p>
-          </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_5" aria-label="Reproducir video: Testimonios de bootcampers">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Testimonios: la experiencia de nuestros bootcampers</p>
-          </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_6" aria-label="Reproducir video: Demo Day, proyectos finales">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Demo Day: presentando proyectos finales</p>
-          </li>
         </ul>
       </div>
     </section>
@@ -416,47 +423,6 @@
     </div>
   </footer>
 
-  <!-- Chat widget -->
-  <div
-    class="chat-widget"
-    id="chat-widget"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="chat-title"
-    aria-describedby="chat-desc"
-    data-open="false"
-    hidden
-  >
-    <header class="chat-header">
-      <h2 id="chat-title">Asistente virtual</h2>
-      <button class="chat-close" type="button" id="chat-close" aria-label="Cerrar chat">
-        &#10005;
-      </button>
-    </header>
-    <div class="chat-body" id="chat-body" tabindex="-1">
-      <p class="chat-message chat-message--bot" id="chat-desc">
-        ¡Hola! Soy tu asistente de Coding Bootcamps ESPOL. Pregúntame sobre nuestros programas, fechas de inicio o el proceso de inscripción.
-      </p>
-    </div>
-    <form class="chat-footer" id="chat-form">
-      <label class="visually-hidden" for="chat-input">Escribe tu mensaje</label>
-      <input class="chat-input" type="text" id="chat-input" name="chat-input" autocomplete="off" placeholder="Escribe tu pregunta…">
-      <button class="chat-send" type="submit" aria-label="Enviar mensaje">Enviar</button>
-    </form>
-  </div>
-
-  <button
-    class="chat-fab"
-    type="button"
-    id="chat-fab"
-    aria-expanded="false"
-    aria-controls="chat-widget"
-    aria-label="Abrir chat de asistencia"
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
-    Chat
-  </button>
-
   <script>
     (function () {
       "use strict";
@@ -515,16 +481,51 @@
         }
       });
 
-      /* ── Theme toggle ── */
+      /* ── Theme toggle ──
+         c-theme-switch: el thumb se desliza con resorte de 200ms (ver
+         css/switches.css) y el clic dispara feedback en paralelo -- tono
+         breve, vibración corta y anuncio para lectores de pantalla -- todo
+         en el mismo evento que el cambio real de data-theme. */
       const themeToggle = document.getElementById("theme-toggle");
-      const iconSun = document.getElementById("icon-sun");
-      const iconMoon = document.getElementById("icon-moon");
+      const themeAnuncio = document.getElementById("theme-switch-anuncio");
+      let themeAudioCtx = null;
+      const prefiereMenosMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      function reproducirTonoTema(esOscuro) {
+        if (prefiereMenosMovimiento.matches) return;
+        try {
+          if (!themeAudioCtx) themeAudioCtx = new AudioContext();
+          if (themeAudioCtx.state === "suspended") themeAudioCtx.resume();
+
+          const osc = themeAudioCtx.createOscillator();
+          const gain = themeAudioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.value = esOscuro ? 392 : 880;
+          osc.connect(gain).connect(themeAudioCtx.destination);
+
+          const ahora = themeAudioCtx.currentTime;
+          gain.gain.setValueAtTime(0.05, ahora);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ahora + 0.09);
+          osc.start(ahora);
+          osc.stop(ahora + 0.1);
+        } catch (err) {
+          /* Web Audio no disponible/bloqueado en este contexto: se omite el sonido */
+        }
+      }
+
+      function vibrarTema() {
+        if (!("vibrate" in navigator)) return;
+        try {
+          navigator.vibrate(14);
+        } catch (err) {
+          /* Vibración no soportada en este contexto */
+        }
+      }
 
       function syncThemeUI(theme) {
-        const isLight = theme === "light";
-        iconSun.hidden = isLight;
-        iconMoon.hidden = !isLight;
-        themeToggle.setAttribute("aria-label", isLight ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
+        const esOscuro = theme === "dark";
+        themeToggle.setAttribute("aria-checked", String(esOscuro));
+        themeToggle.setAttribute("aria-label", esOscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
       }
 
       syncThemeUI(document.documentElement.getAttribute("data-theme"));
@@ -533,7 +534,23 @@
         const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
+
         syncThemeUI(next);
+        vibrarTema();
+        reproducirTonoTema(next === "dark");
+        /* El anuncio solo dispara en el clic, no en la carga inicial de la página. */
+        if (themeAnuncio) themeAnuncio.textContent = next === "dark" ? "Modo oscuro activado" : "Modo claro activado";
+
+        themeToggle.classList.remove("is-pulsing");
+        void themeToggle.offsetWidth; /* fuerza reflow para poder re-disparar la animación si se togglea rápido */
+        themeToggle.classList.add("is-pulsing");
+        window.setTimeout(function () {
+          themeToggle.classList.remove("is-pulsing");
+        }, 450);
+      });
+
+      themeToggle.addEventListener("animationend", function () {
+        themeToggle.classList.remove("is-pulsing");
       });
 
       /* ── Dropdown menus ── */
@@ -703,101 +720,6 @@
           iframe.allowFullscreen = true;
           thumb.replaceWith(iframe);
         });
-      });
-
-      /* ── Chat widget ── */
-      const chatFab = document.getElementById("chat-fab");
-      const chatWidget = document.getElementById("chat-widget");
-      const chatClose = document.getElementById("chat-close");
-      const chatForm = document.getElementById("chat-form");
-      const chatInput = document.getElementById("chat-input");
-      const chatBody = document.getElementById("chat-body");
-      let chatTrigger = null;
-
-      const chatResponses = {
-        programa: "Ofrecemos tres programas: Full Stack Developer, Data Science y Business Data Analytics. ¿Cuál te interesa?",
-        inscri: "Para inscribirte, completa el formulario en nuestra página de inscripción. Un asesor te guiará en el proceso.",
-        fecha: "Las próximas cohortes inician en septiembre 2026. Regístrate en nuestro webinar del 15 de agosto para más detalles.",
-        costo: "Los costos varían según el programa. Contáctanos y te enviaremos la información de precios y opciones de financiamiento.",
-        default: "Gracias por tu mensaje. Para información detallada, visita la sección de programas o completa el formulario de contacto."
-      };
-
-      function getChatResponse(text) {
-        const lower = text.toLowerCase();
-        if (/programa|bootcamp|curso|formación/.test(lower)) return chatResponses.programa;
-        if (/inscri|matric|registr/.test(lower)) return chatResponses.inscri;
-        if (/fecha|inicio|cuándo|cuando/.test(lower)) return chatResponses.fecha;
-        if (/costo|precio|pago|valor/.test(lower)) return chatResponses.costo;
-        return chatResponses.default;
-      }
-
-      function openChat() {
-        chatTrigger = document.activeElement;
-        chatWidget.hidden = false;
-        chatWidget.dataset.open = "true";
-        chatFab.setAttribute("aria-expanded", "true");
-        chatFab.setAttribute("aria-label", "Cerrar chat de asistencia");
-        chatClose.focus();
-      }
-
-      function closeChat() {
-        chatWidget.dataset.open = "false";
-        chatFab.setAttribute("aria-expanded", "false");
-        chatFab.setAttribute("aria-label", "Abrir chat de asistencia");
-        chatWidget.addEventListener("transitionend", function handler() {
-          chatWidget.hidden = true;
-          chatWidget.removeEventListener("transitionend", handler);
-        });
-        if (chatTrigger) chatTrigger.focus();
-      }
-
-      chatFab.addEventListener("click", function () {
-        if (chatWidget.dataset.open === "true") {
-          closeChat();
-        } else {
-          openChat();
-        }
-      });
-
-      chatClose.addEventListener("click", closeChat);
-
-      chatWidget.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          e.preventDefault();
-          closeChat();
-        }
-        if (e.key === "Tab") {
-          const focusable = chatWidget.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])');
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      });
-
-      chatForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const text = chatInput.value.trim();
-        if (!text) return;
-
-        const userMsg = document.createElement("p");
-        userMsg.className = "chat-message chat-message--user";
-        userMsg.textContent = text;
-        chatBody.appendChild(userMsg);
-
-        const botMsg = document.createElement("p");
-        botMsg.className = "chat-message chat-message--bot";
-        botMsg.textContent = getChatResponse(text);
-        chatBody.appendChild(botMsg);
-
-        chatInput.value = "";
-        chatBody.scrollTop = chatBody.scrollHeight;
-        chatInput.focus();
       });
     })();
   </script>

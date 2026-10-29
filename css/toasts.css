@@ -41,11 +41,11 @@
 }
 
 .c-toast--success {
-    border-left-color: var(--semantic-success);
+    border-left-color: var(--color-success);
 }
 
 .c-toast--error {
-    border-left-color: var(--semantic-error);
+    border-left-color: var(--color-error);
 }
 
 .c-toast-icon {
@@ -55,11 +55,11 @@
 }
 
 .c-toast--success .c-toast-icon {
-    color: var(--semantic-success);
+    color: var(--color-success);
 }
 
 .c-toast--error .c-toast-icon {
-    color: var(--semantic-error);
+    color: var(--color-error);
 }
 
 .c-toast-message {

@@ -1,4 +1,7 @@
-:root {
+/* [data-theme="dark"] en un elemento aplica la paleta oscura a esa sección aunque
+   el sitio esté en claro (ver .promo-banner). En <html> coincide con :root. */
+:root,
+[data-theme="dark"] {
   /* Dark theme (default) */
   --color-bg: #0f1419;
   --color-surface: #1a2332;
@@ -15,8 +18,12 @@
   --color-banner: #0f2e66;
   --color-error: #ff6b6b;
   --color-success: #00b29d;
+  --color-warning: #f59e0b;
+  --color-info: #43a9df;
   --color-error-bg: rgba(255, 107, 107, 0.12);
   --color-success-bg: rgba(0, 178, 157, 0.12);
+  --color-warning-bg: rgba(245, 158, 11, 0.12);
+  --color-info-bg: rgba(67, 169, 223, 0.12);
   --color-focus-bg: rgba(105, 186, 229, 0.08);
   --color-header-bg: rgba(15, 20, 25, 0.95);
   --color-page-bg: #05080b;
@@ -28,14 +35,26 @@
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   --frame-shadow: 0 0 3rem rgba(0, 0, 0, 0.45);
   --transition: 180ms ease;
-  /* Semantic colors */
-  --semantic-error: #b23a3a;
-  --semantic-success: #007466;
-  --semantic-warning: #f59e0b;
-  --semantic-info: #17479d;
+  /* Semantic solid: valor fijo (no cambia por tema), para fills con texto
+     blanco encima -- mismo rol que --color-accent-solid pero en error.
+     Para texto/íconos sobre una superficie usa --color-error (arriba), que
+     sí se adapta por tema. */
+  --color-error-solid: #b23a3a;
+
+  /* Degradado del banner promocional: fijo (no cambia por tema). El resto de
+     sus colores salen de la paleta del sistema (texto, success, banner). */
+  --color-promo-bg: #082470;
+  --color-promo-bg-alt: #0b3aa8;
+
+  /* Paleta categórica para gráficos (identidad de serie, no estado). Fija y
+     validada con node_modules-less scripts/validate_palette.js del skill de
+     dataviz contra estas superficies -- no reordenar ni generar un 4to slot
+     sin volver a correr el validador. */
+  --chart-series-1: #3987e5;
+  --chart-series-2: #d95926;
+  --chart-series-3: #199e70;
 
   --border: 8px;
-  --color-textalert: #0f1419;
 
   color-scheme: light dark;
 }
@@ -58,13 +77,20 @@
     --color-banner: #c7dbe6;
     --color-error: #b23a3a;
     --color-success: #007466;
+    --color-warning: #b45309;
+    --color-info: #17479d;
     --color-error-bg: rgba(214, 69, 69, 0.08);
     --color-success-bg: rgba(0, 116, 102, 0.08);
+    --color-warning-bg: rgba(245, 158, 11, 0.08);
+    --color-info-bg: rgba(23, 71, 157, 0.08);
     --color-focus-bg: rgba(23, 71, 157, 0.06);
     --color-header-bg: rgba(248, 250, 252, 0.9);
     --color-page-bg: #dbe2eb;
     --shadow: 0 4px 24px rgba(15, 23, 42, 0.12);
     --frame-shadow: 0 0 3rem rgba(15, 23, 42, 0.15);
+    --chart-series-1: #2a78d6;
+    --chart-series-2: #eb6834;
+    --chart-series-3: #1baf7a;
   }
 }
 
@@ -85,11 +111,18 @@
   --color-banner: #c7dbe6;
   --color-error: #b23a3a;
   --color-success: #007466;
+  --color-warning: #b45309;
+  --color-info: #17479d;
   --color-error-bg: rgba(214, 69, 69, 0.08);
   --color-success-bg: rgba(0, 116, 102, 0.08);
+  --color-warning-bg: rgba(245, 158, 11, 0.08);
+  --color-info-bg: rgba(23, 71, 157, 0.08);
   --color-focus-bg: rgba(23, 71, 157, 0.06);
   --color-header-bg: rgba(248, 250, 252, 0.9);
   --color-page-bg: #dbe2eb;
   --shadow: 0 4px 24px rgba(15, 23, 42, 0.12);
   --frame-shadow: 0 0 3rem rgba(15, 23, 42, 0.15);
+  --chart-series-1: #2a78d6;
+  --chart-series-2: #eb6834;
+  --chart-series-3: #1baf7a;
 }

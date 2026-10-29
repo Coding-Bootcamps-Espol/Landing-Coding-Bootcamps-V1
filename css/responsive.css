@@ -1,3 +1,10 @@
+/* ── Móvil ancho (≥380px): el banner promo suma la palabra "Descuento" ── */
+@media (min-width: 380px) {
+  .promo-label {
+    display: inline;
+  }
+}
+
 /* ── Responsive: tablet and up (mobile-first, base styles above are mobile) ── */
 @media (min-width: 768px) {
   .nav-toggle { display: none; }
@@ -66,12 +73,34 @@
     width: auto;
   }
 
-  .hero-grid,
   .about-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .hero-image { order: 0; }
+  /* Promo banner: en tablet suma el detalle del VIP PASS (sigue en una línea) */
+  .promo-text--vip {
+    display: block;
+  }
+
+  /* Hero: proporción natural de la imagen (2048×1013), texto a la izquierda
+     centrado en vertical sobre la zona despejada, sin degradado */
+  .hero-image {
+    min-height: 0;
+    aspect-ratio: 2048 / 1013;
+  }
+
+  .hero-image::after {
+    display: none;
+  }
+
+  .hero-overlay {
+    align-self: center;
+    padding-bottom: 0;
+  }
+
+  .hero-content {
+    max-width: 40%;
+  }
 
   .programs-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -91,15 +120,15 @@
   .footer-nav { justify-self: center; }
 
   .social-links { justify-self: end; }
+}
 
-  .chat-widget {
-    right: calc(var(--frame-gutter) + 1.5rem);
-    bottom: calc(3.5rem + 2.5rem);
-    width: min(calc(100vw - 2rem), 22rem);
+/* ── Escritorio: el banner promo gana la frase decorativa y pasa a text-sm ── */
+@media (min-width: 1024px) {
+  .promo-banner {
+    font-size: 0.875rem;
   }
 
-  .chat-fab {
-    right: calc(var(--frame-gutter) + 1.5rem);
-    bottom: 1.5rem;
+  .promo-pill {
+    display: block;
   }
 }

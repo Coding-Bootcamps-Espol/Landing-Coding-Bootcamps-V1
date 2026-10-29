@@ -70,14 +70,14 @@
 
 /*Variante Destructive*/
 .c-btn--destructive {
-    background: var(--semantic-error);
+    background: var(--color-error-solid);
     color: #fff;
  }
  .c-btn--destructive:hover {
-    background: color-mix(in srgb, var(--semantic-error) 85%, black);
+    background: color-mix(in srgb, var(--color-error-solid) 85%, black);
  }
  .c-btn--destructive:active {
-    background: color-mix(in srgb, var(--semantic-error) 70%, black);
+    background: color-mix(in srgb, var(--color-error-solid) 70%, black);
  }
  .c-btn--destructive:disabled{
     background: var(--color-surface-alt);

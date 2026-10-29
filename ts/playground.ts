@@ -1,25 +1,56 @@
 (function (): void {
   "use strict";
 
-  /* ── Theme toggle ── */
+  /* ── Theme toggle ──
+     c-theme-switch: el thumb se desliza con resorte de 200ms (ver
+     css/switches.css) y el clic dispara feedback en paralelo -- tono breve,
+     vibración corta y anuncio para lectores de pantalla -- todo en el mismo
+     evento que el cambio real de data-theme. */
   function inicializarThemeToggle(): void {
     const themeToggleEl = document.getElementById("theme-toggle");
-    const iconSunEl = document.getElementById("icon-sun");
-    const iconMoonEl = document.getElementById("icon-moon");
+    const anuncioEl = document.getElementById("theme-switch-anuncio");
 
     if (!(themeToggleEl instanceof HTMLButtonElement)) return;
-    if (!(iconSunEl instanceof SVGElement)) return;
-    if (!(iconMoonEl instanceof SVGElement)) return;
 
     const themeToggle: HTMLButtonElement = themeToggleEl;
-    const iconSun: SVGElement = iconSunEl;
-    const iconMoon: SVGElement = iconMoonEl;
+    const anuncio: HTMLElement | null = anuncioEl instanceof HTMLElement ? anuncioEl : null;
+
+    let audioCtx: AudioContext | null = null;
+    const prefiereMenosMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function reproducirTono(esOscuro: boolean): void {
+      if (prefiereMenosMovimiento.matches) return;
+      try {
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === "suspended") void audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = esOscuro ? 392 : 880;
+        osc.connect(gain).connect(audioCtx.destination);
+        const ahora = audioCtx.currentTime;
+        gain.gain.setValueAtTime(0.05, ahora);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ahora + 0.09);
+        osc.start(ahora);
+        osc.stop(ahora + 0.1);
+      } catch {
+        /* Web Audio no disponible/bloqueado en este contexto: se omite el sonido */
+      }
+    }
+
+    function vibrar(): void {
+      if (!("vibrate" in navigator)) return;
+      try {
+        navigator.vibrate(14);
+      } catch {
+        /* Vibración no soportada en este contexto */
+      }
+    }
 
     function syncThemeUI(theme: string | null): void {
-      const isLight = theme === "light";
-      iconSun.toggleAttribute("hidden", isLight);
-      iconMoon.toggleAttribute("hidden", !isLight);
-      themeToggle.setAttribute("aria-label", isLight ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
+      const esOscuro = theme === "dark";
+      themeToggle.setAttribute("aria-checked", String(esOscuro));
+      themeToggle.setAttribute("aria-label", esOscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
     }
 
     syncThemeUI(document.documentElement.getAttribute("data-theme"));
@@ -29,6 +60,20 @@
       document.documentElement.setAttribute("data-theme", next);
       localStorage.setItem("theme", next);
       syncThemeUI(next);
+      vibrar();
+      reproducirTono(next === "dark");
+      /* El anuncio solo dispara en el clic, no en la carga inicial de la página. */
+      if (anuncio) anuncio.textContent = next === "dark" ? "Modo oscuro activado" : "Modo claro activado";
+      themeToggle.classList.remove("is-pulsing");
+      void themeToggle.offsetWidth; /* fuerza reflow para poder re-disparar la animación si se togglea rápido */
+      themeToggle.classList.add("is-pulsing");
+      window.setTimeout(function (): void {
+        themeToggle.classList.remove("is-pulsing");
+      }, 450);
+    });
+
+    themeToggle.addEventListener("animationend", function (): void {
+      themeToggle.classList.remove("is-pulsing");
     });
   }
 

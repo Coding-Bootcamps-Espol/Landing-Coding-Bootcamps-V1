@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script async src="https://t.contentsquare.net/uxa/91b7a40541008.js"></script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8T00EQ2LKJ"></script>
 <script>
@@ -196,15 +197,31 @@
     <aside class="playground-aside">
       <div class="playground-aside-header">
         <h2 id="playground-nav-heading">Componentes</h2>
-        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar a modo claro">
-          <svg class="theme-toggle-icon" id="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" fill="currentColor"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <svg class="theme-toggle-icon" id="icon-moon" viewBox="0 0 24 24" aria-hidden="true" hidden>
-            <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/>
-          </svg>
+        <button
+          type="button"
+          class="c-theme-switch c-theme-switch--compact"
+          role="switch"
+          aria-checked="false"
+          aria-label="Cambiar a modo oscuro"
+          id="theme-toggle"
+        >
+          <span class="c-theme-switch-track" aria-hidden="true">
+            <span class="c-theme-switch-thumb">
+              <span class="c-theme-switch-thumb-icon c-theme-switch-thumb-icon--sun">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="c-theme-switch-thumb-icon c-theme-switch-thumb-icon--moon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </span>
+          </span>
         </button>
+        <p class="visually-hidden" role="status" aria-live="polite" id="theme-switch-anuncio"></p>
       </div>
       <nav aria-labelledby="playground-nav-heading">
         <ul>

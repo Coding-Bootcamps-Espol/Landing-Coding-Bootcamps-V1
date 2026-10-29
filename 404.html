@@ -27,15 +27,31 @@
       </a>
 
       <div class="header-actions">
-        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar a modo claro">
-          <svg class="theme-toggle-icon" id="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" fill="currentColor"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <svg class="theme-toggle-icon" id="icon-moon" viewBox="0 0 24 24" aria-hidden="true" hidden>
-            <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/>
-          </svg>
+        <button
+          type="button"
+          class="c-theme-switch c-theme-switch--compact"
+          role="switch"
+          aria-checked="false"
+          aria-label="Cambiar a modo oscuro"
+          id="theme-toggle"
+        >
+          <span class="c-theme-switch-track" aria-hidden="true">
+            <span class="c-theme-switch-thumb">
+              <span class="c-theme-switch-thumb-icon c-theme-switch-thumb-icon--sun">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="c-theme-switch-thumb-icon c-theme-switch-thumb-icon--moon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </span>
+          </span>
         </button>
+        <p class="visually-hidden" role="status" aria-live="polite" id="theme-switch-anuncio"></p>
 
         <button
           class="nav-toggle"
@@ -127,47 +143,6 @@
     </div>
   </footer>
 
-  <!-- Chat widget -->
-  <div
-    class="chat-widget"
-    id="chat-widget"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="chat-title"
-    aria-describedby="chat-desc"
-    data-open="false"
-    hidden
-  >
-    <header class="chat-header">
-      <h2 id="chat-title">Asistente virtual</h2>
-      <button class="chat-close" type="button" id="chat-close" aria-label="Cerrar chat">
-        &#10005;
-      </button>
-    </header>
-    <div class="chat-body" id="chat-body" tabindex="-1">
-      <p class="chat-message chat-message--bot" id="chat-desc">
-        ¡Hola! Soy tu asistente de Coding Bootcamps ESPOL. Pregúntame sobre nuestros programas, fechas de inicio o el proceso de inscripción.
-      </p>
-    </div>
-    <form class="chat-footer" id="chat-form">
-      <label class="visually-hidden" for="chat-input">Escribe tu mensaje</label>
-      <input class="chat-input" type="text" id="chat-input" name="chat-input" autocomplete="off" placeholder="Escribe tu pregunta…">
-      <button class="chat-send" type="submit" aria-label="Enviar mensaje">Enviar</button>
-    </form>
-  </div>
-
-  <button
-    class="chat-fab"
-    type="button"
-    id="chat-fab"
-    aria-expanded="false"
-    aria-controls="chat-widget"
-    aria-label="Abrir chat de asistencia"
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
-    Chat
-  </button>
-
   <script>
     (function () {
       "use strict";
@@ -230,16 +205,51 @@
         }
       });
 
-      /* ── Theme toggle ── */
+      /* ── Theme toggle ──
+         c-theme-switch: el thumb se desliza con resorte de 200ms (ver
+         css/switches.css) y el clic dispara feedback en paralelo -- tono
+         breve, vibración corta y anuncio para lectores de pantalla -- todo
+         en el mismo evento que el cambio real de data-theme. */
       const themeToggle = document.getElementById("theme-toggle");
-      const iconSun = document.getElementById("icon-sun");
-      const iconMoon = document.getElementById("icon-moon");
+      const themeAnuncio = document.getElementById("theme-switch-anuncio");
+      let themeAudioCtx = null;
+      const prefiereMenosMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      function reproducirTonoTema(esOscuro) {
+        if (prefiereMenosMovimiento.matches) return;
+        try {
+          if (!themeAudioCtx) themeAudioCtx = new AudioContext();
+          if (themeAudioCtx.state === "suspended") themeAudioCtx.resume();
+
+          const osc = themeAudioCtx.createOscillator();
+          const gain = themeAudioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.value = esOscuro ? 392 : 880;
+          osc.connect(gain).connect(themeAudioCtx.destination);
+
+          const ahora = themeAudioCtx.currentTime;
+          gain.gain.setValueAtTime(0.05, ahora);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ahora + 0.09);
+          osc.start(ahora);
+          osc.stop(ahora + 0.1);
+        } catch (err) {
+          /* Web Audio no disponible/bloqueado en este contexto: se omite el sonido */
+        }
+      }
+
+      function vibrarTema() {
+        if (!("vibrate" in navigator)) return;
+        try {
+          navigator.vibrate(14);
+        } catch (err) {
+          /* Vibración no soportada en este contexto */
+        }
+      }
 
       function syncThemeUI(theme) {
-        const isLight = theme === "light";
-        iconSun.hidden = isLight;
-        iconMoon.hidden = !isLight;
-        themeToggle.setAttribute("aria-label", isLight ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
+        const esOscuro = theme === "dark";
+        themeToggle.setAttribute("aria-checked", String(esOscuro));
+        themeToggle.setAttribute("aria-label", esOscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
       }
 
       syncThemeUI(document.documentElement.getAttribute("data-theme"));
@@ -248,102 +258,23 @@
         const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
+
         syncThemeUI(next);
+        vibrarTema();
+        reproducirTonoTema(next === "dark");
+        /* El anuncio solo dispara en el clic, no en la carga inicial de la página. */
+        if (themeAnuncio) themeAnuncio.textContent = next === "dark" ? "Modo oscuro activado" : "Modo claro activado";
+
+        themeToggle.classList.remove("is-pulsing");
+        void themeToggle.offsetWidth; /* fuerza reflow para poder re-disparar la animación si se togglea rápido */
+        themeToggle.classList.add("is-pulsing");
+        window.setTimeout(function () {
+          themeToggle.classList.remove("is-pulsing");
+        }, 450);
       });
 
-      /* ── Chat widget ── */
-      const chatFab = document.getElementById("chat-fab");
-      const chatWidget = document.getElementById("chat-widget");
-      const chatClose = document.getElementById("chat-close");
-      const chatForm = document.getElementById("chat-form");
-      const chatInput = document.getElementById("chat-input");
-      const chatBody = document.getElementById("chat-body");
-      let chatTrigger = null;
-
-      const chatResponses = {
-        programa: "Ofrecemos tres programas: Full Stack Developer, Data Science y Business Data Analytics. ¿Cuál te interesa?",
-        inscri: "Para inscribirte, completa el formulario en nuestra página de inscripción. Un asesor te guiará en el proceso.",
-        fecha: "Las próximas cohortes inician en septiembre 2026. Regístrate en nuestro webinar del 15 de agosto para más detalles.",
-        costo: "Los costos varían según el programa. Contáctanos y te enviaremos la información de precios y opciones de financiamiento.",
-        default: "Gracias por tu mensaje. Para información detallada, visita la sección de programas o completa el formulario de contacto."
-      };
-
-      function getChatResponse(text) {
-        const lower = text.toLowerCase();
-        if (/programa|bootcamp|curso|formación/.test(lower)) return chatResponses.programa;
-        if (/inscri|matric|registr/.test(lower)) return chatResponses.inscri;
-        if (/fecha|inicio|cuándo|cuando/.test(lower)) return chatResponses.fecha;
-        if (/costo|precio|pago|valor/.test(lower)) return chatResponses.costo;
-        return chatResponses.default;
-      }
-
-      function openChat() {
-        chatTrigger = document.activeElement;
-        chatWidget.hidden = false;
-        chatWidget.dataset.open = "true";
-        chatFab.setAttribute("aria-expanded", "true");
-        chatFab.setAttribute("aria-label", "Cerrar chat de asistencia");
-        chatClose.focus();
-      }
-
-      function closeChat() {
-        chatWidget.dataset.open = "false";
-        chatFab.setAttribute("aria-expanded", "false");
-        chatFab.setAttribute("aria-label", "Abrir chat de asistencia");
-        chatWidget.addEventListener("transitionend", function handler() {
-          chatWidget.hidden = true;
-          chatWidget.removeEventListener("transitionend", handler);
-        });
-        if (chatTrigger) chatTrigger.focus();
-      }
-
-      chatFab.addEventListener("click", function () {
-        if (chatWidget.dataset.open === "true") {
-          closeChat();
-        } else {
-          openChat();
-        }
-      });
-
-      chatClose.addEventListener("click", closeChat);
-
-      chatWidget.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          e.preventDefault();
-          closeChat();
-        }
-        if (e.key === "Tab") {
-          const focusable = chatWidget.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])');
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      });
-
-      chatForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const text = chatInput.value.trim();
-        if (!text) return;
-
-        const userMsg = document.createElement("p");
-        userMsg.className = "chat-message chat-message--user";
-        userMsg.textContent = text;
-        chatBody.appendChild(userMsg);
-
-        const botMsg = document.createElement("p");
-        botMsg.className = "chat-message chat-message--bot";
-        botMsg.textContent = getChatResponse(text);
-        chatBody.appendChild(botMsg);
-
-        chatInput.value = "";
-        chatBody.scrollTop = chatBody.scrollHeight;
-        chatInput.focus();
+      themeToggle.addEventListener("animationend", function () {
+        themeToggle.classList.remove("is-pulsing");
       });
     })();
   </script>
