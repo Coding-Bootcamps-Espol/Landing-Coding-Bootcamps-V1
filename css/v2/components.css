@@ -101,33 +101,35 @@
   line-height: 1.2;
 }
 
-/* Tarjeta flotante con sombra (chips del hero, etc.) */
-.float-card {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem 1rem;
-  border-radius: var(--radius-m);
-  background: var(--white);
-  box-shadow: var(--shadow-m);
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.2;
+/* Sticker: etiqueta plana de color sólido, levemente girada (como la franja
+   "¡Postulaciones Abiertas!" de las piezas de marca). Variantes de color. */
+.sticker {
+  --sticker-bg: var(--ink);
+  --sticker-fg: var(--white);
+  display: inline-block;
+  padding: 0.55rem 0.85rem 0.6rem;
+  border-radius: var(--radius-xs);
+  background: var(--sticker-bg);
+  color: var(--sticker-fg);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  transform: rotate(var(--rot, 0deg));
 }
-.float-card small { display: block; font-weight: 500; color: var(--text-muted); font-size: 0.75rem; }
-.float-card .dot {
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  flex-shrink: 0;
-  color: var(--white);
+.sticker small {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  opacity: 0.85;
 }
-.dot--violet { background: var(--violet); }
-.dot--blue { background: var(--blue); }
-.dot--mint { background: var(--mint); }
-.float-card svg { width: 1.1rem; height: 1.1rem; }
+.sticker--mint { --sticker-bg: var(--mint); --sticker-fg: var(--ink); }
+.sticker--sun { --sticker-bg: var(--sun); --sticker-fg: var(--ink); }
+.sticker--white { --sticker-bg: var(--white); --sticker-fg: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
 
 /* Acordeón nativo (<details>) */
 .accordion { display: grid; gap: 0.75rem; }

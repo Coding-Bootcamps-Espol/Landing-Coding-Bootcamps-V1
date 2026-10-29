@@ -47,10 +47,10 @@
   object-position: bottom center;
   filter: drop-shadow(0 30px 40px var(--ink-a25));
 }
-.hero-visual .float-card { position: absolute; }
-.hero-visual .float-card:nth-of-type(1) { top: 24%; left: -4%; --float-delay: -1s; }
-.hero-visual .float-card:nth-of-type(2) { top: 50%; right: -2%; --float-delay: -3s; --float-dur: 7s; }
-.hero-visual .float-card:nth-of-type(3) { bottom: 6%; left: 14%; --float-delay: -4.5s; --float-dur: 8s; }
+.hero-visual .sticker { position: absolute; }
+.hero-visual .sticker:nth-of-type(1) { top: 26%; left: -2%; --rot: -4deg; --float-delay: -1s; }
+.hero-visual .sticker:nth-of-type(2) { top: 52%; right: -1%; --rot: 3deg; --float-delay: -3s; --float-dur: 7s; }
+.hero-visual .sticker:nth-of-type(3) { bottom: 7%; left: 12%; --rot: -2deg; --float-delay: -4.5s; --float-dur: 8s; }
 
 @media (min-width: 960px) {
   .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
@@ -207,6 +207,7 @@
 .bento-tile--photo figcaption {
   position: absolute;
   left: 1rem; bottom: 1rem;
+  --rot: -2deg;
 }
 .bento-tile--violet { background: var(--violet); color: var(--white); border: 0; }
 .bento-tile--violet p { color: var(--text-inverse); opacity: 0.85; }

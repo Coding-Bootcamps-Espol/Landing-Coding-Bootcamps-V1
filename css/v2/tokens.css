@@ -60,6 +60,7 @@
   --gutter: clamp(1rem, 4vw, 3rem);
   --max: 82rem;
   --section-y: clamp(4.5rem, 10vw, 8.5rem);
+  --radius-xs: 0.25rem;
   --radius-s: 0.75rem;
   --radius-m: 1.25rem;
   --radius-l: 2rem;
