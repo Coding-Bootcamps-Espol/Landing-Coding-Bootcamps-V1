@@ -45,9 +45,6 @@
   object-position: bottom center;
   filter: drop-shadow(0 30px 40px var(--ink-a25));
 }
-.hero-visual > .sticker { position: absolute; }
-.hero-visual > .sticker:nth-of-type(1) { top: 16%; left: -4%; --rot: -4deg; --float-delay: -1s; }
-.hero-visual > .sticker:nth-of-type(2) { top: 50%; right: -2%; --rot: 3deg; --float-delay: -3s; --float-dur: 7s; }
 /* Insignia "Mi Credencial" de ESPOL + su etiqueta */
 .credential-badge {
   position: absolute;
