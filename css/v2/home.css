@@ -92,35 +92,44 @@
 .stat-label { margin-top: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; }
 @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, 1fr); } }
 
-/* ── Franja de tecnologías ── */
-.tech-band {
-  background: var(--surface-dark);
-  color: var(--text-inverse);
-  padding-block: 1.6rem;
-  transform: rotate(-1.5deg);
-  margin-block: 1rem;
-  width: 104%;
-  margin-left: -2%;
-}
-.tech-item {
+/* ── Tecnologías: tarjetas con logos a color en dos filas que se deslizan ── */
+.tech { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem); }
+.tech-head { display: flex; justify-content: center; margin-bottom: 1.75rem; }
+.tech-rows { display: grid; gap: 0.9rem; }
+.tech-rows .marquee { --marquee-dur: 55s; }
+.tech-rows .marquee + .marquee { --marquee-dur: 65s; }
+.tech-group { display: flex; }
+.tech-card {
+  --logo: var(--ink);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding-right: 3rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  margin: 0.35rem 0.9rem 0.35rem 0;
+  padding: 0.85rem 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--white);
+  box-shadow: var(--shadow-s);
+  color: var(--ink);
+  font: 700 1.0625rem/1 var(--font-display);
+  letter-spacing: -0.01em;
   white-space: nowrap;
+  transition: transform var(--dur) var(--ease-spring), border-color var(--dur);
 }
-.tech-item svg {
-  width: 1.4em;
-  height: 1.4em;
-  fill: currentColor;
-  opacity: 0.95;
-  transition: transform 400ms var(--ease-spring), color var(--dur);
-}
-.tech-item:hover svg { transform: scale(1.15) rotate(-6deg); color: var(--mint); }
+.tech-card svg { width: 1.9rem; height: 1.9rem; fill: var(--logo); flex-shrink: 0; }
+.tech-card:hover { transform: translateY(-3px); border-color: var(--logo); }
+.tech-card--python { --logo: var(--logo-python); }
+.tech-card--javascript { --logo: var(--logo-javascript); }
+.tech-card--react { --logo: var(--logo-react); }
+.tech-card--nodedotjs { --logo: var(--logo-nodedotjs); }
+.tech-card--django { --logo: var(--logo-django); }
+.tech-card--mongodb { --logo: var(--logo-mongodb); }
+.tech-card--postgresql { --logo: var(--logo-postgresql); }
+.tech-card--pandas { --logo: var(--logo-pandas); }
+.tech-card--scikitlearn { --logo: var(--logo-scikitlearn); }
+.tech-card--jupyter { --logo: var(--logo-jupyter); }
+.tech-card--apachespark { --logo: var(--logo-apachespark); }
+.tech-card--githubactions { --logo: var(--logo-githubactions); }
 
 /* ── Programas ── */
 .program-cards { display: grid; gap: 1.25rem; }
