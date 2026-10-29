@@ -15,6 +15,14 @@
   --mint-soft: #d5f4e7;
   --sun: #ffc94d;
 
+  /* Colores de cada programa (tomados de sus piezas gráficas) */
+  --fs-from: #c02c68;
+  --fs-to: #6e1640;
+  --ds-from: #0cbde5;
+  --ds-to: #0352a3;
+  --bda-from: #6a5aa6;
+  --bda-to: #2e1c5c;
+
   /* Estados */
   --danger: #c93636;
   --danger-soft: #fde8e8;
