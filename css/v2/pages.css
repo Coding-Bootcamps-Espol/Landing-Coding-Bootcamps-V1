@@ -30,9 +30,9 @@
   border: 1px solid var(--line);
   text-decoration: none;
   box-shadow: var(--shadow-s);
-  transition: border-color var(--dur), box-shadow var(--dur);
+  transition: transform var(--dur) var(--ease-spring), border-color var(--dur), box-shadow var(--dur);
 }
-.program-pick:hover { border-color: var(--p-to); box-shadow: var(--shadow-m); }
+.program-pick:hover, .program-pick:focus-visible { transform: translateY(-4px); border-color: var(--p-to); box-shadow: var(--shadow-m); }
 .program-pick img { width: 5.5rem; height: 5.5rem; border-radius: var(--radius-s); object-fit: cover; flex-shrink: 0; }
 .program-pick strong { display: block; font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -0.02em; line-height: 1.15; }
 .program-pick span { font-size: 0.875rem; color: var(--text-muted); }
@@ -211,7 +211,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   z-index: 1;
   transition: background var(--dur), color var(--dur), transform var(--dur) var(--ease-spring);
 }
-.roadmap-step:hover .roadmap-num { background: var(--p-to); color: var(--white); transform: scale(1.08); }
 .roadmap-step h4 { font-size: clamp(1.15rem, 1.8vw, 1.35rem); letter-spacing: -0.02em; line-height: 1.2; margin-top: 0.7rem; }
 .roadmap-step p { color: var(--text-muted); margin-top: 0.25rem; }
 .module-note { margin: 1.5rem 0 0 4.5rem; color: var(--text-muted); font-size: 0.9375rem; }
@@ -319,7 +318,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   overflow: hidden;
   transition: transform var(--dur) var(--ease-spring), box-shadow var(--dur);
 }
-.mentor:hover { transform: translateY(-5px); box-shadow: var(--shadow-m); }
 .mentor-top {
   --pattern-opacity: 0.14;
   display: grid;
@@ -335,7 +333,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   color: var(--white);
   transition: transform 400ms var(--ease-spring);
 }
-.mentor:hover .mentor-initials { transform: scale(1.12) rotate(-4deg); }
 .mentor-body { padding: 1.1rem 1.25rem 1.35rem; }
 .mentor-body h4 { font-size: 1.1rem; letter-spacing: -0.02em; line-height: 1.2; }
 .mentor-body p { margin-top: 0.35rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.45; }
@@ -574,7 +571,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   text-align: center;
   transition: transform var(--dur) var(--ease-spring), box-shadow var(--dur);
 }
-.team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-m); }
 .team-card img {
   width: 9rem;
   height: 9rem;
@@ -653,7 +649,7 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   overflow-wrap: anywhere;
   transition: transform var(--dur) var(--ease-spring), box-shadow var(--dur);
 }
-a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-m); }
+a.contact-card:hover, a.contact-card:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-m); }
 .contact-card-icon {
   display: grid;
   place-items: center;
