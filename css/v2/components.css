@@ -38,10 +38,12 @@
 .btn .btn-arrow { transition: transform var(--dur) var(--ease-out); }
 .btn:hover .btn-arrow { transform: translateX(4px); }
 
-.btn:hover { --btn-bg: var(--accent-strong); }
+/* Hover del botón por defecto; cada variante de color define el suyo */
+.btn:not(.btn--ghost):not(.btn--light):not(.btn--outline-light):not(.btn--whatsapp):hover { --btn-bg: var(--accent-strong); }
 .btn--ghost { --btn-bg: transparent; --btn-fg: var(--ink); --btn-border: var(--line-strong); }
 .btn--ghost:hover { --btn-bg: var(--white); --btn-border: var(--accent); --btn-fg: var(--accent); }
 .btn--light { --btn-bg: var(--white); --btn-fg: var(--ink); }
+.btn--light:hover { --btn-bg: var(--accent-soft); --btn-fg: var(--accent-strong); }
 .btn--outline-light { --btn-bg: transparent; --btn-fg: var(--white); --btn-border: var(--white-a40); }
 .btn--outline-light:hover { --btn-bg: var(--white-a10); --btn-border: var(--white); }
 .btn--lg { padding: 1.05rem 1.75rem; font-size: 1rem; }
