@@ -177,6 +177,31 @@
     start();
   }
 
+  /* ── Menú que resalta la sección visible ([data-scrollspy] con enlaces #ancla) ── */
+  function initScrollspy(): void {
+    document.querySelectorAll<HTMLElement>("[data-scrollspy]").forEach(function (nav): void {
+      const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
+      const pairs = links
+        .map(function (link): [HTMLAnchorElement, HTMLElement | null] {
+          return [link, document.getElementById(link.hash.slice(1))];
+        })
+        .filter(function (pair): pair is [HTMLAnchorElement, HTMLElement] { return pair[1] !== null; });
+      if (pairs.length === 0 || !("IntersectionObserver" in window)) return;
+      const observer = new IntersectionObserver(function (entries): void {
+        entries.forEach(function (entry): void {
+          if (!entry.isIntersecting) return;
+          pairs.forEach(function (pair): void {
+            const active = pair[1] === entry.target;
+            pair[0].classList.toggle("is-active", active);
+            if (active) pair[0].setAttribute("aria-current", "true");
+            else pair[0].removeAttribute("aria-current");
+          });
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      pairs.forEach(function (pair): void { observer.observe(pair[1]); });
+    });
+  }
+
   /* ── Analítica: clics en programas ── */
   function initProgramTracking(): void {
     document.querySelectorAll<HTMLElement>("[data-program-name]").forEach(function (el): void {
@@ -192,5 +217,6 @@
   initReveal();
   initTilt();
   initCarousel();
+  initScrollspy();
   initProgramTracking();
 })();

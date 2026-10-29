@@ -66,7 +66,7 @@
   background: currentColor;
 }
 .section--brand .eyebrow,
-.contact-panel .eyebrow { color: var(--mint); }
+.cta-panel .eyebrow { color: var(--mint); }
 
 /* Resaltado tipo marcador en palabras de un título */
 .mark {
@@ -273,3 +273,17 @@
 }
 .wa-float:hover .wa-float-label,
 .wa-float:focus-visible .wa-float-label { opacity: 1; transform: none; }
+
+/* Panel de cierre en azul de marca (contacto, llamadas a la acción al final de página) */
+.cta-panel {
+  display: grid;
+  gap: 2.5rem;
+  padding: clamp(1.75rem, 5vw, 4rem);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--blue) 55%, transparent), transparent 50%),
+    radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--mint) 35%, transparent), transparent 45%),
+    var(--accent);
+  color: var(--white);
+  overflow: hidden;
+}

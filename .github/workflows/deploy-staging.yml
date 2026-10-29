@@ -31,6 +31,17 @@ jobs:
       - name: Compilar ts/ → js/
         run: npm run build
 
+      - name: Sincronizar layout compartido
+        run: npm run sync:layout
+
+      - name: Comprobar que el layout está sincronizado
+        run: |
+          if ! git diff --quiet -- '*.html'; then
+            echo "::error::El encabezado/pie de alguna página no coincide con index.html. Ejecuta 'npm run sync:layout' y haz commit."
+            git diff --stat -- '*.html'
+            exit 1
+          fi
+
       - name: Comprobar que js/ está actualizado
         run: |
           if ! git diff --quiet -- js/; then

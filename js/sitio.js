@@ -184,6 +184,34 @@
         carousel.addEventListener("focusout", start);
         start();
     }
+    /* ── Menú que resalta la sección visible ([data-scrollspy] con enlaces #ancla) ── */
+    function initScrollspy() {
+        document.querySelectorAll("[data-scrollspy]").forEach(function (nav) {
+            const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+            const pairs = links
+                .map(function (link) {
+                return [link, document.getElementById(link.hash.slice(1))];
+            })
+                .filter(function (pair) { return pair[1] !== null; });
+            if (pairs.length === 0 || !("IntersectionObserver" in window))
+                return;
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting)
+                        return;
+                    pairs.forEach(function (pair) {
+                        const active = pair[1] === entry.target;
+                        pair[0].classList.toggle("is-active", active);
+                        if (active)
+                            pair[0].setAttribute("aria-current", "true");
+                        else
+                            pair[0].removeAttribute("aria-current");
+                    });
+                });
+            }, { rootMargin: "-45% 0px -50% 0px" });
+            pairs.forEach(function (pair) { observer.observe(pair[1]); });
+        });
+    }
     /* ── Analítica: clics en programas ── */
     function initProgramTracking() {
         document.querySelectorAll("[data-program-name]").forEach(function (el) {
@@ -199,5 +227,6 @@
     initReveal();
     initTilt();
     initCarousel();
+    initScrollspy();
     initProgramTracking();
 })();
