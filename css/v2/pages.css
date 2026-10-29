@@ -197,7 +197,7 @@
 .prog-hero-art figcaption { position: absolute; right: -0.75rem; top: 1.25rem; --rot: 4deg; font-size: 1.35rem; }
 @media (min-width: 960px) { .prog-hero { grid-template-columns: 1.25fr 0.75fr; } }
 
-/* Beneficios: frases cortas, sin tarjetas */
+/* Beneficios: frases cortas, sin tarjetas ni franjas */
 .prog-benefits {
   list-style: none;
   display: grid;
@@ -205,7 +205,6 @@
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
   color: var(--text-muted);
 }
-.prog-benefits li { padding-left: 1.1rem; border-left: 2px solid var(--p-to); }
 .prog-benefits strong { display: block; color: var(--text); font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -0.02em; }
 @media (min-width: 768px) { .prog-benefits { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1100px) { .prog-benefits { grid-template-columns: repeat(4, 1fr); } }
