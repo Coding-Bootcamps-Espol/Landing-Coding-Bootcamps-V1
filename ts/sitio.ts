@@ -214,6 +214,20 @@
         return document.getElementById(tab.getAttribute("aria-controls") || "");
       }
 
+      // Indicador deslizante opcional (.prog-seg-thumb) que se mueve al tab elegido
+      const thumb = root.querySelector<HTMLElement>(".prog-seg-thumb");
+      function moveThumb(tab: HTMLButtonElement): void {
+        if (!thumb) return;
+        thumb.style.setProperty("--x", tab.offsetLeft + "px");
+        thumb.style.setProperty("--w", tab.offsetWidth + "px");
+        thumb.className = "prog-seg-thumb program--" + (tab.dataset.program || "");
+        thumb.parentElement?.classList.add("is-ready");
+      }
+      window.addEventListener("resize", function (): void {
+        const current = tabs.find(function (t): boolean { return t.getAttribute("aria-selected") === "true"; });
+        if (current) moveThumb(current);
+      });
+
       function select(tab: HTMLButtonElement, opts: { focus?: boolean; scroll?: boolean; updateHash?: boolean }): void {
         tabs.forEach(function (t): void {
           const on = t === tab;
@@ -229,9 +243,7 @@
             panel.classList.add("is-entering");
           }
         });
-        // En pantallas chicas la fila de pestañas se desplaza: muestra la elegida
-        const list = tab.parentElement;
-        if (list && list.scrollWidth > list.clientWidth) list.scrollLeft = tab.offsetLeft - list.offsetLeft;
+        moveThumb(tab);
         if (opts.focus) tab.focus();
         if (opts.updateHash) history.replaceState(null, "", "#" + (tab.getAttribute("aria-controls") || ""));
         if (opts.scroll) root.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });

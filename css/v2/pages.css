@@ -47,117 +47,70 @@
 
 .program-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-/* Selector de programa: pósters expandibles (el elegido se abre, los otros quedan como franjas) */
+/* Selector de programa: control segmentado con indicador que se desliza al elegido */
 .prog-page-hero { padding-bottom: 1.5rem; }
 .prog-switcher { padding-bottom: clamp(3rem, 7vw, 5rem); }
-.prog-tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-}
-.prog-tab {
+.prog-seg {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 0.35rem;
-  min-height: 8.5rem;
-  padding: 1.25rem 1.5rem;
-  border: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  padding: 0.4rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
   border-radius: var(--radius-l);
-  overflow: hidden;
-  isolation: isolate;
-  background: var(--p-to);
-  color: var(--white);
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-s);
+}
+.prog-seg-thumb {
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 0;
+  width: var(--w, 0);
+  transform: translateX(var(--x, 0));
+  border-radius: calc(var(--radius-l) - 0.35rem);
+  background: linear-gradient(135deg, var(--p-from), var(--p-to));
+  box-shadow: var(--shadow-m);
+  opacity: 0;
+  transition: transform 550ms var(--ease-out), width 550ms var(--ease-out), opacity var(--dur);
+}
+.prog-seg.is-ready .prog-seg-thumb { opacity: 1; }
+.prog-seg-tab {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75rem;
+  align-items: baseline;
+  padding: 1rem 1.25rem;
+  border: 0;
+  border-radius: calc(var(--radius-l) - 0.35rem);
+  background: none;
+  color: var(--ink);
   font: inherit;
   text-align: left;
   cursor: pointer;
-  box-shadow: var(--shadow-m);
-  transition: min-height 600ms var(--ease-out), flex-grow 600ms var(--ease-out), box-shadow var(--dur);
+  transition: color 300ms, background var(--dur);
 }
-.prog-tab-bg {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  transform: scale(1.08);
-  filter: saturate(1.1);
-  transition: transform 900ms var(--ease-out), filter 600ms;
-}
-.prog-tab::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, transparent 38%, color-mix(in srgb, var(--p-to) 70%, transparent) 68%, var(--p-to) 96%);
-  transition: opacity 600ms;
-}
-.prog-tab-num {
-  position: absolute;
-  top: 1rem;
-  right: 1.25rem;
-  font: 800 0.875rem/1 var(--font-display);
-  letter-spacing: 0.12em;
-  padding: 0.35rem 0.6rem;
-  border-radius: var(--radius-pill);
-  background: var(--white-a20);
-  backdrop-filter: blur(6px);
-}
-.prog-tab strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.6vw, 2.25rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-.prog-tab-text > span { font-size: 0.875rem; opacity: 0.9; }
-.prog-tab-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  width: fit-content;
-  margin-top: 0.5rem;
-  padding: 0.45rem 0.9rem;
-  border-radius: var(--radius-pill);
-  background: var(--white);
-  color: var(--ink);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity var(--dur), transform var(--dur) var(--ease-out);
-}
-.prog-tab:hover .prog-tab-bg { transform: scale(1.14); }
-.prog-tab:hover .prog-tab-cta { opacity: 1; transform: none; }
-.prog-tab[aria-selected="true"] { min-height: 17rem; box-shadow: var(--shadow-l); }
-.prog-tab[aria-selected="true"] .prog-tab-bg { transform: scale(1); }
-.prog-tab[aria-selected="true"]::after { opacity: 0.95; }
-.prog-tab[aria-selected="true"] .prog-tab-cta { display: none; }
-.prog-tab[aria-selected="true"] .prog-tab-num { background: var(--sun); color: var(--ink); }
+.prog-seg-tab:not([aria-selected="true"]):hover { background: var(--paper-2); }
+.prog-seg-num { grid-row: span 2; font: 800 0.8125rem/1 var(--font-display); letter-spacing: 0.1em; opacity: 0.55; }
+.prog-seg-name { font-family: var(--font-display); font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+.prog-seg-short { display: none; }
+.prog-seg-meta { font-size: 0.8125rem; color: var(--text-muted); transition: color 300ms; }
+.prog-seg-tab[aria-selected="true"] { color: var(--white); }
+.prog-seg-tab[aria-selected="true"] .prog-seg-meta { color: var(--text-inverse); }
+.prog-seg-tab[aria-selected="true"] .prog-seg-num { opacity: 0.9; }
+/* Sin JS el indicador no se posiciona: el elegido se marca con su propio fondo */
+html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 
-@media (min-width: 900px) {
-  .prog-tabs { flex-direction: row; height: clamp(22rem, 34vw, 28rem); }
-  .prog-tab { flex: 1 1 0; min-height: 0; min-width: 0; padding: 1.75rem; }
-  .prog-tab[aria-selected="true"] { flex-grow: 3.2; min-height: 0; }
-  /* Las franjas cerradas muestran el nombre en vertical */
-  .prog-tab:not([aria-selected="true"]) .prog-tab-text {
-    position: absolute;
-    left: 1.5rem;
-    bottom: 1.75rem;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    white-space: nowrap;
-  }
-  .prog-tab:not([aria-selected="true"]) .prog-tab-text > span,
-  .prog-tab:not([aria-selected="true"]) .prog-tab-cta { display: none; }
-  .prog-tab:not([aria-selected="true"]) strong { font-size: clamp(1.25rem, 2vw, 1.6rem); }
-  .prog-tab:not([aria-selected="true"])::after { background: linear-gradient(180deg, transparent 30%, var(--p-to) 92%); opacity: 1; }
-  .prog-tab[aria-selected="true"] strong { font-size: clamp(2rem, 3.6vw, 3.25rem); }
+@media (max-width: 720px) {
+  .prog-seg-tab { grid-template-columns: 1fr; padding: 0.8rem 0.6rem; text-align: center; }
+  .prog-seg-num { grid-row: auto; margin-bottom: 0.25rem; }
+  .prog-seg-long { display: none; }
+  .prog-seg-short { display: inline; }
+  .prog-seg-name { font-size: 0.95rem; }
+  .prog-seg-meta { display: none; }
 }
 
 /* Panel de cada programa */
