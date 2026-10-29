@@ -54,6 +54,7 @@ CSS custom properties on `:root` (in `css/variables.css`) define a dark theme by
 ## Notes
 
 - `docs/PLAN.md` documents an approved but not-yet-implemented iteration (a dedicated "Nosotros" page and a post-enrollment confirmation page) — check it for planned scope before starting unrelated redesign work.
+- Branches: work happens on `develop`; `master` only receives reviewed merges from `develop`. Every push to `develop` triggers `.github/workflows/deploy-staging.yml`, which fails if `js/` isn't up to date with `ts/` (so always commit the `npm run build` output) and then updates https://landing-staging.codingbootcampslatam.com over SSH (the server-side key is restricted to a fixed `git fetch` + `reset --hard origin/develop`). The staging server's nginx denies `.git*`, `ts/`, `docs/`, `node_modules/`, `*.md` and `*.json`; any new folder with non-public content needs a matching deny rule there.
 - Project docs (non-site Markdown) live in `docs/`. The site itself must stay at the repo root: pages, `favicon.png`, `robots.txt`, `sitemap.xml` and `404.html` are referenced by root-relative paths, so don't move HTML into subfolders.
 - An old divergent site snapshot (`dist/`, with `gracias.html`, `playground.html`, extra CSS partials) was deleted; it's recoverable from git history (commit `5ef3417`) if needed as reference for the planned confirmation page.
 - `node_modules/` is committed to the repo — the root `.gitignore` only excludes select `.claude/commands/skills/...` files, not `node_modules/` — this is pre-existing, not something to "fix" unprompted.
