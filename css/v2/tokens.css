@@ -66,6 +66,8 @@
   --radius-l: 2rem;
   --radius-pill: 999px;
   --header-h: 4.75rem;
+  --promo-h: 2.5rem;
+  --top-offset: calc(var(--header-h) + var(--promo-h));
 
   /* Textura de letras "Coding Bootcamp" (ver .has-pattern) */
   --pattern-image: url("../../img/patron-letras.webp");

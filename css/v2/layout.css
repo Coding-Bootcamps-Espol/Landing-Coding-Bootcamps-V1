@@ -30,12 +30,48 @@
 }
 .section--ink .section-head p { color: var(--text-inverse-muted); }
 
+/* ── Barra de promoción (arriba del menú, texto en movimiento) ── */
+.promo-bar {
+  height: var(--promo-h);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, var(--ink), var(--blue-strong));
+  color: var(--white);
+  font-size: 0.875rem;
+}
+.promo-bar .marquee { width: 100%; --marquee-dur: 45s; }
+.promo-group { display: flex; align-items: center; }
+.promo-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.promo-item::after {
+  content: "✦";
+  margin-inline: 1.5rem;
+  color: var(--mint);
+  font-size: 0.75em;
+}
+.promo-item strong { font-weight: 700; }
+.promo-cta {
+  margin-right: 1.5rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--mint);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--dur), color var(--dur);
+}
+.promo-cta:hover { background: var(--white); }
+
 /* ── Header ── */
 .site-header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  height: var(--header-h);
   transition: background var(--dur), box-shadow var(--dur), backdrop-filter var(--dur);
 }
 .site-header.is-scrolled {
@@ -45,7 +81,7 @@
   box-shadow: 0 1px 0 var(--line);
 }
 .header-inner {
-  height: 100%;
+  height: var(--header-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,15 +125,15 @@
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
-  padding: calc(var(--header-h) + 2rem) var(--gutter) 3rem;
+  padding: calc(var(--top-offset) + 2rem) var(--gutter) 3rem;
   background: var(--ink);
   color: var(--text-inverse);
-  clip-path: circle(0% at calc(100% - 2.5rem) 2.4rem);
+  clip-path: circle(0% at calc(100% - 2.5rem) calc(var(--promo-h) + 2.4rem));
   visibility: hidden;
   transition: clip-path 600ms var(--ease-out), visibility 0s linear 600ms;
 }
 .main-nav[data-open="true"] {
-  clip-path: circle(150% at calc(100% - 2.5rem) 2.4rem);
+  clip-path: circle(150% at calc(100% - 2.5rem) calc(var(--promo-h) + 2.4rem));
   visibility: visible;
   transition: clip-path 700ms var(--ease-out), visibility 0s;
 }
