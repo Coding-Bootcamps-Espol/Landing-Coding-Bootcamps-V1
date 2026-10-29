@@ -3,11 +3,6 @@
    aparición solo ocultan contenido cuando hay JS (html.js), así la página se
    ve completa aunque el script falle. */
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--mint) 70%, transparent); }
-  70% { box-shadow: 0 0 0 10px transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
 @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes word-in {
   from { opacity: 0; transform: translateY(0.45em) rotate(3deg); filter: blur(6px); }
