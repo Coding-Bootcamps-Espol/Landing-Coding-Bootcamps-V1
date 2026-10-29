@@ -211,63 +211,12 @@
 .program-card:hover .program-card-arrow { transform: rotate(-45deg) scale(1.08); background: var(--card-accent); color: var(--ink); }
 @media (min-width: 960px) { .program-cards { grid-template-columns: repeat(3, 1fr); } }
 
-/* ── Metodología (mosaico) ── */
-.bento { display: grid; gap: 1rem; }
-.bento-tile {
-  position: relative;
-  border-radius: var(--radius-l);
-  padding: clamp(1.5rem, 2.5vw, 2rem);
-  background: var(--white);
-  border: 1px solid var(--line);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.bento-tile h3 { font-size: var(--fs-h3); }
-.bento-tile p { color: var(--text-muted); }
-.bento-tile--photo { padding: 0; min-height: 18rem; border: 0; }
-.bento-tile--photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
-.bento-tile--photo figcaption {
-  position: absolute;
-  left: 1rem; bottom: 1rem;
-  --rot: -2deg;
-}
-.bento-tile--brand { background: var(--accent); color: var(--white); border: 0; }
-.bento-tile--brand p { color: var(--text-inverse); opacity: 0.85; }
-.bento-tile--mint { background: var(--mint-soft); border: 0; }
-.bento-tile--blue { background: var(--blue-soft); border: 0; }
-.bento-icon {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: var(--radius-s);
-  background: var(--brand);
-  color: var(--white);
-}
-.bento-icon svg { width: 1.4rem; height: 1.4rem; }
-.bento-tile--brand .bento-icon { background: var(--white); color: var(--accent); }
-.company-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
-.company-list .chip { color: var(--ink); border-color: var(--line-strong); background: var(--white); }
-.bento-big-number {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 7vw, 5.5rem);
-  font-weight: 800;
-  letter-spacing: var(--tracking-tight);
-  line-height: 0.9;
-}
-@media (min-width: 768px) {
-  .bento { grid-template-columns: repeat(6, 1fr); }
-  .bento-tile { grid-column: span 3; }
-  .bento-tile--photo.bento-tile--tall { grid-column: span 3; grid-row: span 2; }
-}
-@media (min-width: 1100px) {
-  .bento { grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(15rem, auto); }
-  .bento-tile { grid-column: span 4; }
-  .bento-tile--wide { grid-column: span 5; }
-  .bento-tile--photo.bento-tile--tall { grid-column: span 4; grid-row: span 2; }
-}
+/* ── Metodología: foto + lista numerada ── */
+.method { display: grid; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.method-photo { position: relative; border-radius: var(--radius-l); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--shadow-l); }
+.method-photo img { width: 100%; height: 100%; object-fit: cover; }
+.method-photo figcaption { position: absolute; left: 1rem; bottom: 1rem; --rot: -2deg; }
+@media (min-width: 960px) { .method { grid-template-columns: 0.85fr 1.15fr; } }
 
 /* ── Admisión (pasos) ── */
 .steps-wrap { position: relative; }
