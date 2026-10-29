@@ -207,3 +207,29 @@
 }
 .form-feedback.error { background: var(--danger-soft); color: var(--danger); }
 .form-feedback.exito { background: var(--mint-soft); color: var(--success-strong); }
+
+/* Textura de marca: letras "Coding Bootcamp" del sitio anterior.
+   Se pinta con el color del texto (blanco en fondos oscuros, tinta en claros)
+   usando el patrón como máscara. Variante --light para fondos claros. */
+.has-pattern {
+  --pattern-color: var(--white);
+  --pattern-opacity: var(--pattern-opacity-dark);
+  position: relative;
+  isolation: isolate;
+}
+.has-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: var(--pattern-color);
+  opacity: var(--pattern-opacity);
+  -webkit-mask: var(--pattern-image) center / cover no-repeat;
+  mask: var(--pattern-image) center / cover no-repeat;
+}
+.has-pattern--light {
+  --pattern-color: var(--ink);
+  --pattern-opacity: var(--pattern-opacity-light);
+}

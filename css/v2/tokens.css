@@ -66,6 +66,11 @@
   --radius-pill: 999px;
   --header-h: 4.75rem;
 
+  /* Textura de letras "Coding Bootcamp" (ver .has-pattern) */
+  --pattern-image: url("../../img/patron-letras.webp");
+  --pattern-opacity-dark: 0.1;
+  --pattern-opacity-light: 0.035;
+
   /* Sombras y movimiento */
   --shadow-s: 0 2px 10px rgba(3, 5, 65, 0.06);
   --shadow-m: 0 18px 40px -18px rgba(3, 5, 65, 0.28);

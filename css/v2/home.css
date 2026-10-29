@@ -23,7 +23,13 @@
   justify-self: center;
 }
 .hero-shape { position: absolute; border-radius: var(--radius-l); }
-.hero-shape--violet { inset: 18% 6% 0 10%; background: var(--violet); border-radius: 46% 54% 38% 62% / 52% 40% 60% 48%; }
+.hero-panel {
+  position: absolute;
+  inset: 14% 4% 0 8%;
+  border-radius: var(--radius-l);
+  background: url("../../img/fondo-diagonales.webp") center / cover no-repeat;
+  box-shadow: var(--shadow-l);
+}
 .hero-shape--blue { width: 26%; aspect-ratio: 1; top: 8%; right: 0; background: var(--blue); --rot: 12deg; }
 .hero-shape--mint { width: 18%; aspect-ratio: 1; bottom: 10%; left: 0; background: var(--mint); border-radius: 50%; --float-delay: -2s; }
 .hero-shape--ring {

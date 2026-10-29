@@ -13,7 +13,7 @@ Static institutional landing site (in Spanish) for Coding Bootcamps ESPOL: promo
 - Build the deployable site: `npm run build:dist` (`tsc` + `scripts/build-dist.mjs`, which copies an explicit file list plus `css/` and `js/` into `dist/`). `netlify.toml` runs this and publishes `dist/`. `dist/` is gitignored — never commit it. When adding a page, add it to the `files` list in `scripts/build-dist.mjs` or it won't be deployed to Netlify.
 - No lint script is configured.
 - No real test suite: `npm test` only runs a placeholder that exits with an error — there is nothing to execute.
-- No dev server needed: open any `.html` file directly in a browser.
+- Preview locally with a static server, e.g. `python -m http.server 8000` (then http://localhost:8000). Opening `.html` files directly (file://) mostly works, but the redesign's brand texture (`.has-pattern`, a CSS mask image) is blocked by the browser on file://.
 
 ## Architecture
 
@@ -59,6 +59,7 @@ The site is being redesigned page by page in an "editorial vibrante" style based
 - **All colors, fonts, sizes, spacing, radii, shadows and easings live in `css/v2/tokens.css`.** Never hardcode a color/rgba elsewhere (the user explicitly asked for this); add a token instead. Fonts: Inter Tight (display) + Inter (body) from Google Fonts. Brand: `--ink` #030541, `--violet` #6255a5, `--blue` #2575fc, `--mint` #2ec58d.
 - Reuse components before writing new CSS: `.section` (+ `--paper-2`, `--ink`), `.section-head`, `.wrap`, `.btn` (+ `--accent`, `--ghost`, `--light`, `--outline-light`, `--lg`, `--block`), `.eyebrow`, `.mark`, `.chip`, `.float-card`, `.accordion`, `.form`/`.field`.
 - Behavior: `ts/sitio.ts` (→ `js/sitio.js`) handles nav drawer, header scroll state, scroll reveal (`data-reveal`, `data-reveal="scale|left"`, stagger with `style="--i:n"`), counters (`data-count`), 3D tilt (`data-tilt`), testimonials carousel (autoplay) and Mixpanel `program_clicked` (`data-program-name`). Every init checks its elements exist, so the same script works on every page. `<head>` adds `html.js` so reveal-hidden content is visible without JS. Everything respects `prefers-reduced-motion`.
+- Brand textures from the old site: `.has-pattern` (+ `--light` on light backgrounds) paints the "Coding Bootcamp" lettering (`img/patron-letras.webp`, white-on-transparent, used as a mask so it takes `--pattern-color`); `img/fondo-diagonales.webp` is the green/blue diagonal panel behind the hero photo (`.hero-panel`).
 - Icons: inline SVG sprite at the top of `<body>` (`<svg><use href="#i-arrow"/></svg>`).
 - The redesign is light-only (no theme toggle), the expired "Early Bird" promo banner, the placeholder YouTube gallery and the Jelou chatbot were removed from `index.html`.
 - Program colors are tokens (`--fs-*`, `--ds-*`, `--bda-*`) taken from each program's artwork; cards use `.program-card--fs|--ds|--bda` and the artwork in `img/programas/*-440|800.webp` (from the old site; the baked-in text still says "Business Analytics" and "Full Stack Developer").
