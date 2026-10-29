@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://codingbootcamps-espol.example.com/nosotros.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://codingbootcamps-espol.example.com/solicita-informacion.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

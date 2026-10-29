@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const SOURCE = "index.html";
-const PAGES = ["programas.html", "solicita-informacion.html", "gracias.html", "404.html"];
+const PAGES = ["programas.html", "nosotros.html", "solicita-informacion.html", "gracias.html", "404.html"];
 const BLOCKS = ["header", "footer"];
 
 function blockRegex(name) {
