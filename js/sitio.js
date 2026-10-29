@@ -283,10 +283,23 @@
             function fromHash(scroll) {
                 const id = location.hash.slice(1);
                 const tab = tabs.find(function (t) { return t.getAttribute("aria-controls") === id; });
-                if (tab)
+                if (tab) {
                     select(tab, { scroll: scroll });
-                else
-                    select(tabs.find(function (t) { return t.getAttribute("aria-selected") === "true"; }) || tabs[0], {});
+                    return;
+                }
+                // El ancla puede apuntar a algo dentro de un panel (p. ej. #ds-mentores):
+                // abre ese panel y baja hasta el elemento.
+                const target = id ? document.getElementById(id) : null;
+                const panel = target ? target.closest('[role="tabpanel"]') : null;
+                const owner = panel ? tabs.find(function (t) { return t.getAttribute("aria-controls") === panel.id; }) : undefined;
+                if (owner && target) {
+                    select(owner, {});
+                    requestAnimationFrame(function () {
+                        target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+                    });
+                    return;
+                }
+                select(tabs.find(function (t) { return t.getAttribute("aria-selected") === "true"; }) || tabs[0], {});
             }
             fromHash(true);
             window.addEventListener("hashchange", function () { fromHash(true); });

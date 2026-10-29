@@ -163,6 +163,8 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 
 .prog-block { margin-top: clamp(4rem, 8vw, 6rem); }
 .prog-block .section-head h3 { font-size: var(--fs-h2); }
+/* Anclas internas (p. ej. #ds-mentores): deja espacio para el menú fijo y la etiqueta de arriba */
+.prog-block .section-head h3[id] { scroll-margin-top: calc(var(--top-offset) + 3.5rem); }
 
 /* Plan de estudios: recorrido con línea que se dibuja al bajar */
 .prog-plan { display: grid; gap: 2rem; }
@@ -589,7 +591,26 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   color: var(--text-muted);
   opacity: 0.7;
 }
-.company-cloud-link { display: flex; justify-content: center; margin-top: 2rem; }
+/* Accesos directos a los instructores de cada programa */
+.instructor-links { display: grid; justify-items: center; gap: 1rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); text-align: center; }
+.instructor-links p { font-weight: 600; }
+.instructor-links-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+.instructor-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--p-from), var(--p-to));
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-s);
+  transition: transform var(--dur) var(--ease-spring), box-shadow var(--dur);
+}
+.instructor-link svg { transition: transform var(--dur) var(--ease-out); }
+.instructor-link:hover, .instructor-link:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-m); }
+.instructor-link:hover svg { transform: translateX(4px); }
 
 /* ═══════════ Preguntas frecuentes ═══════════ */
 .faq-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
