@@ -128,18 +128,8 @@
 }
 .sticker--icon { display: inline-flex; align-items: center; gap: 0.65rem; }
 .sticker--icon > svg { width: 1.75rem; height: 1.75rem; flex-shrink: 0; }
-.sticker-logos { display: flex; gap: 0.35rem; margin-top: 0.5rem; }
-.logo-chip {
-  display: grid;
-  place-items: center;
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 50%;
-  background: var(--white);
-}
-.logo-chip svg { width: 1.35rem; height: 1.35rem; fill: var(--chip-color, var(--ink)); }
-.logo-chip--claude { --chip-color: var(--logo-claude); }
-.logo-chip--gemini { --chip-color: var(--logo-gemini); }
+.sticker-logos { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.55rem; }
+.sticker-logos svg { width: 1.35rem; height: 1.35rem; fill: currentColor; }
 .sticker--mint { --sticker-bg: var(--mint); --sticker-fg: var(--ink); }
 .sticker--sun { --sticker-bg: var(--sun); --sticker-fg: var(--ink); }
 .sticker--white { --sticker-bg: var(--white); --sticker-fg: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }

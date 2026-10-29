@@ -30,7 +30,6 @@
   background: url("../../img/fondo-diagonales.webp") center / cover no-repeat;
   box-shadow: var(--shadow-l);
 }
-.hero-shape--blue { width: 26%; aspect-ratio: 1; top: 8%; right: 0; background: var(--accent); --rot: 12deg; }
 .hero-shape--ring {
   width: 34%; aspect-ratio: 1; top: 2%; left: 4%;
   border: 2px dashed var(--line-strong);
