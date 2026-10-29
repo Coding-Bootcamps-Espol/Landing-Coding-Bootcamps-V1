@@ -3,3 +3,17 @@
 @import url("layout.css");
 @import url("components.css");
 @import url("responsive.css");
+@import url("alerts.css");
+@import url("botones.css");
+@import url("checkboxes-radios.css");
+@import url("dialogs.css");
+@import url("menus.css");
+@import url("toasts.css");
+
+/*Componentes del backoffice*/
+@import "alerts.css";
+@import "botones.css";
+@import "checkboxes-radios.css";
+@import "dialogs.css";
+@import "menus.css";
+@import "toasts.css";

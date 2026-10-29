@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "build:dist": "tsc && node scripts/build-dist.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

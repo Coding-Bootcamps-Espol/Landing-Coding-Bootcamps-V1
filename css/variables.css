@@ -28,6 +28,16 @@
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   --frame-shadow: 0 0 3rem rgba(0, 0, 0, 0.45);
   --transition: 180ms ease;
+  /* Semantic colors */
+  --semantic-error: #b23a3a;
+  --semantic-success: #007466;
+  --semantic-warning: #f59e0b;
+  --semantic-info: #17479d;
+
+  --border: 8px;
+  --color-textalert: #0f1419;
+
+  color-scheme: light dark;
 }
 
 /* Light theme via system preference, unless overridden by manual toggle */

@@ -96,6 +96,16 @@
   font-size: clamp(1rem, 2vw, 1.125rem);
 }
 
+/* ── Solicitud form (Tally embed) ── */
+.solicitud-form {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.solicitud-form iframe {
+  display: block;
+}
+
 /* ── Programs CTA ── */
 .programs-cta {
   text-align: center;

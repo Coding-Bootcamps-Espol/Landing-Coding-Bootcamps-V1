@@ -1,0 +1,104 @@
+.c-alert {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    border-radius: var(--radius);
+    shadow: var(--shadow);
+ }
+.c-alert--success {
+    border: 1.5px solid var(--semantic-success);
+    padding: 8px;
+    background-color: color-mix(in srgb, var(--semantic-success) 20%, white);
+ }
+.c-alert--error {
+    border: 1.5px solid var(--semantic-error);
+    padding: 8px;
+    background-color: color-mix(in srgb, var(--semantic-error) 20%, white);
+ }
+.c-alert--warning {
+    border: 1.5px solid var(--semantic-warning);
+    padding: 8px;
+    background-color: color-mix(in srgb, var(--semantic-warning) 20%, white);
+ }
+.c-alert--info {
+    border: 1.5px solid var(--semantic-info);
+    padding: 8px;
+    background-color: color-mix(in srgb, var(--semantic-info) 20%, white);
+ }
+.c-alert-icon {
+    padding: 8px;
+    font-size: 1.25em;
+    line-height: 1;
+    flex-shrink: 0;
+
+ }
+.c-alert-message {
+    flex: 1;
+    margin: 0;
+    color: var(--color-textalert);
+    min-width: 0;
+ }
+.c-alert-close {
+    background: transparent;
+    border:none;
+    font: inherit;
+    cursor: pointer;
+    font-weight: 700;
+
+    /* hit-target consistente */
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* comportamiento dentro del flex del alert */
+    flex-shrink: 0;
+    margin-inline-start: auto;
+    transition: background-color 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
+ }
+
+ .c-alert-close:hover {
+    background: var(--color-surface-alt);
+ }
+
+ .c-alert-close:focus-visible {
+    outline: 3px solid var(--color-accent-focus);
+    outline-offset: 2px;
+ }
+
+ .c-alert-close:active {
+    opacity: 0.7;
+    transform: scale(0.95);
+ }
+
+.c-alert--success .c-alert-icon {
+    color: var(--semantic-success);
+ }
+.c-alert--error .c-alert-icon {
+    color: var(--semantic-error);
+ }
+.c-alert--warning .c-alert-icon {
+    color: var(--semantic-warning);
+ }
+.c-alert--info .c-alert-icon {
+    color: var(--semantic-info);
+ }
+
+@media (max-width: 768px) {
+    .c-alert {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .c-alert{
+        gap: 4px;
+    }
+
+    .c-alert-close {
+        width: 2rem;
+        height: 2rem;
+    }
+}
