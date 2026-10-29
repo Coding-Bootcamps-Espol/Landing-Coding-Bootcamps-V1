@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const WHATSAPP_NUMBER = "593XXXXXXXXX";
+  const WHATSAPP_NUMBER = "593979631573";
 
   function getPrograma(): string | null {
     const params = new URLSearchParams(window.location.search);

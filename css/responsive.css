@@ -77,6 +77,12 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .program-benefits,
+  .instructor-list,
+  .contact-info {
+    grid-template-columns: 1fr 1fr;
+  }
+
   /* Promo banner: en tablet suma el detalle del VIP PASS (sigue en una línea) */
   .promo-text--vip {
     display: block;

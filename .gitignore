@@ -20,3 +20,7 @@ setup-whatsapp-field.md
 check-typescript-typing.md
 
 dist/
+
+# Brochures (PDF) — se suben al servidor a mano, no van en git
+brochures/
+docs/*.pdf

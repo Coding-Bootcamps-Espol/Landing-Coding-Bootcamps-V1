@@ -333,6 +333,357 @@ article {
   margin-bottom: 1.5rem;
 }
 
+/* ── Program detail (programas.html) ── */
+.program-jump {
+  padding: 0 0 1rem;
+}
+
+.program-jump-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.program-jump-list a {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.program-jump-list a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.program-detail + .program-detail {
+  border-top: 1px solid var(--color-border);
+}
+
+.program-facts {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.program-facts div {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.75rem;
+}
+
+.program-facts dt {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+
+.program-facts dd {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.program-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.program-actions--center {
+  justify-content: center;
+}
+
+.program-benefits {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.program-benefits li {
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-detail);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.program-benefits strong {
+  color: var(--color-text);
+}
+
+.program-sections {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.program-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.program-section summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.program-section summary::-webkit-details-marker { display: none; }
+
+.program-section summary::after {
+  content: "";
+  margin-left: auto;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--transition);
+}
+
+.program-section[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.program-section summary:hover {
+  color: var(--color-accent);
+}
+
+.program-section-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--color-info-bg);
+  color: var(--color-accent);
+}
+
+.program-section-body {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--color-text-muted);
+}
+
+.program-section-body p + p {
+  margin-top: 0.75rem;
+}
+
+.program-section-body strong {
+  color: var(--color-text);
+}
+
+.module-group-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0.5rem 0 0.75rem;
+}
+
+.module-group-title ~ .module-group-title {
+  margin-top: 1.5rem;
+}
+
+.module-list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.module-list li {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  column-gap: 0.75rem;
+  align-items: baseline;
+}
+
+.module-num {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-detail);
+}
+
+.module-name {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.module-list--detailed {
+  gap: 1rem;
+}
+
+.module-list--detailed p {
+  grid-column: 2;
+  font-size: 0.9375rem;
+  margin-top: 0.25rem;
+}
+
+.module-note {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.schedule-table thead th {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.schedule-table tbody th {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.check-list {
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.45em;
+  width: 0.4rem;
+  height: 0.75rem;
+  border-right: 2px solid var(--color-detail);
+  border-bottom: 2px solid var(--color-detail);
+  transform: rotate(45deg);
+}
+
+.instructor-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.instructor-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--color-border);
+}
+
+.instructor-name {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.instructor-role {
+  font-size: 0.875rem;
+}
+
+.steps-list {
+  list-style: none;
+  counter-reset: paso;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.steps-list li {
+  counter-increment: paso;
+  position: relative;
+  padding-left: 2.5rem;
+  min-height: 1.75rem;
+}
+
+.steps-list li::before {
+  content: counter(paso);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-solid);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.program-price {
+  margin-top: 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  background: var(--color-success-bg);
+}
+
+/* ── FAQ (index.html, reutiliza .program-section) ── */
+.faq-list {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+/* ── Contact info (index.html) ── */
+.contact-info {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 48rem;
+  margin: 0 auto 2.5rem;
+}
+
+.contact-info li {
+  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.contact-info-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
 /* ── Testimonials carousel ── */
 .testimonials {
   background: var(--color-surface);
