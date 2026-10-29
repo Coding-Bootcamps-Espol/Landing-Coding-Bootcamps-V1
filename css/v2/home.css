@@ -31,7 +31,6 @@
   box-shadow: var(--shadow-l);
 }
 .hero-shape--blue { width: 26%; aspect-ratio: 1; top: 8%; right: 0; background: var(--blue); --rot: 12deg; }
-.hero-shape--mint { width: 18%; aspect-ratio: 1; bottom: 10%; left: 0; background: var(--mint); border-radius: 50%; --float-delay: -2s; }
 .hero-shape--ring {
   width: 34%; aspect-ratio: 1; top: 2%; left: 4%;
   border: 2px dashed var(--line-strong);
@@ -47,10 +46,27 @@
   object-position: bottom center;
   filter: drop-shadow(0 30px 40px var(--ink-a25));
 }
-.hero-visual .sticker { position: absolute; }
-.hero-visual .sticker:nth-of-type(1) { top: 26%; left: -2%; --rot: -4deg; --float-delay: -1s; }
-.hero-visual .sticker:nth-of-type(2) { top: 52%; right: -1%; --rot: 3deg; --float-delay: -3s; --float-dur: 7s; }
-.hero-visual .sticker:nth-of-type(3) { bottom: 7%; left: 12%; --rot: -2deg; --float-delay: -4.5s; --float-dur: 8s; }
+.hero-visual > .sticker { position: absolute; }
+.hero-visual > .sticker:nth-of-type(1) { top: 26%; left: -2%; --rot: -4deg; --float-delay: -1s; }
+.hero-visual > .sticker:nth-of-type(2) { top: 52%; right: -1%; --rot: 3deg; --float-delay: -3s; --float-dur: 7s; }
+/* Insignia "Mi Credencial" de ESPOL + su etiqueta */
+.credential-badge {
+  position: absolute;
+  bottom: 3%;
+  left: 2%;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  --rot: -5deg;
+  --float-delay: -4.5s;
+  --float-dur: 8s;
+}
+.credential-badge img {
+  width: clamp(3.75rem, 7vw, 5rem);
+  height: auto;
+  filter: drop-shadow(0 12px 18px var(--ink-a25));
+}
+.credential-badge .sticker { margin-bottom: 0.5rem; --rot: 4deg; }
 
 @media (min-width: 960px) {
   .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
