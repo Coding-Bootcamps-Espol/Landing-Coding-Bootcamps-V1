@@ -92,12 +92,10 @@
 .stat-label { margin-top: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; }
 @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, 1fr); } }
 
-/* ── Tecnologías: tarjetas con logos a color en dos filas que se deslizan ── */
+/* ── Tecnologías: tarjetas con logos a color que se deslizan en una fila ── */
 .tech { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem); }
 .tech-head { display: flex; justify-content: center; margin-bottom: 1.75rem; }
-.tech-rows { display: grid; gap: 0.9rem; }
-.tech-rows .marquee { --marquee-dur: 55s; }
-.tech-rows .marquee + .marquee { --marquee-dur: 65s; }
+.tech-rows .marquee { --marquee-dur: 50s; }
 .tech-group { display: flex; }
 .tech-card {
   --logo: var(--ink);
