@@ -83,7 +83,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center 30%;
   transform: scale(1.08);
   filter: saturate(1.1);
   transition: transform 900ms var(--ease-out), filter 600ms;
@@ -93,7 +93,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, transparent 15%, color-mix(in srgb, var(--p-to) 75%, transparent) 55%, var(--p-to) 88%);
+  background: linear-gradient(180deg, transparent 38%, color-mix(in srgb, var(--p-to) 70%, transparent) 68%, var(--p-to) 96%);
   transition: opacity 600ms;
 }
 .prog-tab-num {
@@ -156,7 +156,7 @@
   .prog-tab:not([aria-selected="true"]) .prog-tab-text > span,
   .prog-tab:not([aria-selected="true"]) .prog-tab-cta { display: none; }
   .prog-tab:not([aria-selected="true"]) strong { font-size: clamp(1.25rem, 2vw, 1.6rem); }
-  .prog-tab:not([aria-selected="true"])::after { background: linear-gradient(180deg, transparent, var(--p-to) 75%); opacity: 1; }
+  .prog-tab:not([aria-selected="true"])::after { background: linear-gradient(180deg, transparent 30%, var(--p-to) 92%); opacity: 1; }
   .prog-tab[aria-selected="true"] strong { font-size: clamp(2rem, 3.6vw, 3.25rem); }
 }
 
