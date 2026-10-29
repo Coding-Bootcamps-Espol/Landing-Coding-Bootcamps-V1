@@ -234,3 +234,42 @@
   --pattern-color: var(--ink);
   --pattern-opacity: var(--pattern-opacity-light);
 }
+
+/* Burbuja flotante de WhatsApp (abajo a la derecha, en todas las páginas) */
+.wa-float {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.75rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  color: var(--white);
+  box-shadow: var(--shadow-m);
+  text-decoration: none;
+  animation: fade-up 700ms 1.2s var(--ease-out) both;
+  transition: transform var(--dur) var(--ease-spring), background var(--dur);
+}
+.wa-float:hover { transform: scale(1.08); background: var(--whatsapp-strong); }
+.wa-float svg { width: 2rem; height: 2rem; fill: currentColor; }
+.wa-float-label {
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: var(--shadow-s);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+  transition: opacity var(--dur), transform var(--dur) var(--ease-out);
+}
+.wa-float:hover .wa-float-label,
+.wa-float:focus-visible .wa-float-label { opacity: 1; transform: none; }

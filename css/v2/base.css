@@ -21,6 +21,8 @@ body {
 main { overflow-x: clip; }
 
 img, svg { display: block; max-width: 100%; }
+/* Los íconos toman el color del texto (los símbolos con fill="none" lo ignoran) */
+svg { fill: currentColor; }
 img { height: auto; }
 
 a { color: inherit; }
