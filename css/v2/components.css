@@ -2,7 +2,7 @@
 
 /* Botones: .btn + variante (--primary, --accent, --ghost, --light) y tamaño (--lg) */
 .btn {
-  --btn-bg: var(--ink);
+  --btn-bg: var(--accent);
   --btn-fg: var(--white);
   --btn-border: transparent;
   display: inline-flex;
@@ -38,10 +38,9 @@
 .btn .btn-arrow { transition: transform var(--dur) var(--ease-out); }
 .btn:hover .btn-arrow { transform: translateX(4px); }
 
-.btn--accent { --btn-bg: var(--violet); }
-.btn--accent:hover { --btn-bg: var(--violet-strong); }
+.btn:hover { --btn-bg: var(--accent-strong); }
 .btn--ghost { --btn-bg: transparent; --btn-fg: var(--ink); --btn-border: var(--line-strong); }
-.btn--ghost:hover { --btn-bg: var(--white); --btn-border: var(--ink); }
+.btn--ghost:hover { --btn-bg: var(--white); --btn-border: var(--accent); --btn-fg: var(--accent); }
 .btn--light { --btn-bg: var(--white); --btn-fg: var(--ink); }
 .btn--outline-light { --btn-bg: transparent; --btn-fg: var(--white); --btn-border: var(--white-a40); }
 .btn--outline-light:hover { --btn-bg: var(--white-a10); --btn-border: var(--white); }
@@ -54,7 +53,7 @@
   align-items: center;
   gap: 0.75rem;
   width: fit-content;
-  color: var(--violet-strong);
+  color: var(--accent-strong);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -66,14 +65,14 @@
   height: 2px;
   background: currentColor;
 }
-.section--ink .eyebrow,
+.section--brand .eyebrow,
 .contact-panel .eyebrow { color: var(--mint); }
 
 /* Resaltado tipo marcador en palabras de un título */
 .mark {
   position: relative;
   white-space: nowrap;
-  color: var(--violet);
+  color: var(--accent);
 }
 .mark::after {
   content: "";
@@ -104,7 +103,7 @@
 /* Sticker: etiqueta plana de color sólido, levemente girada (como la franja
    "¡Postulaciones Abiertas!" de las piezas de marca). Variantes de color. */
 .sticker {
-  --sticker-bg: var(--ink);
+  --sticker-bg: var(--accent);
   --sticker-fg: var(--white);
   display: inline-block;
   padding: 0.55rem 0.85rem 0.6rem;
@@ -127,6 +126,20 @@
   letter-spacing: 0;
   opacity: 0.85;
 }
+.sticker--icon { display: inline-flex; align-items: center; gap: 0.65rem; }
+.sticker--icon > svg { width: 1.75rem; height: 1.75rem; flex-shrink: 0; }
+.sticker-logos { display: flex; gap: 0.35rem; margin-top: 0.5rem; }
+.logo-chip {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: var(--white);
+}
+.logo-chip svg { width: 1.35rem; height: 1.35rem; fill: var(--chip-color, var(--ink)); }
+.logo-chip--claude { --chip-color: var(--logo-claude); }
+.logo-chip--gemini { --chip-color: var(--logo-gemini); }
 .sticker--mint { --sticker-bg: var(--mint); --sticker-fg: var(--ink); }
 .sticker--sun { --sticker-bg: var(--sun); --sticker-fg: var(--ink); }
 .sticker--white { --sticker-bg: var(--white); --sticker-fg: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
@@ -139,7 +152,7 @@
   border-radius: var(--radius-m);
   transition: border-color var(--dur), box-shadow var(--dur);
 }
-.accordion details[open] { border-color: var(--violet); box-shadow: var(--shadow-s); }
+.accordion details[open] { border-color: var(--accent); box-shadow: var(--shadow-s); }
 .accordion summary {
   display: flex;
   align-items: center;
@@ -162,14 +175,14 @@
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: var(--violet-soft);
-  color: var(--violet-strong);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
   font: 600 1.25rem/1 var(--font-body);
   transition: transform var(--dur) var(--ease-spring), background var(--dur), color var(--dur);
 }
-.accordion details[open] summary::after { transform: rotate(45deg); background: var(--violet); color: var(--white); }
+.accordion details[open] summary::after { transform: rotate(45deg); background: var(--accent); color: var(--white); }
 .accordion .accordion-body { padding: 0 1.35rem 1.25rem; color: var(--text-muted); }
-.accordion .accordion-body a { color: var(--violet-strong); font-weight: 600; }
+.accordion .accordion-body a { color: var(--accent-strong); font-weight: 600; }
 
 /* Formulario */
 .form { display: grid; gap: 1rem; }
@@ -190,8 +203,8 @@
 .field input:focus,
 .field textarea:focus {
   outline: none;
-  border-color: var(--violet);
-  box-shadow: 0 0 0 4px var(--violet-soft);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 .field [aria-invalid="true"] { border-color: var(--danger); }
 .field-error { min-height: 1.1em; font-size: 0.8125rem; color: var(--danger); }

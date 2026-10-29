@@ -35,7 +35,7 @@ h1, h2, h3, h4 {
 
 p { text-wrap: pretty; }
 
-::selection { background: var(--violet); color: var(--white); }
+::selection { background: var(--accent); color: var(--white); }
 
 :focus-visible {
   outline: 3px solid var(--blue);

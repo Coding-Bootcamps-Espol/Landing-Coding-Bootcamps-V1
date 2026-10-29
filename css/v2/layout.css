@@ -6,8 +6,8 @@
   position: relative;
 }
 .section--paper-2 { background: var(--paper-2); }
-.section--ink {
-  background: var(--ink);
+.section--brand {
+  background: var(--surface-dark);
   color: var(--text-inverse);
 }
 
@@ -28,14 +28,14 @@
   font-size: var(--fs-lead);
   color: var(--text-muted);
 }
-.section--ink .section-head p { color: var(--text-inverse-muted); }
+.section--brand .section-head p { color: var(--text-inverse-muted); }
 
 /* ── Barra de promoción (arriba del menú, texto en movimiento) ── */
 .promo-bar {
   height: var(--promo-h);
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, var(--ink), var(--blue-strong));
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand));
   color: var(--white);
   font-size: 0.875rem;
 }
@@ -126,7 +126,7 @@
   justify-content: center;
   gap: 2rem;
   padding: calc(var(--top-offset) + 2rem) var(--gutter) 3rem;
-  background: var(--ink);
+  background: var(--surface-dark);
   color: var(--text-inverse);
   clip-path: circle(0% at calc(100% - 2.5rem) calc(var(--promo-h) + 2.4rem));
   visibility: hidden;
@@ -180,18 +180,18 @@
     position: absolute;
     left: 0; right: 0; bottom: -4px;
     height: 2px;
-    background: var(--violet);
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform var(--dur) var(--ease-out);
   }
-  .nav-link:hover, .nav-link[aria-current="page"] { color: var(--violet); }
+  .nav-link:hover, .nav-link[aria-current="page"] { color: var(--accent); }
   .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 }
 
 /* ── Footer ── */
 .site-footer {
-  background: var(--ink);
+  background: var(--surface-dark);
   color: var(--text-inverse-muted);
   padding-top: clamp(3.5rem, 7vw, 5.5rem);
 }

@@ -3,7 +3,15 @@
    brochures 2026): azul marino profundo, violeta, azul eléctrico y menta. */
 :root {
   /* Marca */
-  --ink: #030541;
+  --brand: #213a8e;        /* azul del logo oficial */
+  --brand-deep: #16295f;
+  --ink: #030541;          /* texto */
+  --brand-soft: #e3e8f6;
+
+  /* Acento de interfaz (botones, enlaces, resaltados): el azul de marca */
+  --accent: var(--brand);
+  --accent-strong: var(--brand-deep);
+  --accent-soft: var(--brand-soft);
   --ink-2: #14175c;
   --violet: #6255a5;
   --violet-strong: #4b3f8f;
@@ -23,12 +31,17 @@
   --bda-from: #6a5aa6;
   --bda-to: #2e1c5c;
 
+  /* Logos de IA (colores oficiales, Simple Icons) */
+  --logo-claude: #d97757;
+  --logo-gemini: #8e75b2;
+
   /* Estados */
   --danger: #c93636;
   --danger-soft: #fde8e8;
   --success-strong: #11603f;
 
   /* Superficies y texto */
+  --surface-dark: var(--brand);   /* fondos oscuros: bandas, testimonios, pie, menú móvil */
   --paper: #fbfaf7;
   --paper-2: #f2f0ea;
   --white: #ffffff;
