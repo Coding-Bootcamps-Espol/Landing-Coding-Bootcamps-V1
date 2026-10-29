@@ -11,6 +11,8 @@ const files = [
   "index.html",
   "programas.html",
   "nosotros.html",
+  "contacto.html",
+  "preguntas.html",
   "solicita-informacion.html",
   "gracias.html",
   "inscripcion.html",

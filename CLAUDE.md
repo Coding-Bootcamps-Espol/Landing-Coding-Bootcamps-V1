@@ -22,11 +22,13 @@ Static institutional landing site (in Spanish) for Coding Bootcamps ESPOL: promo
 
 All public pages use the v2 design system (see "Design system v2" below):
 
-- `index.html` — home: hero, technologies, program cards, methodology, admission steps, testimonials, gallery, FAQ (`#preguntas`), contact form (`ts/contacto.ts`, simulated).
+- `index.html` — home: hero, technologies, program cards, methodology, admission steps, testimonials, gallery, FAQ (`#preguntas`), short FAQ and contact CTA. Nav is page-only: Inicio · Programas · Nosotros · Preguntas · Contacto.
 - `programas.html` — one program at a time: segmented selector (`.prog-seg`, a sliding `.prog-seg-thumb` takes the selected program color; `initTabs` positions it); `img/programas/*-poster.webp` (artwork crops without logo/text) are currently unused; `[data-tabs]`, `role="tab"` buttons → `role="tabpanel"` sections with ids `#desarrollo-web`, `#ciencia-de-datos`, `#business-data-analytics`; `initTabs` in `ts/sitio.ts` opens the panel from the URL hash, so links from other pages keep working; without JS all three show stacked). Each `.prog-panel.program--fs|ds|bda` has: color hero with KPIs and artwork (`.prog-hero`), short benefits, curriculum as a roadmap whose line draws on scroll (`.roadmap`), "Tu semana" boxed schedule + includes + tech logos, Mi Credencial (FS), instructor cards (`.mentor`, colored top with initials) and admission + price (`.prog-enroll`). Content from the 2026 brochures (`docs/*.pdf`, gitignored). Prices: Full Stack and BDA USD 2.800, Data Science USD 3.200.
 - `solicita-informacion.html` — lead form embedded from Tally (`data-tally-src`, `https://tally.so/widgets/embed.js`). An inline `message` listener sends `Tally.FormLoaded`/`Tally.FormSubmitted` to GA4 (`gtag`) and Mixpanel, then redirects to `gracias.html?programa=...`. Tally owns validation and storage.
 - `gracias.html` — confirmation (`noindex`), confetti + steps; `ts/gracias.ts` fills `#gracias-programa-texto` and the `#whatsapp-directo` link (number `593979631573`).
 - `nosotros.html` — about page (who we are, upskilling/reskilling, mission/vision, stats, team with portraits in `img/equipo/`, industry companies). Only Dra. Carmen Vaca has a bio (from the brochure); do not invent bios for the rest of the team.
+- `preguntas.html` — full FAQ grouped by topic (`.faq-group` sections with anchors `#programas`, `#clases`, `#admision`, `#pagos`, `#certificacion`). Answers come only from the brochures/old site; the home shows 4 of them + "Ver todas".
+- `contacto.html` — contact cards, the (simulated) contact form with `js/contacto.js`, Google Maps embed of the campus and socials. The home `#contacto` is now a short CTA panel.
 - `404.html` — custom error page (`noindex`, no analytics).
 - `inscripcion.html` — legacy URL only: redirects to `solicita-informacion.html` keeping the query string.
 - `playground.html` — internal component playground; still on the **old** design (`css/styles.css`, `js/playground.js`, `js/backoffice.js`). It's the only page using the old CSS.
@@ -39,7 +41,7 @@ All public pages use the v2 design system (see "Design system v2" below):
 
 - Source of truth is `ts/*.ts`; the committed `js/*.js` is compiled output (`tsconfig.json`: `rootDir: ts`, `outDir: js`, target/module `ES2022`, `strict: true`). Edit the `.ts` files, never the `.js` by hand, then rerun `npm run build`.
 - `ts/gracias.ts` — reads the `?programa=` query param on `gracias.html` to fill in confirmation copy and build a prefilled `wa.me` WhatsApp link.
-- `ts/contacto.ts` — field validators + submit handler for the contact form on `index.html`.
+- `ts/contacto.ts` — field validators + submit handler for the contact form on `contacto.html`.
 - `ts/playground.ts` — supports `playground.html`'s component showcase (unrelated to the lead-gen/enrollment flow), including the `c-theme-switch` toggle (sound/vibration/aria-live feedback).
 - `ts/backoffice.ts` — theme switch sync, dropdown menus and pagination for a backoffice UI. No page loads `js/backoffice.js` yet.
 - `ts/playground.ts` and `ts/backoffice.ts` were reconstructed on 2026-10-28 from the compiled `dist/js/*.js` of commit `5ef3417` (the original sources were never pushed); they compile byte-for-byte to that output.
@@ -48,7 +50,7 @@ All public pages use the v2 design system (see "Design system v2" below):
 
 ### Forms: one simulated, one real
 
-The contact form on `index.html` is still simulated: it only validates client-side and shows an inline success message (then `form.reset()`) — no network request, backend, or email service integration.
+The contact form on `contacto.html` is still simulated: it only validates client-side and shows an inline success message (then `form.reset()`) — no network request, backend, or email service integration.
 
 `solicita-informacion.html` is different: its form is an embedded Tally form (external service), so submissions are real and stored by Tally, not simulated. The host page only listens for Tally's `postMessage` events to fire analytics and redirect to `gracias.html` — it does not handle validation or storage itself.
 

@@ -411,7 +411,7 @@
 
 /* ── Preguntas frecuentes ── */
 .faq-layout { display: grid; gap: 2.5rem; }
-.faq-aside { display: grid; gap: 1.25rem; align-content: start; }
+.faq-aside { display: grid; gap: 1.25rem; align-content: start; align-self: start; justify-items: start; }
 .faq-aside h2 { font-size: var(--fs-h2); }
 .faq-aside p { color: var(--text-muted); font-size: var(--fs-lead); }
 @media (min-width: 960px) {
@@ -446,4 +446,4 @@
   box-shadow: var(--shadow-l);
 }
 .contact-form-card h3 { font-size: 1.5rem; margin-bottom: 1.25rem; }
-@media (min-width: 960px) { #contacto .cta-panel { grid-template-columns: 1fr 1fr; align-items: center; } }
+@media (min-width: 960px) { #contacto .contact-list { grid-template-columns: 1fr 1fr; } }

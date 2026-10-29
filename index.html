@@ -83,11 +83,11 @@
 
       <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
         <ul class="nav-list">
+          <li><a class="nav-link" href="index.html" aria-current="page">Inicio</a></li>
           <li><a class="nav-link" href="programas.html">Programas</a></li>
           <li><a class="nav-link" href="nosotros.html">Nosotros</a></li>
-          <li><a class="nav-link" href="index.html#metodologia">Metodología</a></li>
-          <li><a class="nav-link" href="index.html#preguntas">Preguntas</a></li>
-          <li><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+          <li><a class="nav-link" href="preguntas.html">Preguntas</a></li>
+          <li><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
         <a class="btn" href="solicita-informacion.html">Solicitar información</a>
       </nav>
@@ -323,7 +323,8 @@
           <span class="eyebrow">Preguntas frecuentes</span>
           <h2 id="faq-heading">Resolvemos tus dudas</h2>
           <p>¿No encuentras tu respuesta? Escríbenos y un asesor te ayuda.</p>
-          <a class="btn" href="https://wa.me/593979631573" target="_blank" rel="noopener noreferrer"><svg width="18" height="18"><use href="img/icons.svg#t-whatsapp"/></svg> Hablar con un asesor</a>
+          <a class="btn" href="preguntas.html">Ver todas las preguntas <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+          <a class="link-arrow" href="https://wa.me/593979631573" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" aria-hidden="true"><use href="img/icons.svg#t-whatsapp"/></svg> Hablar con un asesor</a>
         </div>
 
         <div class="accordion" data-reveal style="--i:1">
@@ -335,10 +336,7 @@
             <summary>¿Cuánto duran los programas?</summary>
             <div class="accordion-body"><p>Full Stack Development dura 32 semanas (10 horas por semana) y Data Science, 26 semanas (12 horas por semana). En Business Data Analytics cada curso tiene entre 24 y 30 horas.</p></div>
           </details>
-          <details>
-            <summary>¿Las clases son presenciales o virtuales?</summary>
-            <div class="accordion-body"><p>Ambas. Entre semana hay clases virtuales y sesiones de revisión en la noche (desde las 19h00), y los sábados de 09h00 a 12h00 hay clase presencial. Revisa el horario de cada programa en la página de <a href="programas.html">programas</a>.</p></div>
-          </details>
+          
           <details>
             <summary>¿Cuánto cuesta y cómo puedo pagar?</summary>
             <div class="accordion-body"><p>Full Stack Development y Business Data Analytics cuestan USD 2.800, y Data Science, USD 3.200. Puedes pagar con un plan de pagos a lo largo del programa. Pregunta a nuestro equipo por los descuentos y planes de financiamiento vigentes.</p></div>
@@ -346,14 +344,6 @@
           <details>
             <summary>¿Cómo es el proceso de admisión?</summary>
             <div class="accordion-body"><p>Completas el formulario de inscripción, tienes una entrevista con un asesor y formalizas tu matrícula con el pago o un plan de pagos. En Full Stack Development, si no tienes experiencia en programación, tomas además un curso propedéutico.</p></div>
-          </details>
-          <details>
-            <summary>¿Quiénes son los instructores?</summary>
-            <div class="accordion-body"><p>Profesionales de la academia y la industria, con experiencia en empresas como Jelou, Banco Guayaquil, AB InBev y Capital One, y docentes de ESPOL. Conoce a los instructores de cada programa en la página de <a href="programas.html">programas</a>.</p></div>
-          </details>
-          <details>
-            <summary>¿Qué proyectos voy a desarrollar?</summary>
-            <div class="accordion-body"><p>Proyectos con necesidades reales del mercado laboral, en equipo, que integran lo aprendido en los módulos. Los publicas en un portafolio en GitHub y los presentas en eventos con la industria local.</p></div>
           </details>
         </div>
       </div>
@@ -372,30 +362,10 @@
               <li><span class="dot"><svg width="24" height="24"><use href="img/icons.svg#i-pin"/></svg></span><span><small>Oficina</small>ESPOL, Campus Gustavo Galindo</span></li>
               <li><span class="dot"><svg width="24" height="24"><use href="img/icons.svg#i-clock"/></svg></span><span><small>Horario</small>Lunes a viernes, 08h30 – 18h00</span></li>
             </ul>
-          </div>
-
-          <div class="contact-form-card">
-            <h3>Envíanos un mensaje</h3>
-            <form class="form" id="contact-form" novalidate>
-              <div class="field">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" autocomplete="name" required aria-required="true" aria-describedby="nombre-error">
-                <span class="field-error" id="nombre-error" role="alert"></span>
-              </div>
-              <div class="field">
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="email-error">
-                <span class="field-error" id="email-error" role="alert"></span>
-              </div>
-              <div class="field">
-                <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required aria-required="true" aria-describedby="mensaje-error"></textarea>
-                <span class="field-error" id="mensaje-error" role="alert"></span>
-              </div>
-              <button class="btn btn--lg btn--block" type="submit">Enviar mensaje <svg class="btn-arrow" width="18" height="18"><use href="img/icons.svg#i-arrow"/></svg></button>
-              <p class="form-status" id="form-status" aria-live="polite"></p>
-            </form>
-            <div class="form-feedback"></div>
+            <div class="program-actions">
+              <a class="btn btn--light btn--lg" href="contacto.html">Ir a contacto <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="btn btn--outline-light btn--lg" href="solicita-informacion.html">Solicitar información</a>
+            </div>
           </div>
         </div>
       </div>
@@ -422,8 +392,8 @@
           <h3>Explora</h3>
           <ul>
             <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="index.html#metodologia">Metodología</a></li>
-            <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+            <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
             <li><a href="solicita-informacion.html">Solicitar información</a></li>
           </ul>
         </div>
@@ -454,6 +424,5 @@
   <!-- /layout:footer -->
 
   <script src="js/sitio.js" defer></script>
-  <script src="js/contacto.js" defer></script>
 </body>
 </html>
