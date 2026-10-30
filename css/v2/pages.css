@@ -323,7 +323,7 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   --pattern-opacity: 0.14;
   display: grid;
   place-items: center;
-  height: 8.5rem;
+  height: 9.5rem;
   background: linear-gradient(135deg, var(--p-from), var(--p-to));
 }
 .mentor-initials {
@@ -333,6 +333,15 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   letter-spacing: -0.04em;
   color: var(--white);
   transition: transform 400ms var(--ease-spring);
+}
+.mentor-photo {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--white);
+  box-shadow: 0 0 0 4px var(--white), var(--shadow-m);
 }
 .mentor-body { padding: 1.1rem 1.25rem 1.35rem; }
 .mentor-body h4 { font-size: 1.1rem; letter-spacing: -0.02em; line-height: 1.2; }
