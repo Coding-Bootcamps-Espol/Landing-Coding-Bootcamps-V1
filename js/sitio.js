@@ -305,6 +305,28 @@
             window.addEventListener("hashchange", function () { fromHash(true); });
         });
     }
+    /* ── Lista que se expande ([data-roster]): una fila abierta a la vez ── */
+    function initRoster() {
+        document.querySelectorAll("[data-roster]").forEach(function (list) {
+            list.addEventListener("click", function (e) {
+                const btn = e.target.closest(".roster-btn");
+                if (!btn)
+                    return;
+                const row = btn.parentElement;
+                if (!row)
+                    return;
+                const open = !row.classList.contains("is-open");
+                list.querySelectorAll(".roster-row.is-open").forEach(function (r) {
+                    r.classList.remove("is-open");
+                    r.querySelector(".roster-btn")?.setAttribute("aria-expanded", "false");
+                });
+                if (open) {
+                    row.classList.add("is-open");
+                    btn.setAttribute("aria-expanded", "true");
+                }
+            });
+        });
+    }
     /* ── Analítica: clics en programas ── */
     function initProgramTracking() {
         document.querySelectorAll("[data-program-name]").forEach(function (el) {
@@ -322,5 +344,6 @@
     initCarousel();
     initScrollspy();
     initTabs();
+    initRoster();
     initProgramTracking();
 })();

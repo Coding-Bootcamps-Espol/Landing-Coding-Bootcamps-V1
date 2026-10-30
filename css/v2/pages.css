@@ -305,63 +305,75 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 .program-cert .chip { border-color: var(--white-a40); margin: 0.6rem 0.4rem 0 0; }
 @media (min-width: 768px) { .program-cert { grid-template-columns: auto 1fr; gap: 2rem; } }
 
-/* Instructores: tarjetas con cabecera de color e iniciales grandes */
-.mentor-grid {
-  list-style: none;
+/* Instructores: caritas + lista editorial que se expande (un instructor abierto a la vez) */
+.faces { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: clamp(1.5rem, 3vw, 2rem); }
+.faces ul { list-style: none; display: flex; }
+.faces li { width: 3rem; height: 3rem; margin-left: -0.75rem; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 3px var(--paper); }
+.faces li:first-child { margin-left: 0; }
+.faces-img { width: 100%; height: 100%; object-fit: cover; }
+.faces p { font-weight: 600; color: var(--text-muted); }
+.faces strong { color: var(--text); }
+.js .faces.is-visible li { animation: face-in 600ms var(--ease-spring) both; animation-delay: calc(var(--i) * 70ms); }
+
+.roster { list-style: none; display: grid; gap: 0.35rem; }
+.roster-row { border-radius: var(--radius-m); transition: background var(--dur), box-shadow var(--dur); }
+.roster-row:hover, .roster-row.is-open { background: var(--white); }
+.roster-row.is-open { box-shadow: var(--shadow-m); }
+.roster-btn {
+  width: 100%;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(0.9rem, 2.5vw, 1.5rem);
+  padding: 0.8rem clamp(0.75rem, 2vw, 1.25rem);
+  border: 0;
+  border-radius: var(--radius-m);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
-.mentor {
-  border-radius: var(--radius-l);
-  background: var(--white);
-  border: 1px solid var(--line);
-  overflow: hidden;
-  transition: transform var(--dur) var(--ease-spring), box-shadow var(--dur);
-}
-.mentor-top {
-  --pattern-opacity: 0.14;
+.roster-thumb { width: 3.5rem; height: 3.5rem; border-radius: 50%; object-fit: cover; transition: transform 400ms var(--ease-spring), opacity 300ms; }
+.roster-initials {
   display: grid;
   place-items: center;
-  height: 9.5rem;
   background: linear-gradient(135deg, var(--p-from), var(--p-to));
-}
-.mentor-initials {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
   color: var(--white);
-  transition: transform 400ms var(--ease-spring);
+  font: 800 1rem/1 var(--font-display);
 }
-.mentor-photo {
-  width: 7rem;
-  height: 7rem;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
-  background: var(--white);
-  box-shadow: 0 0 0 4px var(--white), var(--shadow-m);
-}
-.mentor-body { padding: 1.1rem 1.25rem 1.35rem; }
-.mentor-body h4 { font-size: 1.1rem; letter-spacing: -0.02em; line-height: 1.2; }
-.mentor-body p { margin-top: 0.35rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.45; }
-
-/* Certificación (Full Stack) */
-.program-cert {
+.faces .roster-initials { font-size: 0.8rem; }
+.roster-row:hover .roster-thumb { transform: scale(1.12); }
+.roster-row.is-open .roster-thumb { transform: scale(0.9); opacity: 0.5; }
+.roster-text { display: grid; gap: 0.1rem; min-width: 0; }
+.roster-name { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.2rem, 2.4vw, 1.7rem); letter-spacing: -0.03em; line-height: 1.1; }
+.roster-role { color: var(--text-muted); font-size: 0.9375rem; }
+.roster-plus {
   display: grid;
-  gap: 1.5rem;
-  align-items: center;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  border-radius: var(--radius-l);
-  background: linear-gradient(135deg, var(--p-from), var(--p-to));
-  color: var(--white);
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--p-to);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition: transform 400ms var(--ease-spring), background var(--dur), color var(--dur);
 }
-.program-cert img { width: 6rem; height: auto; filter: drop-shadow(0 12px 18px var(--ink-a25)); }
-.program-cert h3 { font-size: var(--fs-h3); margin-bottom: 0.5rem; }
-.program-cert p { opacity: 0.9; }
-.program-cert .chip { border-color: var(--white-a40); margin: 0.6rem 0.4rem 0 0; }
-@media (min-width: 768px) { .program-cert { grid-template-columns: auto 1fr; gap: 2rem; } }
+.roster-row:hover .roster-plus,
+.roster-row.is-open .roster-plus { background: var(--p-to); color: var(--white); }
+.roster-row.is-open .roster-plus { transform: rotate(45deg); }
+.roster-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 500ms var(--ease-out); }
+.roster-row.is-open .roster-panel { grid-template-rows: 1fr; }
+/* Sin JS no se puede abrir: se muestran todas las trayectorias */
+html:not(.js) .roster-panel { grid-template-rows: 1fr; }
+.roster-panel > div { overflow: hidden; }
+.roster-inner { display: grid; gap: 1.5rem; align-items: start; padding: 0.5rem clamp(0.75rem, 2vw, 1.25rem) 1.5rem; }
+.roster-photo { width: 100%; max-width: 14rem; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-m); }
+.roster-photo.roster-initials { font-size: 3.5rem; }
+.roster-bio { color: var(--text-muted); font-size: 1.0625rem; line-height: 1.7; max-width: 42rem; }
+.roster-row.is-open .roster-inner > * { animation: fade-up 500ms var(--ease-out) both; }
+.roster-row.is-open .roster-inner > *:nth-child(2) { animation-delay: 80ms; }
+@media (min-width: 720px) { .roster-inner { grid-template-columns: 14rem 1fr; padding-left: calc(3.5rem + 2.75rem); } }
 
 /* Admisión + precio */
 .prog-enroll {
@@ -548,7 +560,6 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 .mv-card--brand { background: var(--surface-dark); color: var(--white); border-color: transparent; }
 .mv-card--brand .eyebrow { color: var(--mint); }
 @media (min-width: 900px) { .mv-grid { grid-template-columns: 1fr 1fr; } }
-
 
 .team-grid {
   list-style: none;

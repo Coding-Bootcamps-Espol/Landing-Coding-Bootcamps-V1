@@ -290,6 +290,27 @@
     });
   }
 
+  /* ── Lista que se expande ([data-roster]): una fila abierta a la vez ── */
+  function initRoster(): void {
+    document.querySelectorAll<HTMLElement>("[data-roster]").forEach(function (list): void {
+      list.addEventListener("click", function (e: MouseEvent): void {
+        const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".roster-btn");
+        if (!btn) return;
+        const row = btn.parentElement;
+        if (!row) return;
+        const open = !row.classList.contains("is-open");
+        list.querySelectorAll<HTMLElement>(".roster-row.is-open").forEach(function (r): void {
+          r.classList.remove("is-open");
+          r.querySelector(".roster-btn")?.setAttribute("aria-expanded", "false");
+        });
+        if (open) {
+          row.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  }
+
   /* ── Analítica: clics en programas ── */
   function initProgramTracking(): void {
     document.querySelectorAll<HTMLElement>("[data-program-name]").forEach(function (el): void {
@@ -307,5 +328,6 @@
   initCarousel();
   initScrollspy();
   initTabs();
+  initRoster();
   initProgramTracking();
 })();
