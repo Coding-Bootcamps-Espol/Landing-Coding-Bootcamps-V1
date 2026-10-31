@@ -500,7 +500,7 @@ html:not(.js) .roster-panel { grid-template-rows: 1fr; }
   background: var(--surface-dark);
   color: var(--white);
 }
-.prog-enroll .eyebrow { color: var(--mint); }
+.prog-enroll .eyebrow { color: var(--white); }
 .prog-enroll h3 { font-size: var(--fs-h2); margin: 0.75rem 0 1.5rem; }
 .enroll-steps { list-style: none; counter-reset: paso; display: grid; gap: 1rem; }
 .enroll-steps li { counter-increment: paso; display: flex; gap: 0.9rem; color: var(--text-inverse-muted); }
@@ -512,8 +512,8 @@ html:not(.js) .roster-panel { grid-template-rows: 1fr; }
   height: 2rem;
   flex-shrink: 0;
   border-radius: 50%;
-  background: var(--mint);
-  color: var(--ink);
+  background: var(--white);
+  color: var(--accent);
   font: 800 0.875rem/1 var(--font-display);
 }
 .enroll-steps strong { color: var(--white); }
@@ -674,7 +674,7 @@ html:not(.js) .roster-panel { grid-template-rows: 1fr; }
   letter-spacing: -0.02em;
 }
 .mv-card--brand { background: var(--surface-dark); color: var(--white); border-color: transparent; }
-.mv-card--brand .eyebrow { color: var(--mint); }
+.mv-card--brand .eyebrow { color: var(--white); }
 @media (min-width: 900px) { .mv-grid { grid-template-columns: 1fr 1fr; } }
 
 .team-grid {

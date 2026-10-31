@@ -158,7 +158,13 @@
   text-decoration: none;
   transition: color var(--dur);
 }
-.nav-link:hover, .nav-link[aria-current="page"] { color: var(--mint); }
+.nav-link { color: var(--text-inverse-muted); }
+.nav-link:hover, .nav-link[aria-current="page"] { color: var(--white); }
+/* En el menú móvil (fondo azul) el botón va en blanco */
+@media (max-width: 959px) {
+  .main-nav .btn { --btn-bg: var(--white); --btn-fg: var(--ink); align-self: flex-start; }
+  .main-nav .btn:hover { --btn-bg: var(--accent-soft); --btn-fg: var(--accent-strong); }
+}
 .site-header:has(.main-nav[data-open="true"]) .nav-toggle { background: var(--white); }
 
 @media (min-width: 960px) {
@@ -177,6 +183,7 @@
   }
   .nav-list { display: flex; gap: 1.75rem; }
   .nav-link {
+    color: inherit;
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 500;
@@ -221,7 +228,7 @@
 }
 .footer-col ul { list-style: none; display: grid; gap: 0.6rem; }
 .footer-col a { text-decoration: none; transition: color var(--dur); }
-.footer-col a:hover { color: var(--mint); }
+.footer-col a:hover { color: var(--white); }
 .footer-bottom {
   margin-top: clamp(3rem, 6vw, 4.5rem);
   padding-block: 1.5rem;
@@ -245,7 +252,7 @@
   color: var(--text-inverse);
   transition: background var(--dur), color var(--dur), transform var(--dur) var(--ease-spring);
 }
-.social-links a:hover { background: var(--mint); color: var(--ink); transform: translateY(-3px); }
+.social-links a:hover { background: var(--white); color: var(--accent); transform: translateY(-3px); }
 .social-links svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
 
 @media (min-width: 768px) {
