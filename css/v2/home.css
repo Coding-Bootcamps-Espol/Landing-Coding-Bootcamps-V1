@@ -123,6 +123,7 @@
 .tech-card--typescript { --logo: var(--logo-typescript); }
 .tech-card--react { --logo: var(--logo-react); }
 .tech-card--zod { --logo: var(--logo-zod); }
+.tech-card--mantine { --logo: var(--logo-mantine); }
 .tech-card--nodedotjs { --logo: var(--logo-nodedotjs); }
 .tech-card--django { --logo: var(--logo-django); }
 .tech-card--mongodb { --logo: var(--logo-mongodb); }
