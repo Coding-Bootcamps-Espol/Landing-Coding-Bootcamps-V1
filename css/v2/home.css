@@ -150,6 +150,7 @@
 .tech-card--express { --logo: var(--logo-express); }
 .tech-card--docker { --logo: var(--logo-docker); }
 .tech-card--fastapi { --logo: var(--logo-fastapi); }
+.tech-card--streamlit { --logo: var(--logo-streamlit); }
 .tech-card--dotnet { --logo: var(--logo-dotnet); }
 /* Logos que ya son el nombre (wordmark): sin texto repetido */
 .tech-card--wordmark svg { width: 3.4rem; height: 1.4rem; }
