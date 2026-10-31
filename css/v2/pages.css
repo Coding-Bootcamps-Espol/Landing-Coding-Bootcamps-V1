@@ -195,6 +195,9 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   color: var(--p-to);
   font: 800 0.95rem/1 var(--font-display);
 }
+.road-step.is-prep .road-num { border-style: dashed; }
+.road-tag { color: var(--p-to); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding-top: 0.6rem; }
+.road-tag + h4 { padding-top: 0; }
 .road-step.is-phase2 .road-num { background: linear-gradient(135deg, var(--p-from), var(--p-to)); border-color: transparent; color: var(--white); }
 .road-step h4 { font-size: clamp(1.1rem, 1.6vw, 1.25rem); letter-spacing: -0.02em; line-height: 1.2; padding-top: 0.75rem; }
 .road-step p { color: var(--text-muted); font-size: 0.9375rem; }
@@ -245,10 +248,11 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 }
 .road-extra h4 { font-size: 1.15rem; }
 .road-extra p { color: var(--text-muted); font-size: 0.9375rem; }
-.module-note { color: var(--text-muted); font-size: 0.9375rem; }
-.module-note strong { color: var(--text); }
+.road-extra-note { color: var(--text-muted); font-size: 0.9375rem; }
+.road-extra-note strong { color: var(--text); }
 @media (min-width: 720px) {
-  .road-extra { grid-template-columns: auto 1fr; align-items: center; gap: 2rem; }
+  .road-extra { grid-template-columns: auto 1fr; align-items: center; gap: 1.25rem 2rem; }
+  .road-extra-note { grid-column: 1 / -1; }
 }
 @media (min-width: 960px) {
   .road-row { position: relative; padding-inline: var(--turn-w); }
