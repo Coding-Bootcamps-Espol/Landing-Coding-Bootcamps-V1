@@ -72,14 +72,22 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  transition: background var(--dur), box-shadow var(--dur), backdrop-filter var(--dur);
 }
-.site-header.is-scrolled {
+/* El fondo translúcido va en una capa aparte: si el desenfoque (backdrop-filter)
+   estuviera en el header, el menú móvil (position: fixed) quedaría encerrado en su alto. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
   background: color-mix(in srgb, var(--paper) 82%, transparent);
   backdrop-filter: saturate(1.6) blur(14px);
   -webkit-backdrop-filter: saturate(1.6) blur(14px);
   box-shadow: 0 1px 0 var(--line);
+  transition: opacity var(--dur);
 }
+.site-header.is-scrolled::before { opacity: 1; }
 .header-inner {
   height: var(--header-h);
   display: flex;
