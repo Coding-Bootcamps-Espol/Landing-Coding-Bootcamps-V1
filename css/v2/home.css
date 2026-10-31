@@ -343,23 +343,29 @@
   line-height: 1.2;
   letter-spacing: -0.025em;
 }
-.testimonial-slide blockquote p::before { content: "“"; color: var(--mint); }
-.testimonial-slide blockquote p::after { content: "”"; color: var(--mint); }
-.testimonial-author { display: flex; align-items: center; gap: 0.9rem; margin-top: 2rem; }
+/* Comilla editorial grande sobre la cita */
+.testimonial-slide blockquote::before {
+  content: "“";
+  display: block;
+  height: 3.25rem;
+  color: var(--white-a40);
+  font: 800 7rem/1 var(--font-display);
+}
+.testimonial-author { display: flex; align-items: center; gap: 1rem; margin-top: 2.25rem; }
 .avatar {
   display: grid;
   place-items: center;
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 50%;
-  background: var(--accent);
-  color: var(--white);
+  background: var(--white);
+  color: var(--accent);
   font: 800 1.05rem/1 var(--font-display);
   flex-shrink: 0;
 }
-.testimonial-author cite { font-style: normal; display: grid; }
-.testimonial-author cite strong { color: var(--text-inverse); }
-.testimonial-author cite span { color: var(--text-inverse-muted); font-size: 0.9375rem; }
+.testimonial-author cite { font-style: normal; display: grid; gap: 0.15rem; }
+.testimonial-author cite strong { color: var(--white); font: 800 1.1875rem/1.2 var(--font-display); letter-spacing: -0.01em; }
+.testimonial-author cite span { color: var(--text-inverse-muted); font-size: 1rem; }
 .carousel-controls { display: flex; align-items: center; gap: 1rem; margin-top: 2.5rem; }
 .carousel-btn {
   display: grid;
@@ -388,7 +394,7 @@
   cursor: pointer;
   transition: width 400ms var(--ease-out), background var(--dur);
 }
-.carousel-dot[aria-selected="true"] { width: 2rem; background: var(--mint); }
+.carousel-dot[aria-selected="true"] { width: 2rem; background: var(--white); }
 .testimonials-photo { border-radius: var(--radius-l); overflow: hidden; aspect-ratio: 4 / 5; max-height: 34rem; }
 .testimonials-photo img { width: 100%; height: 100%; object-fit: cover; }
 @media (min-width: 960px) { .testimonials-layout { grid-template-columns: 1.4fr 0.8fr; } }

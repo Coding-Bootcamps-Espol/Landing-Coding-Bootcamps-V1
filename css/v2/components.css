@@ -68,7 +68,7 @@
   background: currentColor;
 }
 .section--brand .eyebrow,
-.cta-panel .eyebrow { color: var(--mint); }
+.cta-panel .eyebrow { color: var(--white); }
 
 /* Resaltado tipo marcador en palabras de un título */
 .mark {
