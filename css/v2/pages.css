@@ -170,12 +170,12 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
 .prog-plan { display: grid; gap: 1.75rem; }
 .road {
   --node: 3.25rem;
-  --road-w: 1.1rem;
+  --road-w: 1.75rem;
   --turn-w: 3.5rem;
   --row-gap: 2.75rem;
-  --road: color-mix(in srgb, var(--p-to) 14%, var(--white));
-  --dash-v: repeating-linear-gradient(180deg, var(--p-to) 0 9px, transparent 9px 18px);
-  --dash-h: repeating-linear-gradient(90deg, var(--p-to) 0 9px, transparent 9px 18px);
+  --road: color-mix(in srgb, var(--p-to) 32%, var(--white));
+  --dash-v: repeating-linear-gradient(180deg, var(--white) 0 12px, transparent 12px 22px);
+  --dash-h: repeating-linear-gradient(90deg, var(--white) 0 12px, transparent 12px 22px);
   display: grid;
   gap: var(--row-gap);
 }
@@ -206,10 +206,10 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   top: var(--node);
   bottom: calc(var(--row-gap) * -1);
   width: var(--road-w);
-  background: var(--dash-v) center / 2px 100% no-repeat, var(--road);
+  background: var(--dash-v) center / 3px 100% no-repeat, var(--road);
 }
 .road-row:last-child .road-step:last-child::after { content: none; }
-.road-line, .road-turn { display: none; }
+.road-line, .road-turn, .road-start { display: none; }
 /* Tecnologías del módulo */
 .mod-techs { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.15rem; }
 .mod-tech {
@@ -266,7 +266,7 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
     left: calc(var(--turn-w) + (100% - 2 * var(--turn-w)) * var(--from) / 3);
     right: calc(var(--turn-w) + (100% - 2 * var(--turn-w)) * (3 - var(--to)) / 3);
     height: var(--road-w);
-    background: var(--dash-h) center / 100% 2px no-repeat, var(--road);
+    background: var(--dash-h) center / 100% 3px no-repeat, var(--road);
   }
   /* Curva en U hacia la fila siguiente */
   .road-turn {
@@ -280,8 +280,8 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   .road-turn::after {
     content: "";
     position: absolute;
-    inset: calc(var(--road-w) / -2 - 1px);
-    border: 2px dashed var(--p-to);
+    inset: calc(var(--road-w) / -2 - 1.5px);
+    border: 3px dashed var(--white);
     border-radius: inherit;
   }
   .road-turn--right { right: 0; border-left: 0; border-radius: 0 999px 999px 0; }
@@ -291,9 +291,26 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   /* Se dibuja al aparecer */
   .js .road-line { clip-path: inset(0 100% 0 0); transition: clip-path 1.2s var(--ease-out); }
   .js .road-row.is-rev .road-line { clip-path: inset(0 0 0 100%); }
-  .js .road-line.is-visible { clip-path: inset(0); }
+  .js .road-row.is-visible .road-line { clip-path: inset(0); }
   .js .road-turn { opacity: 0; transition: opacity 600ms var(--ease-out) 900ms; }
-  .js .road-turn.is-visible { opacity: 1; }
+  .js .road-row.is-visible .road-turn { opacity: 1; }
+  /* Punto de partida del camino */
+  .road-start {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    left: 0;
+    top: calc(var(--node) / 2 - var(--turn-w) / 2);
+    z-index: 1;
+    width: var(--turn-w);
+    height: var(--turn-w);
+    border-radius: 50%;
+    background: var(--p-to);
+    color: var(--white);
+    font: 800 0.6875rem/1 var(--font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .js .road-line, .js .road-row.is-rev .road-line { clip-path: none; transition: none; }
