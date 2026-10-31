@@ -1,0 +1,261 @@
+"use strict";
+(function () {
+    "use strict";
+    /* ── Theme toggle ──
+       c-theme-switch: el thumb se desliza con resorte de 200ms (ver
+       css/switches.css) y el clic dispara feedback en paralelo -- tono breve,
+       vibración corta y anuncio para lectores de pantalla -- todo en el mismo
+       evento que el cambio real de data-theme. */
+    function inicializarThemeToggle() {
+        const themeToggleEl = document.getElementById("theme-toggle");
+        const anuncioEl = document.getElementById("theme-switch-anuncio");
+        if (!(themeToggleEl instanceof HTMLButtonElement))
+            return;
+        const themeToggle = themeToggleEl;
+        const anuncio = anuncioEl instanceof HTMLElement ? anuncioEl : null;
+        let audioCtx = null;
+        const prefiereMenosMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)");
+        function reproducirTono(esOscuro) {
+            if (prefiereMenosMovimiento.matches)
+                return;
+            try {
+                if (!audioCtx)
+                    audioCtx = new AudioContext();
+                if (audioCtx.state === "suspended")
+                    void audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "sine";
+                osc.frequency.value = esOscuro ? 392 : 880;
+                osc.connect(gain).connect(audioCtx.destination);
+                const ahora = audioCtx.currentTime;
+                gain.gain.setValueAtTime(0.05, ahora);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ahora + 0.09);
+                osc.start(ahora);
+                osc.stop(ahora + 0.1);
+            }
+            catch {
+                /* Web Audio no disponible/bloqueado en este contexto: se omite el sonido */
+            }
+        }
+        function vibrar() {
+            if (!("vibrate" in navigator))
+                return;
+            try {
+                navigator.vibrate(14);
+            }
+            catch {
+                /* Vibración no soportada en este contexto */
+            }
+        }
+        function syncThemeUI(theme) {
+            const esOscuro = theme === "dark";
+            themeToggle.setAttribute("aria-checked", String(esOscuro));
+            themeToggle.setAttribute("aria-label", esOscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+        }
+        syncThemeUI(document.documentElement.getAttribute("data-theme"));
+        themeToggle.addEventListener("click", function () {
+            const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            syncThemeUI(next);
+            vibrar();
+            reproducirTono(next === "dark");
+            /* El anuncio solo dispara en el clic, no en la carga inicial de la página. */
+            if (anuncio)
+                anuncio.textContent = next === "dark" ? "Modo oscuro activado" : "Modo claro activado";
+            themeToggle.classList.remove("is-pulsing");
+            void themeToggle.offsetWidth; /* fuerza reflow para poder re-disparar la animación si se togglea rápido */
+            themeToggle.classList.add("is-pulsing");
+            window.setTimeout(function () {
+                themeToggle.classList.remove("is-pulsing");
+            }, 450);
+        });
+        themeToggle.addEventListener("animationend", function () {
+            themeToggle.classList.remove("is-pulsing");
+        });
+    }
+    /* ── Dialogs ── */
+    function inicializarDialogoEliminar() {
+        const btnAbrir = document.getElementById("btn-abrir-dialog");
+        const dialogo = document.getElementById("dialog-eliminar");
+        const btnCancelar = document.getElementById("btn-cancelar-dialog");
+        const btnConfirmar = document.getElementById("btn-confirmar-eliminar");
+        if (!(btnAbrir instanceof HTMLButtonElement))
+            return;
+        if (!(dialogo instanceof HTMLDialogElement))
+            return;
+        if (!(btnCancelar instanceof HTMLButtonElement))
+            return;
+        if (!(btnConfirmar instanceof HTMLButtonElement))
+            return;
+        btnAbrir.addEventListener("click", function () {
+            dialogo.showModal();
+        });
+        btnCancelar.addEventListener("click", function () {
+            dialogo.close();
+        });
+        btnConfirmar.addEventListener("click", function () {
+            dialogo.close();
+        });
+        dialogo.addEventListener("close", function () {
+            btnAbrir.focus();
+        });
+    }
+    /* ── Menús desplegables ── */
+    function inicializarMenu(idTrigger, idMenu) {
+        const triggerEl = document.getElementById(idTrigger);
+        const menuEl = document.getElementById(idMenu);
+        if (!(triggerEl instanceof HTMLButtonElement))
+            return;
+        if (!(menuEl instanceof HTMLUListElement))
+            return;
+        const trigger = triggerEl;
+        const menu = menuEl;
+        function obtenerItems() {
+            return Array.from(menu.querySelectorAll('[role="menuitem"]'));
+        }
+        function abrirMenu() {
+            menu.hidden = false;
+            trigger.setAttribute("aria-expanded", "true");
+            const items = obtenerItems();
+            if (items.length > 0)
+                items[0].focus();
+        }
+        function cerrarMenu(devolverFocoAlTrigger) {
+            if (menu.hidden)
+                return;
+            menu.hidden = true;
+            trigger.setAttribute("aria-expanded", "false");
+            if (devolverFocoAlTrigger)
+                trigger.focus();
+        }
+        trigger.addEventListener("click", function () {
+            if (menu.hidden) {
+                abrirMenu();
+            }
+            else {
+                cerrarMenu(false);
+            }
+        });
+        menu.addEventListener("keydown", function (e) {
+            const items = obtenerItems();
+            const indiceActual = items.indexOf(document.activeElement);
+            if (e.key === "ArrowDown") {
+                e.preventDefault();
+                const siguiente = items[(indiceActual + 1) % items.length];
+                if (siguiente)
+                    siguiente.focus();
+            }
+            else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                const anterior = items[(indiceActual - 1 + items.length) % items.length];
+                if (anterior)
+                    anterior.focus();
+            }
+        });
+        menu.addEventListener("focusout", function (e) {
+            const siguienteFoco = e.relatedTarget;
+            const sigueDentro = siguienteFoco instanceof Node && (menu.contains(siguienteFoco) || trigger.contains(siguienteFoco));
+            if (!sigueDentro)
+                cerrarMenu(false);
+        });
+        document.addEventListener("keydown", function (e) {
+            if (menu.hidden)
+                return;
+            if (e.key === "Escape")
+                cerrarMenu(true);
+        });
+        document.addEventListener("click", function (e) {
+            if (menu.hidden)
+                return;
+            const objetivo = e.target;
+            if (objetivo instanceof Node && !menu.contains(objetivo) && !trigger.contains(objetivo)) {
+                cerrarMenu(false);
+            }
+        });
+    }
+    /* ── Toasts ── */
+    const TOAST_MAX_VISIBLE = 3;
+    const TOAST_DURATION_MS = 5000;
+    const TOAST_EXIT_MS = 180;
+    function descartarToast(toast) {
+        if (toast.classList.contains("c-toast--leaving"))
+            return;
+        toast.classList.add("c-toast--leaving");
+        window.setTimeout(function () {
+            toast.remove();
+        }, TOAST_EXIT_MS);
+    }
+    function limitarToastsVisibles(contenedor) {
+        const toasts = Array.from(contenedor.querySelectorAll(".c-toast")).filter(function (toast) {
+            return !toast.classList.contains("c-toast--leaving");
+        });
+        const exceso = toasts.length - TOAST_MAX_VISIBLE;
+        for (let i = 0; i < exceso; i++) {
+            descartarToast(toasts[i]);
+        }
+    }
+    function programarAutoDescarte(toast) {
+        window.setTimeout(function () {
+            descartarToast(toast);
+        }, TOAST_DURATION_MS);
+    }
+    function wireCierreToast(toast) {
+        const btnCerrar = toast.querySelector(".c-toast-close");
+        if (!(btnCerrar instanceof HTMLButtonElement))
+            return;
+        btnCerrar.addEventListener("click", function () {
+            descartarToast(toast);
+        });
+    }
+    function crearToast(contenedor, variante, mensaje) {
+        const icono = variante === "success" ? "&#10003;" : "&#10005;";
+        const toast = document.createElement("div");
+        toast.className = "c-toast c-toast--" + variante;
+        toast.innerHTML =
+            '<span class="c-toast-icon" aria-hidden="true">' + icono + "</span>" +
+                '<p class="c-toast-message"></p>' +
+                '<button class="c-toast-close" type="button" aria-label="Cerrar notificación">&#10005;</button>';
+        const mensajeEl = toast.querySelector(".c-toast-message");
+        if (mensajeEl)
+            mensajeEl.textContent = mensaje;
+        contenedor.appendChild(toast);
+        wireCierreToast(toast);
+        programarAutoDescarte(toast);
+        limitarToastsVisibles(contenedor);
+    }
+    function inicializarToasts() {
+        const contenedor = document.querySelector(".c-toast-container");
+        if (!contenedor)
+            return;
+        limitarToastsVisibles(contenedor);
+        contenedor.querySelectorAll(".c-toast").forEach(function (toast) {
+            wireCierreToast(toast);
+            programarAutoDescarte(toast);
+        });
+    }
+    function inicializarDisparadoresToasts() {
+        const contenedor = document.getElementById("toast-container");
+        const btnGuardar = document.getElementById("btn-toast-guardar");
+        const btnEliminar = document.getElementById("btn-toast-eliminar");
+        if (!(contenedor instanceof HTMLElement))
+            return;
+        if (!(btnGuardar instanceof HTMLButtonElement))
+            return;
+        if (!(btnEliminar instanceof HTMLButtonElement))
+            return;
+        btnGuardar.addEventListener("click", function () {
+            crearToast(contenedor, "success", "Cambios guardados correctamente.");
+        });
+        btnEliminar.addEventListener("click", function () {
+            crearToast(contenedor, "error", "No se pudo eliminar el recurso. Intenta nuevamente.");
+        });
+    }
+    inicializarThemeToggle();
+    inicializarDialogoEliminar();
+    inicializarMenu("menu-toggle-texto", "menu-lista-texto");
+    inicializarMenu("menu-toggle-icono", "menu-lista-icono");
+    inicializarToasts();
+    inicializarDisparadoresToasts();
+})();

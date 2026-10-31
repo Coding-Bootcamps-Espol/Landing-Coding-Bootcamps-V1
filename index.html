@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script async src="https://t.contentsquare.net/uxa/91b7a40541008.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8T00EQ2LKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8T00EQ2LKJ');
+</script>
   <meta charset="UTF-8">
-  <script>
-    (function () {
-      var stored = localStorage.getItem("theme");
-      var theme = stored || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-      document.documentElement.setAttribute("data-theme", theme);
-    })();
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Coding Bootcamps ESPOL: plataforma para explorar programas de formación tecnológica, consultar la oferta académica e inscribirte en nuestros bootcamps.">
   <title>Coding Bootcamps ESPOL | Formación Tecnológica</title>
@@ -19,758 +22,384 @@
   <meta property="og:title" content="Coding Bootcamps ESPOL | Formación Tecnológica">
   <meta property="og:description" content="Coding Bootcamps ESPOL: plataforma para explorar programas de formación tecnológica, consultar la oferta académica e inscribirte en nuestros bootcamps.">
   <meta property="og:locale" content="es_EC">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add("js");</script>
+  
+<script type="text/javascript">
+  (function(e,c){if(!c.__SV){var l,h;window.mixpanel=c;c._i=[];c.init=function(q,r,f){function t(d,a){var g=a.split(".");2==g.length&&(d=d[g[0]],a=g[1]);d[a]=function(){d.push([a].concat(Array.prototype.slice.call(arguments,0)))}}var b=c;"undefined"!==typeof f?b=c[f]=[]:f="mixpanel";b.people=b.people||[];b.toString=function(d){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);d||(a+=" (stub)");return a};b.people.toString=function(){return b.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders start_session_recording stop_session_recording people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+  for(h=0;h<l.length;h++)t(b,l[h]);var n="set set_once union unset remove delete".split(" ");b.get_group=function(){function d(p){a[p]=function(){b.push([g,[p].concat(Array.prototype.slice.call(arguments,0))])}}for(var a={},g=["get_group"].concat(Array.prototype.slice.call(arguments,0)),m=0;m<n.length;m++)d(n[m]);return a};c._i.push([q,r,f])};c.__SV=1.2;var k=e.createElement("script");k.type="text/javascript";k.async=!0;k.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===
+  e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=e.getElementsByTagName("script")[0];e.parentNode.insertBefore(k,e)}})(document,window.mixpanel||[])
+
+  mixpanel.init('21f17a4cf3d1d93ef4dce3abadfc3712', {
+    autocapture: true,
+    record_sessions_percent: 100,
+  })
+
+</script>
 </head>
 <body>
+  <!-- Íconos reutilizables (se usan con <svg width="24" height="24"><use href="img/icons.svg#i-..."/></svg>) -->
   <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html" aria-label="Coding Bootcamps ESPOL — Inicio">
-        <span class="logo-mark" aria-hidden="true">CB</span>
-        <span>Coding Bootcamps ESPOL</span>
-      </a>
-
-      <div class="header-actions">
-        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar a modo claro">
-          <svg class="theme-toggle-icon" id="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" fill="currentColor"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <svg class="theme-toggle-icon" id="icon-moon" viewBox="0 0 24 24" aria-hidden="true" hidden>
-            <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/>
-          </svg>
-        </button>
-
-        <button
-          class="nav-toggle"
-          type="button"
-          id="nav-toggle"
-          aria-expanded="false"
-          aria-controls="main-nav"
-          aria-label="Abrir menú de navegación"
-        >
-          Menú
-        </button>
-
-        <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html" aria-current="page">Inicio</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="programas.html">Programas</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#contacto">Contacto</a>
-            </li>
-          </ul>
-
-          <a class="btn-ingresar" href="inscripcion.html" title="Ir a formulario de inscripción">Inscribirme</a>
-        </nav>
+  <!-- layout:header (fuente: index.html; se copia a las demás páginas con npm run sync:layout) -->
+  <header class="site-header" id="site-header">
+    <div class="promo-bar" role="region" aria-label="Promoción">
+      <div class="marquee">
+        <div class="marquee-track">
+            <div class="promo-group">
+              <span class="promo-item"><strong>Postulaciones abiertas 2026</strong></span>
+              <span class="promo-item"><strong>VIP PASS:</strong> tu programa + formación en GenAI</span>
+              <span class="promo-item">Plan de pagos disponible</span>
+              <a class="promo-cta" href="solicita-informacion.html">¡Asegura tu pase VIP ahora!</a>
+              <span class="promo-item"><strong>Postulaciones abiertas 2026</strong></span>
+              <span class="promo-item"><strong>VIP PASS:</strong> tu programa + formación en GenAI</span>
+              <span class="promo-item">Plan de pagos disponible</span>
+              <a class="promo-cta" href="solicita-informacion.html" tabindex="-1">¡Asegura tu pase VIP ahora!</a>
+            </div>
+            <div class="promo-group" aria-hidden="true">
+              <span class="promo-item"><strong>Postulaciones abiertas 2026</strong></span>
+              <span class="promo-item"><strong>VIP PASS:</strong> tu programa + formación en GenAI</span>
+              <span class="promo-item">Plan de pagos disponible</span>
+              <a class="promo-cta" href="solicita-informacion.html" tabindex="-1">¡Asegura tu pase VIP ahora!</a>
+              <span class="promo-item"><strong>Postulaciones abiertas 2026</strong></span>
+              <span class="promo-item"><strong>VIP PASS:</strong> tu programa + formación en GenAI</span>
+              <span class="promo-item">Plan de pagos disponible</span>
+              <a class="promo-cta" href="solicita-informacion.html" tabindex="-1">¡Asegura tu pase VIP ahora!</a>
+            </div>
+        </div>
       </div>
     </div>
-  </header>
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Coding Bootcamps ESPOL — Inicio">
+        <img src="img/logo-cbe.webp" alt="Coding Bootcamps ESPOL" width="640" height="258">
+      </a>
 
-  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+      <button class="nav-toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú de navegación">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html" aria-current="page">Inicio</a></li>
+          <li><a class="nav-link" href="programas.html">Programas</a></li>
+          <li><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li><a class="nav-link" href="preguntas.html">Preguntas</a></li>
+          <li><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+        <a class="btn" href="solicita-informacion.html">Solicitar información</a>
+      </nav>
+    </div>
+  </header>
+  <!-- /layout:header -->
 
   <main id="contenido-principal">
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <h1 id="hero-heading">Impulsa tu carrera con formación tecnológica de vanguardia</h1>
-          <p class="hero-subheadline">
-            Explora programas diseñados por expertos de la industria, con metodología práctica y certificación reconocida por ESPOL.
-          </p>
-          <a class="btn btn-primary" href="#programas">Elegir mi programa</a>
+
+    <!-- ═══ Hero ═══ -->
+    <section class="hero has-pattern has-pattern--light" aria-labelledby="hero-heading">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow fade-up">Coding Bootcamps · ESPOL</span>
+            <h1 id="hero-heading">
+              <span class="word" style="--i:0">Aprende</span> <span class="word" style="--i:1">a</span> <span class="word" style="--i:2">programar.</span>
+              <span class="word" style="--i:3">Construye</span> <span class="word" style="--i:4">ideas.</span>
+              <span class="word" style="--i:5">Despliega</span> <span class="word" style="--i:6"><span class="mark">sueños.</span></span>
+            </h1>
+            <p class="hero-lead fade-up" style="--delay:700ms">Programas intensivos de ESPOL en desarrollo web, ciencia de datos y analítica de negocios, con IA aplicada, proyectos reales e instructores de la industria.</p>
+            <div class="hero-actions fade-up" style="--delay:850ms">
+              <a class="btn btn--lg" href="#programas">Ver programas <svg class="btn-arrow" width="18" height="18"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="btn btn--ghost btn--lg" href="https://wa.me/593979631573?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20de%20Coding%20Bootcamps%20ESPOL" target="_blank" rel="noopener noreferrer"><svg width="18" height="18"><use href="img/icons.svg#t-whatsapp"/></svg> Escríbenos por WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="hero-visual fade-up" style="--delay:300ms">
+            <span class="hero-shape hero-shape--ring floating" aria-hidden="true"></span>
+            <span class="hero-panel" aria-hidden="true"></span>
+            <img class="hero-photo" src="img/hero-estudiante.webp" alt="Estudiante sonriente con una laptop" width="692" height="780" fetchpriority="high">
+            <div class="credential-badge floating"><img src="img/micredencial.webp" alt="Insignia Mi Credencial de ESPOL" width="218" height="343"><p class="sticker sticker--white">Macro Credencial ESPOL</p></div>
+          </div>
         </div>
-        <figure class="hero-image">
-          <img
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80"
-            alt="Estudiante de bootcamp tecnológico mirando hacia la información del programa"
-            width="800"
-            height="600"
-            loading="eager"
-          >
+
+        <dl class="stats">
+          <div class="stat" data-reveal style="--i:0"><dt class="visually-hidden">Programas</dt><dd><span class="stat-value"><span data-count="3">3</span></span><p class="stat-label">programas con IA aplicada</p></dd></div>
+          <div class="stat" data-reveal style="--i:1"><dt class="visually-hidden">Horas</dt><dd><span class="stat-value"><span data-count="300">300</span><em>+</em></span><p class="stat-label">horas de instrucción y tutoría</p></dd></div>
+          <div class="stat" data-reveal style="--i:2"><dt class="visually-hidden">Instructores</dt><dd><span class="stat-value"><span data-count="20">20</span><em>+</em></span><p class="stat-label">instructores de academia e industria</p></dd></div>
+          <div class="stat" data-reveal style="--i:3"><dt class="visually-hidden">Metodología</dt><dd><span class="stat-value"><span data-count="100">100</span><em>%</em></span><p class="stat-label">aprendizaje basado en proyectos</p></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ═══ Tecnologías ═══ -->
+    <section class="tech" aria-labelledby="tech-heading">
+      <div class="wrap tech-head"><h2 class="eyebrow" id="tech-heading">Tecnologías que dominarás</h2></div>
+      <ul class="visually-hidden"><li>Python</li><li>pandas</li><li>scikit-learn</li><li>Google Colab</li><li>Apache Spark</li><li>PyTorch</li><li>Power BI</li><li>Excel</li><li>QGIS</li><li>Gephi</li><li>SQL Server</li><li>HTML</li><li>CSS</li><li>TypeScript</li><li>JavaScript</li><li>React</li><li>React Router</li><li>React Query</li><li>Mantine</li><li>Zustand</li><li>Zod</li><li>Firebase</li><li>Node.js</li><li>Express</li><li>FastAPI</li><li>Streamlit</li><li>.NET</li><li>MongoDB</li><li>Docker</li><li>AWS</li><li>GitHub</li><li>GitHub Actions</li><li>OWASP</li><li>VS Code</li><li>Visual Studio</li><li>GitHub Copilot</li><li>Cursor</li><li>Claude</li><li>ChatGPT</li><li>Lovable</li><li>Tally</li><li>Scrum</li><li>Data Governance</li><li>Principios SOLID</li></ul>
+      <div class="tech-rows" aria-hidden="true">
+        <div class="marquee"><div class="marquee-track"><span class="tech-group"><span class="tech-card tech-card--python"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-python"/></svg>Python</span><span class="tech-card tech-card--pandas"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-pandas"/></svg>pandas</span><span class="tech-card tech-card--scikitlearn"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-scikitlearn"/></svg>scikit-learn</span><span class="tech-card tech-card--googlecolab"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-googlecolab"/></svg>Google Colab</span><span class="tech-card tech-card--apachespark"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-apachespark"/></svg>Apache Spark</span><span class="tech-card tech-card--pytorch"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-pytorch"/></svg>PyTorch</span><span class="tech-card tech-card--powerbi"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-powerbi"/></svg>Power BI</span><span class="tech-card tech-card--microsoftexcel"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-microsoftexcel"/></svg>Excel</span><span class="tech-card tech-card--qgis"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-qgis"/></svg>QGIS</span><span class="tech-card tech-card--gephi"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-gephi"/></svg>Gephi</span><span class="tech-card tech-card--microsoftsqlserver"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-microsoftsqlserver"/></svg>SQL Server</span><span class="tech-card tech-card--html5"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-html5"/></svg>HTML</span><span class="tech-card tech-card--css"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-css"/></svg>CSS</span><span class="tech-card tech-card--typescript"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-typescript"/></svg>TypeScript</span><span class="tech-card tech-card--javascript"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-javascript"/></svg>JavaScript</span><span class="tech-card tech-card--react"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-react"/></svg>React</span><span class="tech-card tech-card--reactrouter"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-reactrouter"/></svg>React Router</span><span class="tech-card tech-card--reactquery"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-reactquery"/></svg>React Query</span><span class="tech-card tech-card--mantine"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-mantine"/></svg>Mantine</span><span class="tech-card"><img src="img/logos/zustand.webp" alt="" width="64" height="64">Zustand</span><span class="tech-card tech-card--zod"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-zod"/></svg>Zod</span><span class="tech-card tech-card--firebase"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-firebase"/></svg>Firebase</span><span class="tech-card tech-card--nodedotjs"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-nodedotjs"/></svg>Node.js</span><span class="tech-card tech-card--express"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-express"/></svg>Express</span><span class="tech-card tech-card--fastapi"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-fastapi"/></svg>FastAPI</span><span class="tech-card tech-card--streamlit"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-streamlit"/></svg>Streamlit</span><span class="tech-card tech-card--dotnet tech-card--wordmark"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-dotnet"/></svg><span class="visually-hidden">.NET</span></span><span class="tech-card tech-card--mongodb"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-mongodb"/></svg>MongoDB</span><span class="tech-card tech-card--docker"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-docker"/></svg>Docker</span><span class="tech-card tech-card--amazonaws"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-amazonaws"/></svg>AWS</span><span class="tech-card tech-card--github"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-github"/></svg>GitHub</span><span class="tech-card tech-card--githubactions"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-githubactions"/></svg>GitHub Actions</span><span class="tech-card tech-card--owasp"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-owasp"/></svg>OWASP</span><span class="tech-card tech-card--visualstudiocode"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-visualstudiocode"/></svg>VS Code</span><span class="tech-card tech-card--visualstudio"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-visualstudio"/></svg>Visual Studio</span><span class="tech-card tech-card--githubcopilot"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-githubcopilot"/></svg>GitHub Copilot</span><span class="tech-card tech-card--cursor"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-cursor"/></svg>Cursor</span><span class="tech-card tech-card--claude"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-claude"/></svg>Claude</span><span class="tech-card tech-card--openai"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-openai"/></svg>ChatGPT</span><span class="tech-card tech-card--lovable"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-lovable"/></svg>Lovable</span><span class="tech-card tech-card--tally"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-tally"/></svg>Tally</span><span class="tech-card tech-card--scrum"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-scrum"/></svg>Scrum</span><span class="tech-card tech-card--datagovernance"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-datagovernance"/></svg>Data Governance</span><span class="tech-card tech-card--text">Principios SOLID</span></span><span class="tech-group"><span class="tech-card tech-card--python"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-python"/></svg>Python</span><span class="tech-card tech-card--pandas"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-pandas"/></svg>pandas</span><span class="tech-card tech-card--scikitlearn"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-scikitlearn"/></svg>scikit-learn</span><span class="tech-card tech-card--googlecolab"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-googlecolab"/></svg>Google Colab</span><span class="tech-card tech-card--apachespark"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-apachespark"/></svg>Apache Spark</span><span class="tech-card tech-card--pytorch"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-pytorch"/></svg>PyTorch</span><span class="tech-card tech-card--powerbi"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-powerbi"/></svg>Power BI</span><span class="tech-card tech-card--microsoftexcel"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-microsoftexcel"/></svg>Excel</span><span class="tech-card tech-card--qgis"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-qgis"/></svg>QGIS</span><span class="tech-card tech-card--gephi"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-gephi"/></svg>Gephi</span><span class="tech-card tech-card--microsoftsqlserver"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-microsoftsqlserver"/></svg>SQL Server</span><span class="tech-card tech-card--html5"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-html5"/></svg>HTML</span><span class="tech-card tech-card--css"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-css"/></svg>CSS</span><span class="tech-card tech-card--typescript"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-typescript"/></svg>TypeScript</span><span class="tech-card tech-card--javascript"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-javascript"/></svg>JavaScript</span><span class="tech-card tech-card--react"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-react"/></svg>React</span><span class="tech-card tech-card--reactrouter"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-reactrouter"/></svg>React Router</span><span class="tech-card tech-card--reactquery"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-reactquery"/></svg>React Query</span><span class="tech-card tech-card--mantine"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-mantine"/></svg>Mantine</span><span class="tech-card"><img src="img/logos/zustand.webp" alt="" width="64" height="64">Zustand</span><span class="tech-card tech-card--zod"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-zod"/></svg>Zod</span><span class="tech-card tech-card--firebase"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-firebase"/></svg>Firebase</span><span class="tech-card tech-card--nodedotjs"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-nodedotjs"/></svg>Node.js</span><span class="tech-card tech-card--express"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-express"/></svg>Express</span><span class="tech-card tech-card--fastapi"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-fastapi"/></svg>FastAPI</span><span class="tech-card tech-card--streamlit"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-streamlit"/></svg>Streamlit</span><span class="tech-card tech-card--dotnet tech-card--wordmark"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-dotnet"/></svg><span class="visually-hidden">.NET</span></span><span class="tech-card tech-card--mongodb"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-mongodb"/></svg>MongoDB</span><span class="tech-card tech-card--docker"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-docker"/></svg>Docker</span><span class="tech-card tech-card--amazonaws"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-amazonaws"/></svg>AWS</span><span class="tech-card tech-card--github"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-github"/></svg>GitHub</span><span class="tech-card tech-card--githubactions"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-githubactions"/></svg>GitHub Actions</span><span class="tech-card tech-card--owasp"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-owasp"/></svg>OWASP</span><span class="tech-card tech-card--visualstudiocode"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-visualstudiocode"/></svg>VS Code</span><span class="tech-card tech-card--visualstudio"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-visualstudio"/></svg>Visual Studio</span><span class="tech-card tech-card--githubcopilot"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-githubcopilot"/></svg>GitHub Copilot</span><span class="tech-card tech-card--cursor"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-cursor"/></svg>Cursor</span><span class="tech-card tech-card--claude"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-claude"/></svg>Claude</span><span class="tech-card tech-card--openai"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-openai"/></svg>ChatGPT</span><span class="tech-card tech-card--lovable"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-lovable"/></svg>Lovable</span><span class="tech-card tech-card--tally"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-tally"/></svg>Tally</span><span class="tech-card tech-card--scrum"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-scrum"/></svg>Scrum</span><span class="tech-card tech-card--datagovernance"><svg aria-hidden="true" width="24" height="24"><use href="img/icons.svg#t-datagovernance"/></svg>Data Governance</span><span class="tech-card tech-card--text">Principios SOLID</span></span></div></div>
+      </div>
+      <div class="tech-controls"><button class="carousel-btn carousel-btn--light" type="button" data-marquee-step="-1" aria-label="Ver tecnologías anteriores"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-arrow-left"/></svg></button><button class="carousel-btn carousel-btn--light" type="button" data-marquee-step="1" aria-label="Ver más tecnologías"><svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></button></div>
+    </section>
+
+    <!-- ═══ Programas ═══ -->
+    <section class="section" id="programas" aria-labelledby="programas-heading">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Programas</span>
+          <h2 id="programas-heading">Elige tu ruta en tecnología</h2>
+          <p>Tres programas intensivos con clases presenciales y virtuales, laboratorio en cada sesión y un portafolio que demuestra lo que sabes hacer.</p>
+        </div>
+
+        <div class="program-cards">
+          <a class="program-card program-card--fs" href="programas.html#desarrollo-web" data-tilt data-reveal style="--i:0" data-program-name="Full Stack Developer + Applied AI Tools">
+            <figure class="program-card-media"><img src="img/programas/full-stack-800.webp" srcset="img/programas/full-stack-440.webp 440w, img/programas/full-stack-800.webp 800w" sizes="(min-width: 960px) 30vw, 92vw" alt="Dos estudiantes revisando código en una laptop: Certificación en Full Stack Developer" width="800" height="800" loading="lazy"></figure>
+            <div class="program-card-top"><span class="program-card-num">01</span><span>32 semanas · 10 h/sem</span></div>
+            <h3>Full Stack Development <small>+ Applied AI Tools</small></h3>
+            <p>Interfaces modernas, backends escalables y despliegue en la nube, potenciado con IA generativa.</p>
+            <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">AWS</span></div>
+            <div class="program-card-foot">
+              <div><strong>USD 2.800</strong><span>M0 + 9 módulos · plan de pagos</span></div>
+              <span class="program-card-arrow" aria-hidden="true"><svg width="24" height="24"><use href="img/icons.svg#i-arrow"/></svg></span>
+            </div>
+          </a>
+
+          <a class="program-card program-card--ds" href="programas.html#ciencia-de-datos" data-tilt data-reveal style="--i:1" data-program-name="Ciencia de Datos + Applied AI Tools">
+            <figure class="program-card-media"><img src="img/programas/data-science-800.webp" srcset="img/programas/data-science-440.webp 440w, img/programas/data-science-800.webp 800w" sizes="(min-width: 960px) 30vw, 92vw" alt="Dos estudiantes analizando datos frente a un monitor: Certificación en Data Science" width="800" height="800" loading="lazy"></figure>
+            <div class="program-card-top"><span class="program-card-num">02</span><span>26 semanas · 12 h/sem</span></div>
+            <h3>Data Science <small>+ Applied AI Tools</small></h3>
+            <p>Analítica, machine learning, A/B testing y Big Data para tomar decisiones basadas en datos.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Spark</span><span class="chip">Power BI</span></div>
+            <div class="program-card-foot">
+              <div><strong>USD 3.200</strong><span>M0 + 8 módulos · plan de pagos</span></div>
+              <span class="program-card-arrow" aria-hidden="true"><svg width="24" height="24"><use href="img/icons.svg#i-arrow"/></svg></span>
+            </div>
+          </a>
+
+          <a class="program-card program-card--bda" href="programas.html#business-data-analytics" data-tilt data-reveal style="--i:2" data-program-name="Business Data Analytics + Applied AI Tools">
+            <figure class="program-card-media"><img src="img/programas/business-data-analytics-800.webp" srcset="img/programas/business-data-analytics-440.webp 440w, img/programas/business-data-analytics-800.webp 800w" sizes="(min-width: 960px) 30vw, 92vw" alt="Dos profesionales revisando un análisis en pantalla: Certificación en Business Analytics" width="800" height="800" loading="lazy"></figure>
+            <div class="program-card-top"><span class="program-card-num">03</span><span>24–30 h por curso</span></div>
+            <h3>Business Data Analytics <small>+ Applied AI Tools</small></h3>
+            <p>Business intelligence, visualización y marketing analytics con casos reales de negocio.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">SQL Server</span><span class="chip">Power BI</span><span class="chip">QGIS</span></div>
+            <div class="program-card-foot">
+              <div><strong>USD 2.800</strong><span>8 módulos + 3 transversales</span></div>
+              <span class="program-card-arrow" aria-hidden="true"><svg width="24" height="24"><use href="img/icons.svg#i-arrow"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Metodología ═══ -->
+    <section class="section section--paper-2 has-pattern has-pattern--light" id="metodologia" aria-labelledby="metodologia-heading">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Cómo aprendes</span>
+          <h2 id="metodologia-heading">Aquí se aprende <span class="mark">haciendo</span></h2>
+          <p>Una alternativa a la educación formal, pensada para entrar al mundo tech por primera vez o para actualizar tus competencias.</p>
+          <a class="link-arrow" href="nosotros.html">Conoce más sobre nosotros <svg width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+        </div>
+
+        <div class="method">
+          <figure class="method-photo" data-reveal="scale">
+            <img src="img/galeria/hackathon-1200.webp" srcset="img/galeria/hackathon-640.webp 640w, img/galeria/hackathon-1200.webp 1200w" sizes="(min-width: 1100px) 33vw, 100vw" alt="Bootcampers programando en equipo durante un hackathon de Coding Bootcamps ESPOL" width="1200" height="800" loading="lazy">
+            <figcaption class="photo-caption"><strong>Hackathon 2023</strong> · Campus Gustavo Galindo</figcaption>
+          </figure>
+          <ol class="numbered"><li data-reveal style="--i:0"><span class="numbered-num" aria-hidden="true">01</span><div><h3>Aprendizaje basado en proyectos</h3><p>Laboratorio en cada sesión y proyectos con necesidades reales del mercado, trabajando en equipo como en la industria.</p></div></li><li data-reveal style="--i:1"><span class="numbered-num" aria-hidden="true">02</span><div><h3>IA aplicada en todo el programa</h3><p>Modelos de IA generativa, asistentes, agentes y herramientas de desarrollo asistido por IA para acelerar tu trabajo.</p></div></li><li data-reveal style="--i:2"><span class="numbered-num" aria-hidden="true">03</span><div><h3>Instructores de la industria</h3><p>Profesionales que hoy trabajan en tecnología, datos y negocio.</p><p class="numbered-note">Jelou · Banco Guayaquil · AB InBev · Capital One · North Highland · Microsoft Research</p></div></li><li data-reveal style="--i:3"><span class="numbered-num" aria-hidden="true">04</span><div><h3>Listo para tu próximo empleo</h3><p>Portafolio en GitHub, simulación de entrevistas con expertos y conexión con empresas en eventos de presentación de proyectos.</p></div></li></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Admisión ═══ -->
+    <section class="section" id="admision" aria-labelledby="admision-heading">
+      <div class="wrap">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">Admisión</span>
+          <h2 id="admision-heading">Empieza en tres pasos</h2>
+        </div>
+        <div class="steps-wrap">
+          <ol class="steps">
+            <li class="step" data-reveal style="--i:0"><h3>Inscríbete</h3><p>Completa el formulario de solicitud de información y cuéntanos qué programa te interesa.</p></li>
+            <li class="step" data-reveal style="--i:1"><h3>Conversa con un asesor</h3><p>Una entrevista para conocer tu perfil y resolver tus dudas sobre horarios, contenidos y financiamiento.</p></li>
+            <li class="step" data-reveal style="--i:2"><h3>Matricúlate</h3><p>Formaliza tu registro con el pago completo o un plan de pagos, y prepárate para la primera clase.</p></li>
+            <li class="step step--goal" data-reveal style="--i:3"><span class="step-goal-icon" aria-hidden="true"><svg width="24" height="24"><use href="img/icons.svg#i-flag"/></svg></span><h3>Tu primera clase</h3><p>Te unes a tu cohorte y empiezas a aprender haciendo, junto a instructores de la industria.</p><a class="btn" href="solicita-informacion.html">Da el primer paso <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Testimonios ═══ -->
+    <section class="section section--brand has-pattern" id="testimonios" aria-labelledby="testimonios-heading">
+      <div class="wrap testimonials-layout">
+        <div>
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Testimonios</span>
+            <h2 id="testimonios-heading">Lo que dicen de nosotros</h2>
+          </div>
+
+          <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Testimonios" data-reveal>
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="carousel-track">
+                <article class="testimonial-slide" aria-label="Testimonio 1 de 3">
+                  <blockquote><p>Fue una experiencia gratificante, encontramos a profesionales que saben hacia dónde va la industria y fueron verdaderos guías.</p></blockquote>
+                  <div class="testimonial-author"><span class="avatar" aria-hidden="true">KM</span><cite><strong>Kelly Mendoza</strong><span>Ingeniera Oceanográfica</span></cite></div>
+                </article>
+                <article class="testimonial-slide" aria-label="Testimonio 2 de 3" aria-hidden="true">
+                  <blockquote><p>Quedé impresionado por la diversidad de estudiantes y su habilidad en diseño web. Son programas que nos permiten encontrar nuevos talentos para nuestra organización.</p></blockquote>
+                  <div class="testimonial-author"><span class="avatar" aria-hidden="true">SG</span><cite><strong>Sebastián Granizo</strong><span>Líder Regional de FARMAENLACE</span></cite></div>
+                </article>
+                <article class="testimonial-slide" aria-label="Testimonio 3 de 3" aria-hidden="true">
+                  <blockquote><p>Que se sigan promoviendo este tipo de bootcamps, que ayudan a desarrollar a las personas de manera profesional y a generar conexiones con la industria.</p></blockquote>
+                  <div class="testimonial-author"><span class="avatar" aria-hidden="true">KV</span><cite><strong>Keneth Veloz</strong><span>Ingeniero en Telecomunicaciones</span></cite></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="carousel-controls">
+              <button class="carousel-btn" type="button" id="carousel-prev" aria-label="Testimonio anterior"><svg width="24" height="24"><use href="img/icons.svg#i-arrow-left"/></svg></button>
+              <ul class="carousel-dots" role="tablist" aria-label="Seleccionar testimonio">
+                <li role="presentation"><button class="carousel-dot" type="button" role="tab" aria-selected="true" aria-current="true" aria-label="Testimonio 1" data-index="0"></button></li>
+                <li role="presentation"><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Testimonio 2" data-index="1"></button></li>
+                <li role="presentation"><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Testimonio 3" data-index="2"></button></li>
+              </ul>
+              <button class="carousel-btn" type="button" id="carousel-next" aria-label="Siguiente testimonio"><svg width="24" height="24"><use href="img/icons.svg#i-arrow"/></svg></button>
+            </div>
+            <p class="visually-hidden" id="carousel-status" aria-live="polite" aria-atomic="true">Testimonio 1 de 3</p>
+          </div>
+        </div>
+
+        <figure class="testimonials-photo" data-reveal="scale">
+          <img src="img/galeria/bootcampers-1200.webp" srcset="img/galeria/bootcampers-640.webp 640w, img/galeria/bootcampers-1200.webp 1200w" sizes="(min-width: 960px) 30vw, 100vw" alt="Dos bootcampers sonriendo en el aula" width="1200" height="800" loading="lazy">
         </figure>
       </div>
     </section>
 
-    <!-- Webinar banner -->
-    <aside class="webinar-banner" aria-label="Anuncio de webinar">
-      <div class="container">
-        <p>
-          Próximo webinar gratuito: <strong>«Cómo iniciar tu carrera en tecnología»</strong> —
-          <a href="#contacto">Regístrate aquí</a> · 15 de agosto, 18:00
-        </p>
-      </div>
-    </aside>
-
-    <!-- Programs -->
-    <section id="programas" aria-labelledby="programas-heading">
-      <div class="container">
-        <h2 class="section-title" id="programas-heading">Elige la formación perfecta para ti</h2>
-
-        <div class="programs-grid">
-          <article class="program-card" aria-labelledby="prog-1-title">
-            <figure class="program-image">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&auto=format&fit=crop&q=80" alt="" width="200" height="200" loading="lazy">
-            </figure>
-            <h3 id="prog-1-title">Full Stack Development <br> + Applied AI Tools</h3>
-            <p>Domina frontend y backend con JavaScript, React y Node.js. Proyectos reales desde el primer módulo.</p>
-            <a class="btn btn-primary" href="programas.html#desarrollo-web" aria-label="Ver programa de Full Stack Developer + Applied AI Tools">Ver programa</a>
-          </article>
-
-          <article class="program-card" aria-labelledby="prog-2-title">
-            <figure class="program-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&auto=format&fit=crop&q=80" alt="" width="200" height="200" loading="lazy">
-            </figure>
-            <h3 id="prog-2-title">Data Science <br> + Applied AI Tools</h3>
-            <p>Aprende Python, machine learning y visualización de datos para transformar información en decisiones.</p>
-            <a class="btn btn-primary" href="programas.html#ciencia-de-datos" aria-label="Ver programa de Ciencia de Datos + Applied AI Tools">Ver programa</a>
-          </article>
-
-          <article class="program-card" aria-labelledby="prog-3-title">
-            <figure class="program-image">
-              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=200&auto=format&fit=crop&q=80" alt="" width="200" height="200" loading="lazy">
-            </figure>
-            <h3 id="prog-3-title">Data Analytics <br> + Applied AI Tools</h3>
-            <p>Convierte datos empresariales en decisiones estratégicas con dashboards, KPIs y storytelling de negocio.</p>
-            <a class="btn btn-primary" href="programas.html#business-data-analytics" aria-label="Ver programa de Business Data Analytics + Applied AI Tools">Ver programa</a>
-          </article>
+    <!-- ═══ Galería ═══ -->
+    <section class="section" id="galeria" aria-labelledby="galeria-heading">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Comunidad</span>
+          <h2 id="galeria-heading">La experiencia Coding Bootcamps</h2>
+          <p>Hackathons, ferias, eventos con la industria y mucho código en el Campus Gustavo Galindo.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="nosotros" aria-labelledby="about-heading">
-      <div class="container">
-        <span class="section-eyebrow">Coding Bootcamps ESPOL</span>
-        <div class="about-grid">
-          <figure class="about-image">
-            <img
-              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=80"
-              alt="Equipo de instructores y estudiantes en un aula de bootcamp tecnológico"
-              width="800"
-              height="600"
-              loading="lazy"
-            >
-          </figure>
-          <div class="about-content">
-            <h2 id="about-heading">Aprende de expertos de industria</h2>
-            <p>
-              Nuestros bootcamps combinan la excelencia académica de ESPOL con la experiencia de profesionales activos en empresas líderes del sector tecnológico. Metodología intensiva, proyectos colaborativos y acompañamiento personalizado para que alcances tus metas profesionales.
-            </p>
-            <a class="btn btn-secondary" href="#contacto">Conoce más</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimonios" aria-labelledby="testimonios-heading">
-      <div class="container">
-        <span class="section-eyebrow">Testimonios</span>
-        <h2 class="section-title" id="testimonios-heading">Lo que opinan nuestros Bootcampers</h2>
-
-        <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Testimonios de estudiantes">
-          <div class="carousel-viewport" id="carousel-viewport">
-            <div class="carousel-track" id="carousel-track">
-              <article class="testimonial-slide" aria-label="Testimonio 1 de 4">
-                <blockquote cite="#">
-                  <p>«El bootcamp cambió mi trayectoria profesional. En seis meses pasé de no saber programar a conseguir mi primer empleo como desarrolladora.»</p>
-                </blockquote>
-                <cite>— María González, Desarrollo Web Full Stack</cite>
-              </article>
-
-              <article class="testimonial-slide" aria-label="Testimonio 2 de 4" aria-hidden="true">
-                <blockquote cite="#">
-                  <p>«Los instructores son profesionales en activo. Aprendí herramientas que uso todos los días en mi trabajo como analista de datos.»</p>
-                </blockquote>
-                <cite>— Carlos Mendoza, Ciencia de Datos</cite>
-              </article>
-
-              <article class="testimonial-slide" aria-label="Testimonio 3 de 4" aria-hidden="true">
-                <blockquote cite="#">
-                  <p>«La metodología práctica y el enfoque en proyectos reales me prepararon para certificaciones y entrevistas técnicas exigentes.»</p>
-                </blockquote>
-                <cite>— Ana Torres, Business Data Analytics</cite>
-              </article>
-
-              <article class="testimonial-slide" aria-label="Testimonio 4 de 4" aria-hidden="true">
-                <blockquote cite="#">
-                  <p>«Texto de testimonio de ejemplo. Aquí se describe la experiencia del estudiante con el bootcamp.»</p>
-                </blockquote>
-                <cite>— Nombre Apellido, Programa Cursado</cite>
-              </article>
-            </div>
-          </div>
-
-          <div class="carousel-controls">
-            <button class="carousel-btn" type="button" id="carousel-prev" aria-label="Testimonio anterior">&#8592;</button>
-
-            <ul class="carousel-dots" role="tablist" aria-label="Seleccionar testimonio">
-              <li role="presentation">
-                <button class="carousel-dot" type="button" role="tab" aria-selected="true" aria-current="true" aria-label="Testimonio 1" data-index="0"></button>
-              </li>
-              <li role="presentation">
-                <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Testimonio 2" data-index="1"></button>
-              </li>
-              <li role="presentation">
-                <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Testimonio 3" data-index="2"></button>
-              </li>
-              <li role="presentation">
-                <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Testimonio 4" data-index="3"></button>
-              </li>
-            </ul>
-
-            <button class="carousel-btn" type="button" id="carousel-next" aria-label="Siguiente testimonio">&#8594;</button>
-          </div>
-
-          <p class="visually-hidden" id="carousel-status" aria-live="polite" aria-atomic="true">Testimonio 1 de 4</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery -->
-    <section id="galeria" aria-labelledby="gallery-heading">
-      <div class="container">
-        <div class="gallery-intro">
-          <span class="section-eyebrow">Galería</span>
-          <h2 class="section-title" id="gallery-heading">Bootcamp Moments</h2>
-          <p class="gallery-lead">Talento digital en acción: Hackathons, workshops, graduaciones y toda la energía de nuestros bootcampers, capturada en video.</p>
-        </div>
-
-        <!-- TODO: reemplazar cada data-video-id con el ID real del video de YouTube (ej. "dQw4w9WgXcQ") -->
-        <ul class="video-grid">
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_1" aria-label="Reproducir video: Hackathon, 48 horas de código sin parar">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Hackathon: 48 horas de código sin parar</p>
-          </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_2" aria-label="Reproducir video: Un día en el bootcamp">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Un día en el bootcamp: así vivimos el aprendizaje</p>
-          </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_3" aria-label="Reproducir video: Workshop de Data Science">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Workshop de Data Science con mentores expertos</p>
-          </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_4" aria-label="Reproducir video: Graduación de bootcampers">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Graduación: la celebración de nuestros egresados</p>
-          </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_5" aria-label="Reproducir video: Testimonios de bootcampers">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Testimonios: la experiencia de nuestros bootcampers</p>
-          </li>
-          <li class="video-card">
-            <button type="button" class="video-thumb" data-video-id="VIDEO_ID_6" aria-label="Reproducir video: Demo Day, proyectos finales">
-              <img src="" alt="" width="480" height="270" loading="lazy">
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-            </button>
-            <p class="video-caption">Demo Day: presentando proyectos finales</p>
-          </li>
+        <ul class="gallery">
+          <li class="is-wide" data-reveal="scale" style="--i:0"><figure><img src="img/galeria/espol-64-1200.webp" srcset="img/galeria/espol-64-640.webp 640w, img/galeria/espol-64-1200.webp 1200w" sizes="(min-width: 960px) 30vw, 92vw" alt="Bootcamper con su credencial frente al mural de los 64 años de ESPOL" width="1200" height="800" loading="lazy"><figcaption>Aniversario 64 de ESPOL</figcaption></figure></li>
+          <li class="is-tall" data-reveal="scale" style="--i:1"><figure><img src="img/galeria/feria-640.webp" srcset="img/galeria/feria-640.webp 640w, img/galeria/feria-1200.webp 1200w" sizes="(min-width: 960px) 25vw, 46vw" alt="Estudiantes trabajando en laptops durante una feria de proyectos" width="640" height="480" loading="lazy"><figcaption>Feria de proyectos</figcaption></figure></li>
+          <li data-reveal="scale" style="--i:2"><figure><img src="img/galeria/credenciales-640.webp" srcset="img/galeria/credenciales-640.webp 640w, img/galeria/credenciales-1200.webp 1200w" sizes="(min-width: 960px) 25vw, 46vw" alt="Credencial de un bootcamper sobre la mesa" width="640" height="512" loading="lazy"><figcaption>Bienvenida de bootcampers</figcaption></figure></li>
+          <li class="is-wide" data-reveal="scale" style="--i:3"><figure><img src="img/galeria/estudiante-brochure-1200.webp" srcset="img/galeria/estudiante-brochure-640.webp 640w, img/galeria/estudiante-brochure-1200.webp 1200w" sizes="(min-width: 960px) 30vw, 92vw" alt="Estudiante leyendo el brochure de un programa" width="1200" height="800" loading="lazy"><figcaption>Charla informativa</figcaption></figure></li>
+          <li data-reveal="scale" style="--i:4"><figure><img src="img/galeria/equipo-evento-640.webp" srcset="img/galeria/equipo-evento-640.webp 640w, img/galeria/equipo-evento-1200.webp 1200w" sizes="(min-width: 960px) 25vw, 46vw" alt="Equipo de Coding Bootcamps ESPOL en un evento" width="640" height="427" loading="lazy"><figcaption>Equipo y aliados</figcaption></figure></li>
         </ul>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contacto" aria-labelledby="contacto-heading">
-      <div class="container">
-        <h2 class="visually-hidden" id="contacto-heading">Contáctanos</h2>
+    <!-- ═══ Preguntas frecuentes ═══ -->
+    <section class="section section--paper-2" id="preguntas" aria-labelledby="faq-heading">
+      <div class="wrap faq-layout">
+        <div class="faq-aside" data-reveal>
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2 id="faq-heading">Resolvemos tus dudas</h2>
+          <p>¿No encuentras tu respuesta? Escríbenos y un asesor te ayuda.</p>
+          <a class="btn" href="preguntas.html">Ver todas las preguntas <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+          <a class="link-arrow" href="https://wa.me/593979631573" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" aria-hidden="true"><use href="img/icons.svg#t-whatsapp"/></svg> Hablar con un asesor</a>
+        </div>
 
-        <form class="contact-form form-contacto" id="contact-form" novalidate>
-          <fieldset>
-            <legend>Contáctanos</legend>
-
-            <div class="form-group">
-              <label for="nombre" class="visually-hidden">Nombre</label>
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                autocomplete="name"
-                placeholder="Nombre"
-                required
-                aria-required="true"
-                aria-describedby="nombre-error"
-              >
-              <span class="field-error" id="nombre-error" role="alert"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="email" class="visually-hidden">Correo electrónico</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                autocomplete="email"
-                placeholder="Correo electrónico"
-                required
-                aria-required="true"
-                aria-describedby="email-error"
-              >
-              <span class="field-error" id="email-error" role="alert"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="mensaje" class="visually-hidden">Mensaje</label>
-              <textarea
-                id="mensaje"
-                name="mensaje"
-                rows="5"
-                placeholder="Mensaje"
-                required
-                aria-required="true"
-                aria-describedby="mensaje-error"
-              ></textarea>
-              <span class="field-error" id="mensaje-error" role="alert"></span>
-            </div>
-
-            <button class="btn btn-primary btn-block" type="submit">
-              Click aquí para enviar tu mensaje
-            </button>
-          </fieldset>
-
-          <p class="form-status" id="form-status" aria-live="polite"></p>
-        </form>
-
-        <div class="form-feedback"></div>
+        <div class="accordion" data-reveal style="--i:1">
+          <details>
+            <summary>¿Necesito saber programar?</summary>
+            <div class="accordion-body"><p>Cada programa empieza con un propedéutico para nivelarte. En Full Stack Development es de JavaScript. En Data Science y Business Data Analytics es el módulo M0, que enseña Python desde cero y es de aprobación obligatoria; además hay material online de apoyo.</p></div>
+          </details>
+          <details>
+            <summary>¿Cuánto duran los programas?</summary>
+            <div class="accordion-body"><p>Full Stack Development dura 32 semanas (10 horas por semana) y Data Science, 26 semanas (12 horas por semana). En Business Data Analytics cada curso tiene entre 24 y 30 horas.</p></div>
+          </details>
+          
+          <details>
+            <summary>¿Cuánto cuesta y cómo puedo pagar?</summary>
+            <div class="accordion-body"><p>Full Stack Development y Business Data Analytics cuestan USD 2.800, y Data Science, USD 3.200. Puedes pagar con un plan de pagos a lo largo del programa. Pregunta a nuestro equipo por los descuentos y planes de financiamiento vigentes.</p></div>
+          </details>
+          <details>
+            <summary>¿Cómo es el proceso de admisión?</summary>
+            <div class="accordion-body"><p>Completas el formulario de solicitud de información, tienes una entrevista con un asesor y formalizas tu matrícula con el pago completo o un plan de pagos. Luego empiezas con el propedéutico de tu programa para nivelarte.</p></div>
+          </details>
+        </div>
       </div>
     </section>
 
+    <!-- ═══ Contacto ═══ -->
+    <section class="section" id="contacto" aria-labelledby="contacto-heading">
+      <div class="wrap">
+        <div class="cta-panel has-pattern" data-reveal="scale">
+          <div class="contact-copy">
+            <h2 id="contacto-heading">¿Listo para subir de nivel?</h2>
+            <p>Escríbenos y te ayudamos a elegir el programa ideal, con fechas de inicio, horarios y planes de pago.</p>
+            <ul class="contact-list">
+              <li><span class="dot"><svg width="24" height="24"><use href="img/icons.svg#t-whatsapp"/></svg></span><span><small>WhatsApp</small><a href="https://wa.me/593979631573" target="_blank" rel="noopener noreferrer">+593 97 963 1573</a></span></li>
+              <li><span class="dot"><svg width="24" height="24"><use href="img/icons.svg#i-mail"/></svg></span><span><small>Correo</small><a href="mailto:bootcamps@fiec.espol.edu.ec">bootcamps@fiec.espol.edu.ec</a></span></li>
+              <li><span class="dot"><svg width="24" height="24"><use href="img/icons.svg#i-pin"/></svg></span><span><small>Oficina</small>ESPOL, Campus Gustavo Galindo</span></li>
+              <li><span class="dot"><svg width="24" height="24"><use href="img/icons.svg#i-clock"/></svg></span><span><small>Horario</small>Lunes a viernes, 08h30 – 18h00</span></li>
+            </ul>
+            <div class="program-actions">
+              <a class="btn btn--light btn--lg" href="contacto.html">Ir a contacto <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+              <a class="btn btn--outline-light btn--lg" href="solicita-informacion.html">Solicitar información</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <a class="logo footer-logo" href="index.html" aria-label="Coding Bootcamps ESPOL — Inicio">
-        <span class="logo-mark" aria-hidden="true">CB</span>
-        <span>Coding Bootcamps ESPOL</span>
-      </a>
-
-      <nav class="footer-nav" aria-label="Enlaces del sitio">
-        <ul class="footer-nav-list">
-          <li><a href="index.html" aria-current="page">Inicio</a></li>
-          <li><a href="programas.html">Programas</a></li>
-          <li><a href="inscripcion.html">Inscripción</a></li>
+  <!-- layout:footer -->
+  <footer class="site-footer has-pattern">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="img/logo-cbe-blanco.webp" alt="Coding Bootcamps ESPOL" width="640" height="258" loading="lazy">
+          <p>Formación intensiva en tecnología de la Escuela Superior Politécnica del Litoral.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Programas</h3>
+          <ul>
+            <li><a href="programas.html#desarrollo-web">Full Stack Development</a></li>
+            <li><a href="programas.html#ciencia-de-datos">Data Science</a></li>
+            <li><a href="programas.html#business-data-analytics">Business Data Analytics</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Explora</h3>
+          <ul>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="solicita-informacion.html">Solicitar información</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contacto</h3>
+          <ul>
+            <li><a href="https://wa.me/593979631573" target="_blank" rel="noopener noreferrer">+593 97 963 1573</a></li>
+            <li><a href="mailto:bootcamps@fiec.espol.edu.ec">bootcamps@fiec.espol.edu.ec</a></li>
+            <li>ESPOL, Campus Gustavo Galindo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Coding Bootcamps ESPOL</p>
+        <ul class="social-links" aria-label="Redes sociales">
+          <li><a href="https://www.facebook.com/bootcampsespol/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Coding Bootcamps ESPOL"><svg width="24" height="24"><use href="img/icons.svg#i-facebook"/></svg></a></li>
+          <li><a href="https://www.instagram.com/bootcampsespol/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Coding Bootcamps ESPOL"><svg width="24" height="24"><use href="img/icons.svg#i-instagram"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/coding-bootcamps-espol/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Coding Bootcamps ESPOL"><svg width="24" height="24"><use href="img/icons.svg#i-linkedin"/></svg></a></li>
         </ul>
-      </nav>
-
-      <ul class="social-links" aria-label="Redes sociales">
-        <li>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Coding Bootcamps ESPOL">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Coding Bootcamps ESPOL">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.226-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Coding Bootcamps ESPOL">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.127 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </li>
-      </ul>
-
+      </div>
     </div>
   </footer>
 
-  <!-- Chat widget -->
-  <div
-    class="chat-widget"
-    id="chat-widget"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="chat-title"
-    aria-describedby="chat-desc"
-    data-open="false"
-    hidden
-  >
-    <header class="chat-header">
-      <h2 id="chat-title">Asistente virtual</h2>
-      <button class="chat-close" type="button" id="chat-close" aria-label="Cerrar chat">
-        &#10005;
-      </button>
-    </header>
-    <div class="chat-body" id="chat-body" tabindex="-1">
-      <p class="chat-message chat-message--bot" id="chat-desc">
-        ¡Hola! Soy tu asistente de Coding Bootcamps ESPOL. Pregúntame sobre nuestros programas, fechas de inicio o el proceso de inscripción.
-      </p>
-    </div>
-    <form class="chat-footer" id="chat-form">
-      <label class="visually-hidden" for="chat-input">Escribe tu mensaje</label>
-      <input class="chat-input" type="text" id="chat-input" name="chat-input" autocomplete="off" placeholder="Escribe tu pregunta…">
-      <button class="chat-send" type="submit" aria-label="Enviar mensaje">Enviar</button>
-    </form>
-  </div>
+  <a class="wa-float" href="https://wa.me/593979631573?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20programas%20de%20Coding%20Bootcamps%20ESPOL" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+    <svg width="24" height="24" aria-hidden="true"><use href="img/icons.svg#t-whatsapp"/></svg>
+    <span class="wa-float-label" aria-hidden="true">¿Hablamos por WhatsApp?</span>
+  </a>
+  <!-- /layout:footer -->
 
-  <button
-    class="chat-fab"
-    type="button"
-    id="chat-fab"
-    aria-expanded="false"
-    aria-controls="chat-widget"
-    aria-label="Abrir chat de asistencia"
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
-    Chat
-  </button>
-
-  <script>
-    (function () {
-      "use strict";
-
-      /* ── Mobile nav drawer ── */
-      const navToggle = document.getElementById("nav-toggle");
-      const mainNav = document.getElementById("main-nav");
-      const navOverlay = document.getElementById("nav-overlay");
-
-      function openNav() {
-        mainNav.dataset.open = "true";
-        navOverlay.dataset.open = "true";
-        navToggle.setAttribute("aria-expanded", "true");
-        navToggle.setAttribute("aria-label", "Cerrar menú de navegación");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeNav() {
-        mainNav.dataset.open = "false";
-        navOverlay.dataset.open = "false";
-        navToggle.setAttribute("aria-expanded", "false");
-        navToggle.setAttribute("aria-label", "Abrir menú de navegación");
-        document.body.style.overflow = "";
-      }
-
-      navToggle.addEventListener("click", function () {
-        if (mainNav.dataset.open === "true") {
-          closeNav();
-        } else {
-          openNav();
-        }
-      });
-
-      navOverlay.addEventListener("click", closeNav);
-
-      document.addEventListener("keydown", function (e) {
-        if (mainNav.dataset.open !== "true") return;
-
-        if (e.key === "Escape") {
-          closeNav();
-          navToggle.focus();
-          return;
-        }
-
-        if (e.key === "Tab" && getComputedStyle(navToggle).display !== "none") {
-          const focusable = mainNav.querySelectorAll("a, button");
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      });
-
-      /* ── Theme toggle ── */
-      const themeToggle = document.getElementById("theme-toggle");
-      const iconSun = document.getElementById("icon-sun");
-      const iconMoon = document.getElementById("icon-moon");
-
-      function syncThemeUI(theme) {
-        const isLight = theme === "light";
-        iconSun.hidden = isLight;
-        iconMoon.hidden = !isLight;
-        themeToggle.setAttribute("aria-label", isLight ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
-      }
-
-      syncThemeUI(document.documentElement.getAttribute("data-theme"));
-
-      themeToggle.addEventListener("click", function () {
-        const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("theme", next);
-        syncThemeUI(next);
-      });
-
-      /* ── Dropdown menus ── */
-      const triggers = document.querySelectorAll(".nav-trigger");
-      let openDropdown = null;
-
-      function closeDropdown(trigger, dropdown) {
-        trigger.setAttribute("aria-expanded", "false");
-        dropdown.dataset.open = "false";
-        if (openDropdown === dropdown) openDropdown = null;
-      }
-
-      function openMenu(trigger, dropdown) {
-        if (openDropdown && openDropdown !== dropdown) {
-          const prevTrigger = document.querySelector('[aria-controls="' + openDropdown.id + '"]');
-          if (prevTrigger) closeDropdown(prevTrigger, openDropdown);
-        }
-        trigger.setAttribute("aria-expanded", "true");
-        dropdown.dataset.open = "true";
-        openDropdown = dropdown;
-      }
-
-      triggers.forEach(function (trigger) {
-        const dropdown = document.getElementById(trigger.getAttribute("aria-controls"));
-
-        trigger.addEventListener("click", function () {
-          const isOpen = trigger.getAttribute("aria-expanded") === "true";
-          if (isOpen) {
-            closeDropdown(trigger, dropdown);
-          } else {
-            openMenu(trigger, dropdown);
-          }
-        });
-
-        trigger.addEventListener("keydown", function (e) {
-          if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openMenu(trigger, dropdown);
-            const firstItem = dropdown.querySelector('[role="menuitem"]');
-            if (firstItem) firstItem.focus();
-          }
-          if (e.key === "Escape") {
-            closeDropdown(trigger, dropdown);
-            trigger.focus();
-          }
-        });
-
-        dropdown.addEventListener("keydown", function (e) {
-          const items = Array.from(dropdown.querySelectorAll('[role="menuitem"]'));
-          const current = document.activeElement;
-          const idx = items.indexOf(current);
-
-          if (e.key === "ArrowDown") {
-            e.preventDefault();
-            items[(idx + 1) % items.length].focus();
-          }
-          if (e.key === "ArrowUp") {
-            e.preventDefault();
-            items[(idx - 1 + items.length) % items.length].focus();
-          }
-          if (e.key === "Escape") {
-            e.preventDefault();
-            closeDropdown(trigger, dropdown);
-            trigger.focus();
-          }
-          if (e.key === "Tab") {
-            closeDropdown(trigger, dropdown);
-          }
-        });
-      });
-
-      document.addEventListener("click", function (e) {
-        if (!e.target.closest(".nav-item")) {
-          triggers.forEach(function (trigger) {
-            const dropdown = document.getElementById(trigger.getAttribute("aria-controls"));
-            if (trigger.getAttribute("aria-expanded") === "true") {
-              closeDropdown(trigger, dropdown);
-            }
-          });
-        }
-      });
-
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && openDropdown) {
-          const trigger = document.querySelector('[aria-controls="' + openDropdown.id + '"]');
-          if (trigger) {
-            closeDropdown(trigger, openDropdown);
-            trigger.focus();
-          }
-        }
-      });
-
-      mainNav.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", closeNav);
-      });
-
-      /* ── Testimonials carousel ── */
-      const track = document.getElementById("carousel-track");
-      const slides = track.querySelectorAll(".testimonial-slide");
-      const dots = document.querySelectorAll(".carousel-dot");
-      const prevBtn = document.getElementById("carousel-prev");
-      const nextBtn = document.getElementById("carousel-next");
-      const status = document.getElementById("carousel-status");
-      const total = slides.length;
-      let current = 0;
-
-      function goTo(index) {
-        current = (index + total) % total;
-        track.style.transform = "translateX(-" + (current * 100) + "%)";
-
-        slides.forEach(function (slide, i) {
-          slide.setAttribute("aria-hidden", String(i !== current));
-        });
-
-        dots.forEach(function (dot, i) {
-          const active = i === current;
-          dot.setAttribute("aria-selected", String(active));
-          if (active) {
-            dot.setAttribute("aria-current", "true");
-          } else {
-            dot.removeAttribute("aria-current");
-          }
-        });
-
-        status.textContent = "Testimonio " + (current + 1) + " de " + total;
-      }
-
-      prevBtn.addEventListener("click", function () { goTo(current - 1); });
-      nextBtn.addEventListener("click", function () { goTo(current + 1); });
-
-      dots.forEach(function (dot) {
-        dot.addEventListener("click", function () {
-          goTo(parseInt(dot.dataset.index, 10));
-        });
-      });
-
-      document.querySelector(".carousel").addEventListener("keydown", function (e) {
-        if (e.key === "ArrowLeft") { e.preventDefault(); goTo(current - 1); }
-        if (e.key === "ArrowRight") { e.preventDefault(); goTo(current + 1); }
-      });
-
-      /* ── Video gallery ── */
-      const videoThumbs = Array.from(document.querySelectorAll(".video-thumb"));
-
-      videoThumbs.forEach(function (thumb) {
-        const videoId = thumb.dataset.videoId;
-        const thumbImage = thumb.querySelector("img");
-        thumbImage.src = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
-        thumbImage.alt = thumb.getAttribute("aria-label") || "";
-
-        thumb.addEventListener("click", function () {
-          const title = thumb.getAttribute("aria-label") || "Video de YouTube";
-          const iframe = document.createElement("iframe");
-          iframe.className = "video-frame";
-          iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0";
-          iframe.title = title;
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-          iframe.allowFullscreen = true;
-          thumb.replaceWith(iframe);
-        });
-      });
-
-      /* ── Chat widget ── */
-      const chatFab = document.getElementById("chat-fab");
-      const chatWidget = document.getElementById("chat-widget");
-      const chatClose = document.getElementById("chat-close");
-      const chatForm = document.getElementById("chat-form");
-      const chatInput = document.getElementById("chat-input");
-      const chatBody = document.getElementById("chat-body");
-      let chatTrigger = null;
-
-      const chatResponses = {
-        programa: "Ofrecemos tres programas: Full Stack Developer, Data Science y Business Data Analytics. ¿Cuál te interesa?",
-        inscri: "Para inscribirte, completa el formulario en nuestra página de inscripción. Un asesor te guiará en el proceso.",
-        fecha: "Las próximas cohortes inician en septiembre 2026. Regístrate en nuestro webinar del 15 de agosto para más detalles.",
-        costo: "Los costos varían según el programa. Contáctanos y te enviaremos la información de precios y opciones de financiamiento.",
-        default: "Gracias por tu mensaje. Para información detallada, visita la sección de programas o completa el formulario de contacto."
-      };
-
-      function getChatResponse(text) {
-        const lower = text.toLowerCase();
-        if (/programa|bootcamp|curso|formación/.test(lower)) return chatResponses.programa;
-        if (/inscri|matric|registr/.test(lower)) return chatResponses.inscri;
-        if (/fecha|inicio|cuándo|cuando/.test(lower)) return chatResponses.fecha;
-        if (/costo|precio|pago|valor/.test(lower)) return chatResponses.costo;
-        return chatResponses.default;
-      }
-
-      function openChat() {
-        chatTrigger = document.activeElement;
-        chatWidget.hidden = false;
-        chatWidget.dataset.open = "true";
-        chatFab.setAttribute("aria-expanded", "true");
-        chatFab.setAttribute("aria-label", "Cerrar chat de asistencia");
-        chatClose.focus();
-      }
-
-      function closeChat() {
-        chatWidget.dataset.open = "false";
-        chatFab.setAttribute("aria-expanded", "false");
-        chatFab.setAttribute("aria-label", "Abrir chat de asistencia");
-        chatWidget.addEventListener("transitionend", function handler() {
-          chatWidget.hidden = true;
-          chatWidget.removeEventListener("transitionend", handler);
-        });
-        if (chatTrigger) chatTrigger.focus();
-      }
-
-      chatFab.addEventListener("click", function () {
-        if (chatWidget.dataset.open === "true") {
-          closeChat();
-        } else {
-          openChat();
-        }
-      });
-
-      chatClose.addEventListener("click", closeChat);
-
-      chatWidget.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          e.preventDefault();
-          closeChat();
-        }
-        if (e.key === "Tab") {
-          const focusable = chatWidget.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])');
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      });
-
-      chatForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const text = chatInput.value.trim();
-        if (!text) return;
-
-        const userMsg = document.createElement("p");
-        userMsg.className = "chat-message chat-message--user";
-        userMsg.textContent = text;
-        chatBody.appendChild(userMsg);
-
-        const botMsg = document.createElement("p");
-        botMsg.className = "chat-message chat-message--bot";
-        botMsg.textContent = getChatResponse(text);
-        chatBody.appendChild(botMsg);
-
-        chatInput.value = "";
-        chatBody.scrollTop = chatBody.scrollHeight;
-        chatInput.focus();
-      });
-    })();
-  </script>
-  <script src="js/contacto.js" defer></script>
+  <script src="js/sitio.js" defer></script>
 </body>
 </html>

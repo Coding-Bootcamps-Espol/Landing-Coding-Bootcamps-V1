@@ -1,0 +1,9 @@
+/* Hoja de estilos del rediseño. El orden importa:
+   tokens → base → layout → componentes → páginas → efectos. */
+@import url("v2/tokens.css");
+@import url("v2/base.css");
+@import url("v2/layout.css");
+@import url("v2/components.css");
+@import url("v2/home.css");
+@import url("v2/pages.css");
+@import url("v2/effects.css");

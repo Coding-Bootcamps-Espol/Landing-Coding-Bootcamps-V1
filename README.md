@@ -6,34 +6,43 @@ Rediseño de una página web institucional para la promoción, consulta e inscri
 
 - Página de inicio con presentación institucional y oferta académica.
 - Listado y detalle de programas de formación.
-- Formulario de inscripción con validación de campos.
+- Formulario para solicitar información (embebido vía Tally), con página de confirmación.
 - Página de error 404 personalizada.
 
 ## Estructura del proyecto
 
 ```
 proyecto/
-├── index.html          # Página principal
-├── programas.html       # Oferta académica
-├── inscripcion.html     # Formulario de inscripción
-├── 404.html              # Página de error
+├── index.html                    # Página principal
+├── programas.html                 # Oferta académica
+├── solicita-informacion.html      # Formulario para solicitar información (Tally embebido)
+├── gracias.html                    # Confirmación tras enviar la solicitud
+├── 404.html                        # Página de error
+├── playground.html                 # Playground de componentes
+├── inscripcion.html                # Versión anterior del formulario (no enlazada)
 ├── css/
-│   ├── styles.css        # Agregador (@import) de los parciales
-│   ├── variables.css     # Tokens de diseño y temas
+│   ├── styles.css                  # Agregador (@import) de los parciales
+│   ├── variables.css               # Tokens de diseño y temas
 │   ├── base.css
 │   ├── layout.css
 │   ├── components.css
-│   └── responsive.css
-├── js/                    # Scripts compilados (JavaScript)
+│   ├── responsive.css
+│   └── alerts.css, botones.css, checkboxes-radios.css,
+│       dialogs.css, menus.css, toasts.css   # Componentes de UI
+├── js/                              # Scripts compilados (JavaScript)
 │   ├── animaciones.js
 │   ├── contacto.js
-│   └── inscripcion.js
-├── ts/                    # Código fuente en TypeScript
+│   ├── gracias.js
+│   └── playground.js
+├── ts/                              # Código fuente en TypeScript
 │   ├── animaciones.ts
 │   ├── contacto.ts
-│   └── inscripcion.ts
+│   ├── gracias.ts
+│   └── playground.ts
+├── scripts/
+│   └── build-dist.mjs              # Arma dist/ para publicar en Netlify
 ├── docs/
-│   └── PLAN.md           # Plan de la próxima iteración
+│   └── PLAN.md                     # Plan de la próxima iteración
 ├── favicon.png
 ├── robots.txt
 └── sitemap.xml

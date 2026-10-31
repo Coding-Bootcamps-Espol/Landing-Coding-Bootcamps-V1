@@ -1,0 +1,78 @@
+# Cada push a develop actualiza https://landing-staging.codingbootcampslatam.com
+# Antes de actualizar, revisa que los .js compilados estén al día con los .ts.
+
+name: Deploy staging
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop, master]
+  workflow_dispatch: # botón "Run workflow" para actualizar a mano
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  revisar:
+    name: Revisar compilación de TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar ts/ → js/
+        run: npm run build
+
+      - name: Sincronizar layout compartido
+        run: npm run sync:layout
+
+      - name: Comprobar que el layout está sincronizado
+        run: |
+          if ! git diff --quiet -- '*.html'; then
+            echo "::error::El encabezado/pie de alguna página no coincide con index.html. Ejecuta 'npm run sync:layout' y haz commit."
+            git diff --stat -- '*.html'
+            exit 1
+          fi
+
+      - name: Comprobar que js/ está actualizado
+        run: |
+          if ! git diff --quiet -- js/; then
+            echo "::error::Los archivos de js/ no coinciden con ts/. Ejecuta 'npm run build' y haz commit de js/."
+            git diff --stat -- js/
+            exit 1
+          fi
+
+  desplegar:
+    name: Actualizar servidor de desarrollo
+    needs: revisar
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://landing-staging.codingbootcampslatam.com
+    steps:
+      - name: Preparar clave SSH
+        run: |
+          install -m 700 -d ~/.ssh
+          echo "${{ secrets.STAGING_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "${{ secrets.STAGING_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      # La clave solo puede ejecutar el comando fijado en authorized_keys del servidor
+      # (traer develop y dejar la carpeta igual), así que no se envía ningún comando.
+      - name: Actualizar código en el servidor
+        run: ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes "${{ secrets.STAGING_USER }}@${{ secrets.STAGING_HOST }}"
+
+      - name: Comprobar que el sitio responde
+        run: |
+          sleep 2
+          curl --fail --silent --show-error --output /dev/null https://landing-staging.codingbootcampslatam.com/
+          echo "Sitio actualizado y respondiendo."

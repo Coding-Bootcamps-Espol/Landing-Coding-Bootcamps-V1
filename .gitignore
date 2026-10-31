@@ -18,3 +18,9 @@ resumen-proyecto.md
 resvisar-formulario.md
 setup-whatsapp-field.md
 check-typescript-typing.md
+
+dist/
+
+# Brochures (PDF) — se suben al servidor a mano, no van en git
+brochures/
+docs/*.pdf

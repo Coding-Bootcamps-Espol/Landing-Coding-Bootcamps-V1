@@ -1,0 +1,160 @@
+.c-check-group,
+.c-radio-group {
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.c-check-group legend,
+.c-radio-group legend {
+    padding: 0;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/*Fila clickeable: cuadradito + texto, no solo el input*/
+.c-check,
+.c-radio {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.c-check:hover,
+.c-radio:hover {
+    background: var(--color-surface-alt);
+}
+
+.c-check label,
+.c-radio label {
+    color: var(--color-text);
+    cursor: pointer;
+    user-select: none;
+}
+
+/*Reset del control nativo para dibujar el cuadradito/círculo custom*/
+.c-check input[type="checkbox"],
+.c-radio input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-border);
+    background: var(--color-surface);
+    cursor: pointer;
+    transition:
+        background-color var(--transition),
+        border-color var(--transition);
+}
+
+.c-check input[type="checkbox"] {
+    border-radius: 0.25rem;
+}
+
+.c-radio input[type="radio"] {
+    border-radius: var(--radius-full);
+}
+
+/*Estado: hover (sobre el input mismo)*/
+.c-check input[type="checkbox"]:hover,
+.c-radio input[type="radio"]:hover {
+    border-color: var(--color-accent);
+}
+
+/*Estado: focus-visible (navegación por teclado)*/
+.c-check input[type="checkbox"]:focus-visible,
+.c-radio input[type="radio"]:focus-visible {
+    outline: 2px solid var(--color-accent-focus);
+    outline-offset: 2px;
+}
+
+/*Estado: checked*/
+.c-check input[type="checkbox"]:checked,
+.c-radio input[type="radio"]:checked {
+    border-color: var(--color-accent-solid);
+    background: var(--color-accent-solid);
+}
+
+.c-check input[type="checkbox"]:checked::after {
+    content: "";
+    width: 0.3rem;
+    height: 0.6rem;
+    border: solid var(--color-surface);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.c-radio input[type="radio"]:checked::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+}
+
+/*Estado: indeterminate (checkbox de 3 estados, ej. "seleccionar todo")*/
+.c-check input[type="checkbox"]:indeterminate {
+    border-color: var(--color-accent-solid);
+    background: var(--color-accent-solid);
+}
+
+.c-check input[type="checkbox"]:indeterminate::after {
+    content: "";
+    width: 0.65rem;
+    height: 2px;
+    background: var(--color-surface);
+    border: none;
+    transform: none;
+}
+
+/*Estado: disabled*/
+.c-check input[type="checkbox"]:disabled,
+.c-radio input[type="radio"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--color-surface-alt);
+}
+
+.c-check input[type="checkbox"]:disabled ~ label,
+.c-radio input[type="radio"]:disabled ~ label {
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+.c-check:has(input:disabled),
+.c-radio:has(input:disabled) {
+    cursor: not-allowed;
+}
+
+.c-check:has(input:disabled):hover,
+.c-radio:has(input:disabled):hover {
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    .c-check,
+    .c-radio {
+        padding-inline: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .c-check,
+    .c-radio {
+        gap: 0.625rem;
+    }
+}
