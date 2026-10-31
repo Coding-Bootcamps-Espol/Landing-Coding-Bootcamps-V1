@@ -98,6 +98,7 @@
 .tech-group { display: flex; }
 .tech-card {
   --logo: var(--ink);
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -138,6 +139,9 @@
 .tech-card--express { --logo: var(--logo-express); }
 .tech-card--docker { --logo: var(--logo-docker); }
 .tech-card--fastapi { --logo: var(--logo-fastapi); }
+.tech-card--dotnet { --logo: var(--logo-dotnet); }
+/* Logos que ya son el nombre (wordmark): sin texto repetido */
+.tech-card--wordmark svg { width: 3.4rem; height: 1.4rem; }
 .tech-card--microsoftsqlserver { --logo: var(--logo-microsoftsqlserver); }
 .tech-card--visualstudio { --logo: var(--logo-visualstudio); }
 .tech-card--visualstudiocode { --logo: var(--logo-visualstudiocode); }
