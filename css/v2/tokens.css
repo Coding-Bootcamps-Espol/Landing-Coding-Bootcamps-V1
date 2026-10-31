@@ -113,6 +113,9 @@
   --radius-m: 1.25rem;
   --radius-l: 2rem;
   --radius-pill: 999px;
+  /* Burbuja flotante de WhatsApp: tamaño y separación del borde */
+  --wa-size: 3.75rem;
+  --wa-gap: clamp(1rem, 3vw, 1.75rem);
   --header-h: 4.75rem;
   --promo-h: 2.5rem;
   --top-offset: calc(var(--header-h) + var(--promo-h));

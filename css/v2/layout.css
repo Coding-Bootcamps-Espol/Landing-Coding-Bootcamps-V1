@@ -217,6 +217,8 @@
 .footer-bottom {
   margin-top: clamp(3rem, 6vw, 4.5rem);
   padding-block: 1.5rem;
+  /* Deja libre la esquina de la burbuja de WhatsApp */
+  padding-right: calc(var(--wa-size) + var(--wa-gap));
   border-top: 1px solid var(--white-a10);
   display: flex;
   flex-wrap: wrap;

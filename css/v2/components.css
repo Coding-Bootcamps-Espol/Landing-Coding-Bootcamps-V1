@@ -236,13 +236,13 @@
 /* Burbuja flotante de WhatsApp (abajo a la derecha, en todas las páginas) */
 .wa-float {
   position: fixed;
-  right: clamp(1rem, 3vw, 1.75rem);
-  bottom: clamp(1rem, 3vw, 1.75rem);
+  right: var(--wa-gap);
+  bottom: var(--wa-gap);
   z-index: 90;
   display: grid;
   place-items: center;
-  width: 3.75rem;
-  height: 3.75rem;
+  width: var(--wa-size);
+  height: var(--wa-size);
   border-radius: 50%;
   background: var(--whatsapp);
   color: var(--white);
