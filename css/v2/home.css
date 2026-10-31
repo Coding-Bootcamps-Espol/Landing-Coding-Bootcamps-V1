@@ -241,24 +241,34 @@
 .method-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-l); box-shadow: var(--shadow-l); }
 @media (min-width: 960px) { .method { grid-template-columns: 0.85fr 1.15fr; } }
 
-/* ── Admisión (pasos) ── */
-.steps-wrap { position: relative; }
+/* ── Admisión (pasos): recorrido con meta final ── */
 .steps {
+  --step-size: 3.75rem;
+  --step-gap: 2rem;
   list-style: none;
   display: grid;
-  gap: 2rem;
+  gap: var(--step-gap);
   counter-reset: paso;
-  position: relative;
+  max-width: 36rem;
+  margin-inline: auto;
 }
-.step { position: relative; display: grid; gap: 0.75rem; padding-top: 4.75rem; counter-increment: paso; }
+.step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  min-height: var(--step-size);
+  padding: 0.55rem 0 0 calc(var(--step-size) + 1.25rem);
+  counter-increment: paso;
+}
 .step::before {
   content: counter(paso, decimal-leading-zero);
   position: absolute;
   top: 0; left: 0;
   display: grid;
   place-items: center;
-  width: 3.75rem;
-  height: 3.75rem;
+  width: var(--step-size);
+  height: var(--step-size);
   border-radius: 50%;
   background: var(--white);
   color: var(--accent);
@@ -266,26 +276,58 @@
   border: 2px solid var(--accent);
   z-index: 1;
 }
+/* Tramo hacia el siguiente paso: se dibuja al aparecer */
+.step::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--step-size) / 2 - 1px);
+  top: var(--step-size);
+  bottom: calc(var(--step-gap) * -1);
+  width: 2px;
+  background: var(--accent);
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 900ms var(--ease-out) calc(300ms + var(--i, 0) * 250ms);
+}
+.step.is-visible::after, html:not(.js) .step::after { transform: none; }
+.step:last-child::after { content: none; }
+/* El tramo hacia la meta va punteado */
+.step:has(+ .step--goal)::after { background: repeating-linear-gradient(180deg, var(--accent) 0 6px, transparent 6px 12px); }
 .step h3 { font-size: var(--fs-h3); }
 .step p { color: var(--text-muted); max-width: 22rem; }
-.steps-line {
-  display: none;
+/* Meta: primera clase */
+.step--goal { counter-increment: none; }
+.step--goal::before, .step--goal::after { content: none; }
+.step-goal-icon {
   position: absolute;
-  top: 1.85rem;
-  left: 1.9rem;
-  right: 1.9rem;
-  height: 2px;
+  top: 0; left: 0;
+  display: grid;
+  place-items: center;
+  width: var(--step-size);
+  height: var(--step-size);
+  border-radius: 50%;
   background: var(--accent);
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 1.6s var(--ease-out) 200ms;
+  color: var(--white);
+  box-shadow: 0 0 0 6px var(--accent-soft);
 }
-.steps-line.is-visible { transform: scaleX(1); }
-@media (min-width: 768px) {
-  .steps { grid-template-columns: repeat(3, 1fr); }
-  .steps-line { display: block; right: calc(33.33% - 1.9rem); }
+.step-goal-icon svg { width: 1.5rem; height: 1.5rem; }
+.step--goal .btn { justify-self: start; margin-top: 0.5rem; }
+@media (min-width: 1024px) {
+  .steps { max-width: none; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 1fr; }
+  .step { padding: calc(var(--step-size) + 1rem) 0 0; }
+  .step::after {
+    top: calc(var(--step-size) / 2 - 1px);
+    left: var(--step-size);
+    right: calc(var(--step-gap) * -1);
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  .step:has(+ .step--goal)::after { background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 12px); }
 }
-@media (prefers-reduced-motion: reduce) { .steps-line { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .step::after { transform: none; transition: none; } }
 
 /* ── Testimonios ── */
 .testimonials-layout { display: grid; gap: 3rem; align-items: center; }
