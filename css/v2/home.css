@@ -124,6 +124,9 @@
 .tech-card--react { --logo: var(--logo-react); }
 .tech-card--zod { --logo: var(--logo-zod); }
 .tech-card--mantine { --logo: var(--logo-mantine); }
+.tech-card--reactrouter { --logo: var(--logo-reactrouter); }
+.tech-card--reactquery { --logo: var(--logo-reactquery); }
+.tech-card--firebase { --logo: var(--logo-firebase); }
 .tech-card--nodedotjs { --logo: var(--logo-nodedotjs); }
 .tech-card--django { --logo: var(--logo-django); }
 .tech-card--mongodb { --logo: var(--logo-mongodb); }
