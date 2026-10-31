@@ -117,6 +117,9 @@
 .tech-card svg { width: 1.9rem; height: 1.9rem; fill: var(--logo); flex-shrink: 0; }
 .tech-card--python { --logo: var(--logo-python); }
 .tech-card--javascript { --logo: var(--logo-javascript); }
+.tech-card--html5 { --logo: var(--logo-html5); }
+.tech-card--css { --logo: var(--logo-css); }
+.tech-card--typescript { --logo: var(--logo-typescript); }
 .tech-card--react { --logo: var(--logo-react); }
 .tech-card--nodedotjs { --logo: var(--logo-nodedotjs); }
 .tech-card--django { --logo: var(--logo-django); }
@@ -127,6 +130,7 @@
 .tech-card--jupyter { --logo: var(--logo-jupyter); }
 .tech-card--apachespark { --logo: var(--logo-apachespark); }
 .tech-card--githubactions { --logo: var(--logo-githubactions); }
+.tech-card--owasp { --logo: var(--logo-owasp); }
 .tech-card--googlecolab { --logo: var(--logo-googlecolab); }
 .tech-card--pytorch { --logo: var(--logo-pytorch); }
 .tech-card--powerbi { --logo: var(--logo-powerbi); }

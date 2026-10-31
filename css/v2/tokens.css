@@ -34,6 +34,9 @@
   /* Logos de tecnologías (colores oficiales, Simple Icons) */
   --logo-python: #3776ab;
   --logo-javascript: #f7df1e;
+  --logo-html5: #e34f26;
+  --logo-css: #663399;
+  --logo-typescript: #3178c6;
   --logo-react: #61dafb;
   --logo-nodedotjs: #5fa04e;
   --logo-django: #092e20;
@@ -44,6 +47,7 @@
   --logo-jupyter: #f37626;
   --logo-apachespark: #e25a1c;
   --logo-githubactions: #2088ff;
+  --logo-owasp: #000000;
   --logo-googlecolab: #f9ab00;
   --logo-pytorch: #ee4c2c;
   --logo-powerbi: #f2c811;
