@@ -226,6 +226,73 @@
             });
         });
     }
+    /* ── Buscador de preguntas frecuentes ──
+       Filtra mientras se escribe (sin importar tildes ni mayúsculas), oculta los
+       temas sin resultados y abre las respuestas cuando quedan pocas. */
+    function initFaqSearch() {
+        const box = document.querySelector("[data-faq-search]");
+        const input = box?.querySelector("input");
+        if (!box || !input)
+            return;
+        const field = input;
+        box.hidden = false;
+        const groups = Array.from(document.querySelectorAll(".faq-group"));
+        const status = document.querySelector(".faq-status");
+        const empty = document.querySelector(".faq-empty");
+        const term = document.querySelector("[data-faq-term]");
+        const normalize = function (text) {
+            return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+        };
+        const items = groups.map(function (group) {
+            return Array.from(group.querySelectorAll("details")).map(function (details) {
+                return { details: details, text: normalize(details.textContent || "") };
+            });
+        });
+        function filter() {
+            const words = normalize(field.value.trim()).split(/\s+/).filter(Boolean);
+            let total = 0;
+            groups.forEach(function (group, g) {
+                let shown = 0;
+                items[g].forEach(function (item) {
+                    const match = words.every(function (w) { return item.text.includes(w); });
+                    item.details.hidden = !match;
+                    // Cierra lo que abrió una búsqueda anterior
+                    if (item.details.dataset.autoOpen) {
+                        item.details.open = false;
+                        delete item.details.dataset.autoOpen;
+                    }
+                    if (match)
+                        shown++;
+                });
+                group.hidden = shown === 0;
+                document.querySelector('.faq-index a[href="#' + group.id + '"]')?.classList.toggle("is-empty", shown === 0);
+                total += shown;
+            });
+            // Con pocos resultados, muestra las respuestas directamente
+            if (words.length && total <= 3) {
+                items.flat().forEach(function (item) {
+                    if (!item.details.hidden && !item.details.open) {
+                        item.details.open = true;
+                        item.details.dataset.autoOpen = "1";
+                    }
+                });
+            }
+            if (status)
+                status.textContent = words.length && total ? total + (total === 1 ? " pregunta encontrada" : " preguntas encontradas") : "";
+            if (empty)
+                empty.hidden = !words.length || total > 0;
+            groups[0]?.parentElement?.classList.toggle("is-searching", words.length > 0);
+            if (term)
+                term.textContent = "“" + field.value.trim() + "”";
+        }
+        field.addEventListener("input", filter);
+        field.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && field.value) {
+                field.value = "";
+                filter();
+            }
+        });
+    }
     function initScrollspy() {
         document.querySelectorAll("[data-scrollspy]").forEach(function (nav) {
             const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
@@ -384,6 +451,7 @@
     initTilt();
     initCarousel();
     initMarqueeControls();
+    initFaqSearch();
     initScrollspy();
     initTabs();
     initRoster();

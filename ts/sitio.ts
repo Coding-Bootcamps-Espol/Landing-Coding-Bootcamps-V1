@@ -219,6 +219,62 @@
     });
   }
 
+  /* ── Buscador de preguntas frecuentes ──
+     Filtra mientras se escribe (sin importar tildes ni mayúsculas), oculta los
+     temas sin resultados y abre las respuestas cuando quedan pocas. */
+  function initFaqSearch(): void {
+    const box = document.querySelector<HTMLElement>("[data-faq-search]");
+    const input = box?.querySelector<HTMLInputElement>("input");
+    if (!box || !input) return;
+    const field: HTMLInputElement = input;
+    box.hidden = false;
+    const groups = Array.from(document.querySelectorAll<HTMLElement>(".faq-group"));
+    const status = document.querySelector<HTMLElement>(".faq-status");
+    const empty = document.querySelector<HTMLElement>(".faq-empty");
+    const term = document.querySelector<HTMLElement>("[data-faq-term]");
+    const normalize = function (text: string): string {
+      return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+    };
+    const items = groups.map(function (group) {
+      return Array.from(group.querySelectorAll<HTMLDetailsElement>("details")).map(function (details) {
+        return { details: details, text: normalize(details.textContent || "") };
+      });
+    });
+
+    function filter(): void {
+      const words = normalize(field.value.trim()).split(/\s+/).filter(Boolean);
+      let total = 0;
+      groups.forEach(function (group, g): void {
+        let shown = 0;
+        items[g].forEach(function (item): void {
+          const match = words.every(function (w): boolean { return item.text.includes(w); });
+          item.details.hidden = !match;
+          // Cierra lo que abrió una búsqueda anterior
+          if (item.details.dataset.autoOpen) { item.details.open = false; delete item.details.dataset.autoOpen; }
+          if (match) shown++;
+        });
+        group.hidden = shown === 0;
+        document.querySelector('.faq-index a[href="#' + group.id + '"]')?.classList.toggle("is-empty", shown === 0);
+        total += shown;
+      });
+      // Con pocos resultados, muestra las respuestas directamente
+      if (words.length && total <= 3) {
+        items.flat().forEach(function (item): void {
+          if (!item.details.hidden && !item.details.open) { item.details.open = true; item.details.dataset.autoOpen = "1"; }
+        });
+      }
+      if (status) status.textContent = words.length && total ? total + (total === 1 ? " pregunta encontrada" : " preguntas encontradas") : "";
+      if (empty) empty.hidden = !words.length || total > 0;
+      groups[0]?.parentElement?.classList.toggle("is-searching", words.length > 0);
+      if (term) term.textContent = "“" + field.value.trim() + "”";
+    }
+
+    field.addEventListener("input", filter);
+    field.addEventListener("keydown", function (e: KeyboardEvent): void {
+      if (e.key === "Escape" && field.value) { field.value = ""; filter(); }
+    });
+  }
+
   function initScrollspy(): void {
     document.querySelectorAll<HTMLElement>("[data-scrollspy]").forEach(function (nav): void {
       const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
@@ -368,6 +424,7 @@
   initTilt();
   initCarousel();
   initMarqueeControls();
+  initFaqSearch();
   initScrollspy();
   initTabs();
   initRoster();
