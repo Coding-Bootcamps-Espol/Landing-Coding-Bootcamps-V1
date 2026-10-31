@@ -91,7 +91,7 @@
 /* ── Tecnologías: tarjetas con logos a color que se deslizan en una fila ── */
 .tech { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem); }
 .tech-head { display: flex; justify-content: center; margin-bottom: 1.75rem; }
-.tech-rows .marquee { --marquee-dur: 50s; }
+.tech-rows .marquee { --marquee-dur: 140s; }
 .tech-group { display: flex; }
 .tech-card {
   --logo: var(--ink);
@@ -127,6 +127,20 @@
 .tech-card--pytorch { --logo: var(--logo-pytorch); }
 .tech-card--powerbi { --logo: var(--logo-powerbi); }
 .tech-card--amazonaws { --logo: var(--logo-amazonaws); }
+.tech-card--qgis { --logo: var(--logo-qgis); }
+.tech-card--github { --logo: var(--logo-github); }
+.tech-card--microsoftexcel { --logo: var(--logo-microsoftexcel); }
+.tech-card--githubcopilot { --logo: var(--logo-githubcopilot); }
+.tech-card--cursor { --logo: var(--logo-cursor); }
+.tech-card--express { --logo: var(--logo-express); }
+.tech-card--docker { --logo: var(--logo-docker); }
+.tech-card--fastapi { --logo: var(--logo-fastapi); }
+.tech-card--microsoftsqlserver { --logo: var(--logo-microsoftsqlserver); }
+.tech-card--visualstudio { --logo: var(--logo-visualstudio); }
+.tech-card--visualstudiocode { --logo: var(--logo-visualstudiocode); }
+.tech-card--claude { --logo: var(--logo-claude); }
+.tech-card--tally { --logo: var(--logo-tally); }
+.tech-card--lovable { --logo: var(--logo-lovable); }
 
 /* ── Programas ── */
 .program-cards { display: grid; gap: 1.25rem; }

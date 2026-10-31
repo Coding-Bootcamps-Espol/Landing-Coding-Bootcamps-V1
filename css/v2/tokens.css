@@ -48,6 +48,20 @@
   --logo-pytorch: #ee4c2c;
   --logo-powerbi: #f2c811;
   --logo-amazonaws: #232f3e;
+  --logo-qgis: #589632;
+  --logo-github: #181717;
+  --logo-microsoftexcel: #217346;
+  --logo-githubcopilot: #000000;
+  --logo-cursor: #000000;
+  --logo-express: #0a0a0a;
+  --logo-docker: #2496ed;
+  --logo-fastapi: #009688;
+  --logo-microsoftsqlserver: #cc2927;
+  --logo-visualstudio: #5c2d91;
+  --logo-visualstudiocode: #007acc;
+  --logo-claude: #d97757;
+  --logo-tally: #000000;
+  --logo-lovable: #fe4230;
 
   /* WhatsApp (color oficial) */
   --whatsapp: #25d366;
