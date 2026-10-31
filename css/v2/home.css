@@ -115,12 +115,14 @@
   transition: transform var(--dur) var(--ease-spring), border-color var(--dur);
 }
 .tech-card svg { width: 1.9rem; height: 1.9rem; fill: var(--logo); flex-shrink: 0; }
+.tech-card img { width: 1.9rem; height: 1.9rem; flex-shrink: 0; }
 .tech-card--python { --logo: var(--logo-python); }
 .tech-card--javascript { --logo: var(--logo-javascript); }
 .tech-card--html5 { --logo: var(--logo-html5); }
 .tech-card--css { --logo: var(--logo-css); }
 .tech-card--typescript { --logo: var(--logo-typescript); }
 .tech-card--react { --logo: var(--logo-react); }
+.tech-card--zod { --logo: var(--logo-zod); }
 .tech-card--nodedotjs { --logo: var(--logo-nodedotjs); }
 .tech-card--django { --logo: var(--logo-django); }
 .tech-card--mongodb { --logo: var(--logo-mongodb); }

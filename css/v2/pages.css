@@ -226,6 +226,7 @@ html:not(.js) .prog-seg-tab[aria-selected="true"] { background: var(--accent); }
   line-height: 1.2;
 }
 .mod-tech svg { width: 1rem; height: 1rem; fill: var(--logo, var(--ink)); flex-shrink: 0; }
+.mod-tech img { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
 .mod-tech.tech-card--wordmark svg { width: 2.4rem; height: 1rem; }
 /* Leyenda de fases */
 .road-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; color: var(--text-muted); font-size: 0.9375rem; }
