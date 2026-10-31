@@ -123,6 +123,10 @@
 .tech-card--jupyter { --logo: var(--logo-jupyter); }
 .tech-card--apachespark { --logo: var(--logo-apachespark); }
 .tech-card--githubactions { --logo: var(--logo-githubactions); }
+.tech-card--googlecolab { --logo: var(--logo-googlecolab); }
+.tech-card--pytorch { --logo: var(--logo-pytorch); }
+.tech-card--powerbi { --logo: var(--logo-powerbi); }
+.tech-card--amazonaws { --logo: var(--logo-amazonaws); }
 
 /* ── Programas ── */
 .program-cards { display: grid; gap: 1.25rem; }
