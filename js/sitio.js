@@ -185,6 +185,47 @@
         start();
     }
     /* ── Menú que resalta la sección visible ([data-scrollspy] con enlaces #ancla) ── */
+    /* ── Franja de tecnologías: botones para adelantar o retroceder ── */
+    function initMarqueeControls() {
+        const buttons = document.querySelectorAll("[data-marquee-step]");
+        const marquee = document.querySelector(".tech-rows .marquee");
+        const track = marquee?.querySelector(".marquee-track");
+        if (!buttons.length || !marquee || !track)
+            return;
+        const box = marquee;
+        const strip = track;
+        let tween = 0;
+        function step(dir) {
+            const distance = box.clientWidth * 0.6 * dir;
+            const anim = strip.getAnimations()[0];
+            // Sin animación (movimiento reducido): la franja se desplaza como un scroll normal.
+            if (!anim || reduceMotion.matches) {
+                box.scrollBy({ left: distance, behavior: "smooth" });
+                return;
+            }
+            const total = Number(anim.effect?.getTiming().duration);
+            const loop = strip.scrollWidth / 2; // la franja lleva dos copias del grupo
+            if (!total || !loop)
+                return;
+            const from = Number(anim.currentTime);
+            const delta = (distance / loop) * total;
+            const start = performance.now();
+            cancelAnimationFrame(tween);
+            const frame = function (now) {
+                const t = Math.min((now - start) / 450, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                anim.currentTime = (((from + delta * eased) % total) + total) % total;
+                if (t < 1)
+                    tween = requestAnimationFrame(frame);
+            };
+            tween = requestAnimationFrame(frame);
+        }
+        buttons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                step(Number(btn.dataset.marqueeStep) || 1);
+            });
+        });
+    }
     function initScrollspy() {
         document.querySelectorAll("[data-scrollspy]").forEach(function (nav) {
             const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
@@ -342,6 +383,7 @@
     initReveal();
     initTilt();
     initCarousel();
+    initMarqueeControls();
     initScrollspy();
     initTabs();
     initRoster();

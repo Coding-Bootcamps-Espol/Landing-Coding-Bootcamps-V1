@@ -92,6 +92,9 @@
 .tech { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem); }
 .tech-head { display: flex; justify-content: center; margin-bottom: 1.75rem; }
 .tech-rows .marquee { --marquee-dur: 140s; }
+/* Botones para adelantar/retroceder la franja */
+.tech-controls { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.25rem; }
+@media (prefers-reduced-motion: reduce) { .tech-rows .marquee { overflow-x: auto; scrollbar-width: none; } }
 .tech-group { display: flex; }
 .tech-card {
   --logo: var(--ink);
@@ -141,6 +144,10 @@
 .tech-card--claude { --logo: var(--logo-claude); }
 .tech-card--tally { --logo: var(--logo-tally); }
 .tech-card--lovable { --logo: var(--logo-lovable); }
+.tech-card--scrum { --logo: var(--logo-scrum); }
+.tech-card--datagovernance { --logo: var(--logo-datagovernance); }
+/* Íconos de línea (conceptos sin logo de marca) */
+.tech-card--scrum svg, .tech-card--datagovernance svg { fill: none; stroke: var(--logo); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ── Programas ── */
 .program-cards { display: grid; gap: 1.25rem; }
@@ -326,6 +333,9 @@
 }
 .carousel-btn:hover { background: var(--white); color: var(--ink); transform: scale(1.06); }
 .carousel-btn svg { width: 1.2rem; height: 1.2rem; }
+/* Variante sobre fondo claro (franja de tecnologías) */
+.carousel-btn--light { border-color: var(--line); background: var(--white); color: var(--ink); box-shadow: var(--shadow-s); }
+.carousel-btn--light:hover, .carousel-btn--light:focus-visible { background: var(--accent); color: var(--white); }
 .carousel-dots { list-style: none; display: flex; gap: 0.5rem; }
 .carousel-dot {
   width: 0.65rem;

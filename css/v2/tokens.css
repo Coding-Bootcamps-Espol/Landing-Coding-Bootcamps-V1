@@ -62,6 +62,8 @@
   --logo-claude: #d97757;
   --logo-tally: #000000;
   --logo-lovable: #fe4230;
+  --logo-scrum: var(--accent);
+  --logo-datagovernance: var(--accent);
 
   /* WhatsApp (color oficial) */
   --whatsapp: #25d366;
