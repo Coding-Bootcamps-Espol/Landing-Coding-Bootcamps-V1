@@ -1,4 +1,4 @@
-// Assembles the static, deployable site into /dist for Netlify.
+// Assembles the static, deployable site into /dist for the production Apache server.
 // Run after `tsc` so js/ reflects the latest ts/ sources.
 import { cpSync, rmSync, mkdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -18,6 +18,7 @@ const files = [
   "inscripcion.html",
   "404.html",
   "favicon.png",
+  ".htaccess",
   "robots.txt",
   "sitemap.xml",
 ];
