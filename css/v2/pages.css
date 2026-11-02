@@ -590,7 +590,8 @@ html:not(.js) .roster-panel { grid-template-rows: 1fr; }
   box-shadow: var(--shadow-m);
   animation: pop-in 700ms var(--ease-spring) both;
 }
-.thanks-check svg { width: 2.75rem; height: 2.75rem; }
+/* fill: none anula el `svg { fill: currentColor }` de base.css, que rellenaba el visto */
+.thanks-check svg { width: 2.75rem; height: 2.75rem; fill: none; }
 .thanks-check path {
   stroke-dasharray: 30;
   stroke-dashoffset: 30;

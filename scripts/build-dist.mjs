@@ -17,13 +17,12 @@ const files = [
   "gracias.html",
   "inscripcion.html",
   "404.html",
-  "playground.html",
   "favicon.png",
   "robots.txt",
   "sitemap.xml",
 ];
 
-const dirs = ["css", "js", "img"];
+const dirs = ["css", "js", "img", "brochures"];
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });

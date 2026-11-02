@@ -1,3 +1,70 @@
 [build]
   command = "npm run build:dist"
   publish = "dist"
+
+# Redirecciones 301 desde las URLs de la web anterior (WordPress) para no
+# perder posicionamiento ni enlaces guardados.
+[[redirects]]
+  from = "/bootcamp-full-stack-developer/"
+  to = "/programas.html#desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/data-science/"
+  to = "/programas.html#ciencia-de-datos"
+  status = 301
+
+[[redirects]]
+  from = "/business-analytics/"
+  to = "/programas.html#business-data-analytics"
+  status = 301
+
+[[redirects]]
+  from = "/certificaciones/"
+  to = "/programas.html"
+  status = 301
+
+[[redirects]]
+  from = "/formulario-bootcamp-energy-management/"
+  to = "/programas.html"
+  status = 301
+
+[[redirects]]
+  from = "/formulario-full-stack/"
+  to = "/solicita-informacion.html"
+  status = 301
+
+[[redirects]]
+  from = "/formulario-business-analytics/"
+  to = "/solicita-informacion.html"
+  status = 301
+
+[[redirects]]
+  from = "/formulari-data-science/"
+  to = "/solicita-informacion.html"
+  status = 301
+
+[[redirects]]
+  from = "/metform-form/*"
+  to = "/solicita-informacion.html"
+  status = 301
+
+[[redirects]]
+  from = "/faq/"
+  to = "/preguntas.html"
+  status = 301
+
+[[redirects]]
+  from = "/contactos/"
+  to = "/contacto.html"
+  status = 301
+
+[[redirects]]
+  from = "/acerca-de-2/"
+  to = "/nosotros.html"
+  status = 301
+
+[[redirects]]
+  from = "/3684-2/"
+  to = "/"
+  status = 301

@@ -16,9 +16,9 @@
   <meta name="description" content="Inscríbete en los bootcamps de Coding Bootcamps ESPOL y un asesor te contactará para resolver tus dudas sobre desarrollo web, datos y business data analytics.">
   <title>Inscripción | Coding Bootcamps ESPOL</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="canonical" href="https://codingbootcamps-espol.example.com/solicita-informacion.html">
+  <link rel="canonical" href="https://bootcamps.espol.edu.ec/solicita-informacion.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://codingbootcamps-espol.example.com/solicita-informacion.html">
+  <meta property="og:url" content="https://bootcamps.espol.edu.ec/solicita-informacion.html">
   <meta property="og:title" content="Inscripción | Coding Bootcamps ESPOL">
   <meta property="og:description" content="Inscríbete en los bootcamps de Coding Bootcamps ESPOL y un asesor te contactará para resolver tus dudas sobre desarrollo web, datos y business data analytics.">
   <meta property="og:locale" content="es_EC">
@@ -195,6 +195,7 @@
       }
 
       window.addEventListener("message", function (event) {
+        if (event.origin !== "https://tally.so") return;
         if (typeof event.data !== "string") return;
 
         var data;

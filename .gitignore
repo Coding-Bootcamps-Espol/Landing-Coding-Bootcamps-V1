@@ -21,6 +21,5 @@ check-typescript-typing.md
 
 dist/
 
-# Brochures (PDF) — se suben al servidor a mano, no van en git
-brochures/
+# PDFs de trabajo (los brochures públicos sí van en git, en brochures/)
 docs/*.pdf
