@@ -1,0 +1,173 @@
+/*
+ * Este panel se posiciona absoluto respecto a su contenedor: quien use este
+ * componente debe envolver el trigger + el <ul> en un elemento con
+ * position: relative (en el playground lo da .playground-menu-demo).
+ */
+.c-menu-account {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 20;
+    min-width: 13rem;
+    margin: 0;
+    padding: 0.5rem;
+    list-style: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    /* Animación de apertura/cierre (ver :not([hidden]) y @starting-style abajo) */
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+    transition:
+        opacity var(--transition),
+        transform var(--transition),
+        display var(--transition) allow-discrete;
+}
+
+/*
+ * [hidden] fuerza display:none vía el stylesheet del navegador; sin esta
+ * regla el panel aparecería/desaparecería de golpe. allow-discrete arriba
+ * mantiene el elemento renderizado durante la transición para que se vea
+ * el fade en vez de un corte seco (mismo recurso que .c-dialog en dialogs.css).
+ */
+.c-menu-account:not([hidden]) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+@starting-style {
+    .c-menu-account:not([hidden]) {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+}
+
+.c-menu-account-label {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.c-menu-account-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.65rem 0.75rem;
+    border: none;
+    border-radius: calc(var(--radius) - 2px);
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.c-menu-account-item:hover,
+.c-menu-account-item:focus-visible {
+    background: var(--color-surface-alt);
+}
+
+.c-menu-account-item-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+}
+
+.c-menu-account-divider {
+    height: 0;
+    margin: 0.4rem 0;
+    border-top: 1px solid var(--color-border);
+}
+
+/*Variante destructiva (ej. "Cerrar sesión"): mismo lenguaje de color que las
+  alertas/toasts de error (--color-error se adapta por tema; el fill sólido
+  de .c-btn--destructive usa --color-error-solid porque va sobre texto blanco,
+  no sobre la superficie del menú)*/
+.c-menu-account-item--danger,
+.c-menu-account-item--danger .c-menu-account-item-icon {
+    color: var(--color-error);
+}
+
+.c-menu-account-item--danger:hover,
+.c-menu-account-item--danger:focus-visible {
+    background: var(--color-error-bg);
+}
+
+.c-menu-account-chevron {
+    display: inline-block;
+    transition: transform var(--transition);
+}
+
+.c-menu-account-toggle[aria-expanded="true"] .c-menu-account-chevron {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    .c-menu-account {
+        min-width: 12rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /*
+     * En mobile el panel deja de anclarse al trigger (con right:0 podía
+     * cortarse contra el borde de la pantalla según dónde cayera el
+     * trigger) y pasa a un panel centrado y fijo al viewport, con márgenes
+     * seguros a los costados: así nunca se corta, sin importar la posición
+     * del trigger que lo abrió.
+     */
+    .c-menu-account {
+        position: fixed;
+        inset-inline: 1rem;
+        top: 50%;
+        /* el centrado (translateY(-50%)) se mantiene fijo; solo el scale anima apertura/cierre */
+        transform: translateY(-50%) scale(0.96);
+        z-index: 150;
+        width: auto;
+        min-width: 0;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+    }
+
+    .c-menu-account:not([hidden]) {
+        transform: translateY(-50%) scale(1);
+    }
+
+    @starting-style {
+        .c-menu-account:not([hidden]) {
+            transform: translateY(-50%) scale(0.96);
+        }
+    }
+
+    .c-menu-account-item {
+        padding: 0.6rem 0.65rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .c-menu-account,
+    .c-menu-account-chevron {
+        transition: none;
+    }
+
+    /* transform:none aquí, pero en mobile el transform también centra el panel (ver arriba) */
+    .c-menu-account {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 480px) {
+    .c-menu-account {
+        transform: translateY(-50%);
+    }
+}

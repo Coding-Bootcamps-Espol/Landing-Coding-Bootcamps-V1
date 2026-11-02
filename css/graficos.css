@@ -1,0 +1,182 @@
+/*Gráficos del backoffice: stat tile, barras, líneas, barra de estado y torta/donut.
+  Los tooltips de barras/líneas/torta son solo CSS (:has()/:focus-visible, sin JS),
+  siguiendo la misma técnica que ya usa .c-check:has(input:disabled) en
+  checkboxes-radios.css. La vista de tabla usa <details>/<summary> nativo.*/
+
+/* ── Contenedor común ── */
+.c-chart-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+
+.c-chart-card svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ── Stat tile ── */
+.c-stat-tile {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    max-width: 16rem;
+}
+
+.c-stat-label {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+}
+
+.c-stat-value {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-text);
+    font-variant-numeric: proportional-nums;
+}
+
+.c-stat-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+.c-stat-delta svg { flex-shrink: 0; }
+.c-stat-delta--good { color: var(--color-success); }
+.c-stat-delta--bad { color: var(--color-error); }
+
+.c-stat-trend-line { fill: none; stroke: var(--color-text-muted); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.c-stat-trend-dot { fill: var(--color-accent); stroke: var(--color-surface); stroke-width: 2; }
+
+/* ── Ejes y grilla (barras / líneas) ── */
+.c-chart-grid { stroke: var(--color-border); stroke-width: 1; opacity: 0.25; }
+.c-chart-tick-label { fill: var(--color-text-muted); font-size: 11px; text-anchor: end; font-family: inherit; }
+.c-chart-cat-label { fill: var(--color-text-muted); font-size: 11px; text-anchor: middle; font-family: inherit; }
+
+/* ── Tooltip compartido (barras / líneas / torta) ── */
+.c-chart-tooltip { opacity: 0; transition: opacity var(--transition); pointer-events: none; }
+.c-chart-tooltip-bg { fill: var(--color-surface-alt); stroke: var(--color-border); stroke-width: 1; }
+.c-chart-tooltip-name { fill: var(--color-text-muted); font-size: 11px; font-family: inherit; }
+.c-chart-tooltip-value { fill: var(--color-text); font-size: 13px; font-weight: 700; font-family: inherit; }
+
+/* ── Barras ── */
+.c-bar { fill: var(--color-accent); cursor: pointer; transition: filter var(--transition); }
+.c-bar:hover, .c-bar:focus-visible { filter: brightness(1.18); }
+.c-bar:focus-visible { outline: 3px solid var(--color-accent-focus); outline-offset: 2px; }
+.c-bar-value-label { fill: var(--color-text); font-size: 13px; font-weight: 600; text-anchor: middle; font-family: inherit; }
+
+svg:has(#bar-0:hover, #bar-0:focus-visible) #tip-bar-0,
+svg:has(#bar-1:hover, #bar-1:focus-visible) #tip-bar-1,
+svg:has(#bar-2:hover, #bar-2:focus-visible) #tip-bar-2 { opacity: 1; }
+
+/* ── Líneas ── */
+.c-line { fill: none; stroke: var(--color-accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.c-line-area { fill: var(--color-accent); fill-opacity: 0.1; stroke: none; }
+.c-line-dot { fill: var(--color-accent); stroke: var(--color-surface); stroke-width: 2; r: 3; transition: r var(--transition); pointer-events: none; }
+.c-line-hit { fill: transparent; cursor: pointer; }
+.c-line-hit:hover ~ .c-line-dot, .c-line-hit:focus-visible ~ .c-line-dot { r: 5; }
+.c-line-hit:focus-visible { outline: 3px solid var(--color-accent-focus); outline-offset: 2px; }
+.c-line-month-label { fill: var(--color-text-muted); font-size: 11px; text-anchor: middle; font-family: inherit; }
+.c-line-end-label { fill: var(--color-text); font-size: 13px; font-weight: 700; font-family: inherit; }
+.c-line-crosshair { stroke: var(--color-text-muted); stroke-width: 1; opacity: 0; }
+
+svg:has(#pt-0:hover, #pt-0:focus-visible) #tip-line-0, svg:has(#pt-0:hover, #pt-0:focus-visible) #cross-0,
+svg:has(#pt-1:hover, #pt-1:focus-visible) #tip-line-1, svg:has(#pt-1:hover, #pt-1:focus-visible) #cross-1,
+svg:has(#pt-2:hover, #pt-2:focus-visible) #tip-line-2, svg:has(#pt-2:hover, #pt-2:focus-visible) #cross-2,
+svg:has(#pt-3:hover, #pt-3:focus-visible) #tip-line-3, svg:has(#pt-3:hover, #pt-3:focus-visible) #cross-3,
+svg:has(#pt-4:hover, #pt-4:focus-visible) #tip-line-4, svg:has(#pt-4:hover, #pt-4:focus-visible) #cross-4,
+svg:has(#pt-5:hover, #pt-5:focus-visible) #tip-line-5, svg:has(#pt-5:hover, #pt-5:focus-visible) #cross-5 { opacity: 1; }
+
+/* ── Barra de estado apilada ── */
+.c-stackbar { display: flex; height: 2.25rem; border-radius: var(--radius-full); overflow: hidden; background: var(--color-surface); }
+.c-stackbar-seg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: default;
+}
+.c-stackbar-seg:focus-visible { outline: 3px solid var(--color-accent-focus); outline-offset: 2px; z-index: 2; }
+.c-stackbar-seg--good { background: var(--color-success); color: var(--color-bg); border-right: 2px solid var(--color-surface); }
+.c-stackbar-seg--warn { background: var(--color-warning); color: var(--color-bg); border-right: 2px solid var(--color-surface); }
+.c-stackbar-seg--neutral { background: var(--color-border); color: var(--color-text); }
+
+.c-stackbar-tip {
+    position: absolute;
+    bottom: calc(100% + 0.625rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    padding: 0.375rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+    z-index: 5;
+}
+.c-stackbar-seg:hover .c-stackbar-tip, .c-stackbar-seg:focus-visible .c-stackbar-tip { opacity: 1; }
+
+/* ── Torta / donut ── */
+.c-donut-seg { cursor: pointer; transition: filter var(--transition); }
+.c-donut-seg:hover, .c-donut-seg:focus-visible { filter: brightness(1.15); }
+.c-donut-seg:focus-visible { outline: 3px solid var(--color-accent-focus); outline-offset: 2px; }
+.c-donut-total { transition: opacity var(--transition); }
+.c-donut-total-value { fill: var(--color-text); font-size: 28px; font-weight: 600; text-anchor: middle; font-family: inherit; }
+.c-donut-total-label { fill: var(--color-text-muted); font-size: 11px; text-anchor: middle; font-family: inherit; }
+
+svg:has(#seg-0:hover, #seg-0:focus-visible) #tip-seg-0,
+svg:has(#seg-1:hover, #seg-1:focus-visible) #tip-seg-1,
+svg:has(#seg-2:hover, #seg-2:focus-visible) #tip-seg-2 { opacity: 1; }
+svg:has(#seg-0:hover, #seg-0:focus-visible) .c-donut-total,
+svg:has(#seg-1:hover, #seg-1:focus-visible) .c-donut-total,
+svg:has(#seg-2:hover, #seg-2:focus-visible) .c-donut-total { opacity: 0; }
+
+/* ── Leyenda (barra de estado y torta) ── */
+.c-chart-legend { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 1rem; }
+.c-chart-legend--stack { flex-direction: column; gap: 0.5rem; }
+.c-chart-legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; color: var(--color-text); }
+.c-chart-legend-item .pct { margin-left: auto; color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.c-chart-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── Vista de tabla (details/summary nativo) ── */
+.c-chart-table-toggle {
+    margin-top: 1rem;
+}
+.c-chart-table-toggle summary {
+    color: var(--color-accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    list-style: none;
+}
+.c-chart-table-toggle summary::-webkit-details-marker { display: none; }
+.c-chart-table-toggle summary:focus-visible {
+    outline: 3px solid var(--color-accent-focus);
+    outline-offset: 2px;
+}
+.c-data-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin-top: 0.75rem; }
+.c-data-table caption { text-align: left; color: var(--color-text-muted); font-size: 0.75rem; margin-bottom: 0.5rem; }
+.c-data-table th, .c-data-table td { text-align: left; padding: 0.5rem 0.625rem; border-bottom: 1px solid var(--color-border); }
+.c-data-table td:last-child, .c-data-table th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+    .c-bar, .c-donut-seg, .c-line-dot, .c-chart-tooltip, .c-donut-total, .c-stackbar-tip {
+        transition: none;
+    }
+}

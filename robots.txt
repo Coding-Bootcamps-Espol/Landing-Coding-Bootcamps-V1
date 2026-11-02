@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://codingbootcamps-espol.example.com/sitemap.xml
+Sitemap: https://bootcamps.espol.edu.ec/sitemap.xml

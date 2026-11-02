@@ -1,0 +1,147 @@
+/* ── Tokens del rediseño (estilo editorial vibrante) ──
+   Paleta tomada de la marca de Coding Bootcamps ESPOL (sitio anterior y
+   brochures 2026): azul marino profundo, violeta, azul eléctrico y menta. */
+:root {
+  /* Marca */
+  --brand: #213a8e;        /* azul del logo oficial */
+  --brand-deep: #16295f;
+  --ink: #030541;          /* texto */
+  --brand-soft: #e3e8f6;
+
+  /* Acento de interfaz (botones, enlaces, resaltados): el azul de marca */
+  --accent: var(--brand);
+  --accent-strong: var(--brand-deep);
+  --accent-soft: var(--brand-soft);
+  --ink-2: #14175c;
+  --violet: #6255a5;
+  --violet-strong: #4b3f8f;
+  --violet-soft: #e9e5f8;
+  --blue: #2575fc;
+  --blue-strong: #1a5fd6;
+  --blue-soft: #dfeaff;
+  --mint: #2ec58d;
+  --mint-soft: #d5f4e7;
+  --sun: #ffc94d;
+
+  /* Colores de cada programa (tomados de sus piezas gráficas) */
+  --fs-from: #c02c68;
+  --fs-to: #6e1640;
+  --ds-from: #0cbde5;
+  --ds-to: #0352a3;
+  --bda-from: #6a5aa6;
+  --bda-to: #2e1c5c;
+
+  /* Logos de tecnologías (colores oficiales, Simple Icons) */
+  --logo-python: #3776ab;
+  --logo-javascript: #f7df1e;
+  --logo-html5: #e34f26;
+  --logo-css: #663399;
+  --logo-typescript: #3178c6;
+  --logo-react: #61dafb;
+  --logo-zod: #408aff;
+  --logo-mantine: #339af0;
+  --logo-reactrouter: #ca4245;
+  --logo-reactquery: #ff4154;
+  --logo-firebase: #dd2c00;
+  --logo-nodedotjs: #5fa04e;
+  --logo-django: #092e20;
+  --logo-mongodb: #47a248;
+  --logo-postgresql: #4169e1;
+  --logo-pandas: #150458;
+  --logo-scikitlearn: #f7931e;
+  --logo-jupyter: #f37626;
+  --logo-apachespark: #e25a1c;
+  --logo-githubactions: #2088ff;
+  --logo-owasp: #000000;
+  --logo-google: #4285f4;
+  --logo-googlecolab: #f9ab00;
+  --logo-pytorch: #ee4c2c;
+  --logo-powerbi: #f2c811;
+  --logo-amazonaws: #232f3e;
+  --logo-qgis: #589632;
+  --logo-github: #181717;
+  --logo-microsoftexcel: #217346;
+  --logo-githubcopilot: #000000;
+  --logo-cursor: #000000;
+  --logo-express: #0a0a0a;
+  --logo-docker: #2496ed;
+  --logo-fastapi: #009688;
+  --logo-streamlit: #ff4b4b;
+  --logo-dotnet: #512bd4;
+  --logo-microsoftsqlserver: #cc2927;
+  --logo-visualstudio: #5c2d91;
+  --logo-visualstudiocode: #007acc;
+  --logo-claude: #d97757;
+  --logo-tally: #000000;
+  --logo-lovable: #fe4230;
+  --logo-scrum: var(--accent);
+  --logo-datagovernance: var(--accent);
+
+  /* WhatsApp (color oficial) */
+  --whatsapp: #25d366;
+  --whatsapp-strong: #1da851;
+
+  /* Estados */
+  --danger: #c93636;
+  --danger-soft: #fde8e8;
+  --success-strong: #11603f;
+
+  /* Superficies y texto */
+  --surface-dark: var(--brand);   /* fondos oscuros: bandas, testimonios, pie, menú móvil */
+  --paper: #fbfaf7;
+  --paper-2: #f2f0ea;
+  --white: #ffffff;
+  --text: var(--ink);
+  --text-muted: #555a78;
+  --text-inverse: #f4f3ff;
+  --text-inverse-muted: #b9bbe0;
+  --line: rgba(3, 5, 65, 0.12);
+  --line-strong: rgba(3, 5, 65, 0.24);
+
+  /* Transparencias (sobre fondos de color u oscuros) */
+  --white-a10: rgba(255, 255, 255, 0.1);
+  --white-a20: rgba(255, 255, 255, 0.2);
+  --white-a30: rgba(255, 255, 255, 0.3);
+  --white-a40: rgba(255, 255, 255, 0.4);
+  --ink-a25: rgba(3, 5, 65, 0.25);
+  --ink-a85: rgba(3, 5, 65, 0.85);
+
+  /* Tipografía */
+  --font-display: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-hero: clamp(2.75rem, 6.4vw, 5.25rem);
+  --fs-page: clamp(2.5rem, 5.6vw, 4.5rem);
+  --fs-h2: clamp(2rem, 4.6vw, 3.75rem);
+  --fs-h3: clamp(1.375rem, 2.2vw, 1.75rem);
+  --fs-lead: clamp(1.0625rem, 1.5vw, 1.25rem);
+  --tracking-tight: -0.04em;
+
+  /* Espaciado y forma */
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --max: 82rem;
+  --section-y: clamp(4.5rem, 10vw, 8.5rem);
+  --radius-xs: 0.25rem;
+  --radius-s: 0.75rem;
+  --radius-m: 1.25rem;
+  --radius-l: 2rem;
+  --radius-pill: 999px;
+  /* Burbuja flotante de WhatsApp: tamaño y separación del borde */
+  --wa-size: 3.75rem;
+  --wa-gap: clamp(1rem, 3vw, 1.75rem);
+  --header-h: 4.75rem;
+  --promo-h: 2.5rem;
+  --top-offset: calc(var(--header-h) + var(--promo-h));
+
+  /* Textura de letras "Coding Bootcamp" (ver .has-pattern) */
+  --pattern-image: url("../../img/patron-letras.webp");
+  --pattern-opacity-dark: 0.1;
+  --pattern-opacity-light: 0.035;
+
+  /* Sombras y movimiento */
+  --shadow-s: 0 2px 10px rgba(3, 5, 65, 0.06);
+  --shadow-m: 0 18px 40px -18px rgba(3, 5, 65, 0.28);
+  --shadow-l: 0 40px 80px -30px rgba(3, 5, 65, 0.45);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur: 220ms;
+}

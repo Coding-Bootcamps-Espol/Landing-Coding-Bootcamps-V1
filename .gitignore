@@ -18,3 +18,8 @@ resumen-proyecto.md
 resvisar-formulario.md
 setup-whatsapp-field.md
 check-typescript-typing.md
+
+dist/
+
+# PDFs de trabajo (los brochures públicos sí van en git, en brochures/)
+docs/*.pdf
