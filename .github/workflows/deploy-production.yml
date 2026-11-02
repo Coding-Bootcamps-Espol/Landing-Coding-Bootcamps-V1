@@ -1,0 +1,72 @@
+# Cada push a master genera dist/ y lo publica en la rama "produccion".
+# El servidor de producción (solo accesible por VPN de ESPOL) revisa esa rama
+# cada 5 minutos con scripts/actualizar-produccion.sh y actualiza /var/www/landing.
+
+name: Deploy producción
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: # botón "Run workflow" para republicar a mano
+
+permissions:
+  contents: write # para empujar la rama "produccion"
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    name: Generar dist/ y publicar en la rama produccion
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://bootcamps.espol.edu.ec
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar ts/ → js/
+        run: npm run build
+
+      - name: Sincronizar layout compartido
+        run: npm run sync:layout
+
+      - name: Comprobar que js/ y el layout están al día
+        run: |
+          if ! git diff --quiet -- js/ '*.html'; then
+            echo "::error::js/ o el layout no coinciden con el código fuente. Ejecuta 'npm run build' y 'npm run sync:layout' y haz commit."
+            git diff --stat -- js/ '*.html'
+            exit 1
+          fi
+
+      - name: Generar dist/
+        run: npm run build:dist
+
+      - name: Comprobar que dist/ está completo
+        run: |
+          for f in index.html .htaccess 404.html programas.html solicita-informacion.html gracias.html; do
+            test -f "dist/$f" || { echo "::error::Falta dist/$f"; exit 1; }
+          done
+
+      # La rama "produccion" solo contiene la web lista para publicar (un commit,
+      # reescrito en cada despliegue), así el servidor la descarga rápido.
+      - name: Publicar dist/ en la rama produccion
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd dist
+          git init -q -b produccion
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Publicar ${GITHUB_SHA::7}: $(git -C .. log -1 --format=%s)"
+          git push -q --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" produccion
+          echo "Publicado en la rama produccion. El servidor lo aplicará en menos de 5 minutos."
