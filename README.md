@@ -40,7 +40,7 @@ proyecto/
 │   ├── gracias.ts
 │   └── playground.ts
 ├── scripts/
-│   └── build-dist.mjs              # Arma dist/ para publicar en Netlify
+│   └── build-dist.mjs              # Arma dist/ para publicar en el servidor de producción
 ├── docs/
 │   └── PLAN.md                     # Plan de la próxima iteración
 ├── favicon.png

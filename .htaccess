@@ -1,0 +1,31 @@
+# Configuración de Apache para producción (bootcamps.espol.edu.ec).
+# Se copia a dist/ con `npm run build:dist`.
+
+# Página de inicio
+DirectoryIndex index.html
+
+# Página 404 propia
+ErrorDocument 404 /404.html
+
+# Sin listado de carpetas
+Options -Indexes
+
+# Redirecciones 301 desde las URLs de la web anterior (WordPress) para no
+# perder posicionamiento ni enlaces guardados. NE evita que Apache convierta
+# el "#" de la pestaña en "%23".
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^bootcamp-full-stack-developer/?$ /programas.html#desarrollo-web [R=301,NE,L]
+  RewriteRule ^data-science/?$ /programas.html#ciencia-de-datos [R=301,NE,L]
+  RewriteRule ^business-analytics/?$ /programas.html#business-data-analytics [R=301,NE,L]
+  RewriteRule ^certificaciones/?$ /programas.html [R=301,L]
+  RewriteRule ^formulario-bootcamp-energy-management/?$ /programas.html [R=301,L]
+  RewriteRule ^formulario-full-stack/?$ /solicita-informacion.html [R=301,L]
+  RewriteRule ^formulario-business-analytics/?$ /solicita-informacion.html [R=301,L]
+  RewriteRule ^formulari-data-science/?$ /solicita-informacion.html [R=301,L]
+  RewriteRule ^metform-form/ /solicita-informacion.html [R=301,L]
+  RewriteRule ^faq/?$ /preguntas.html [R=301,L]
+  RewriteRule ^contactos/?$ /contacto.html [R=301,L]
+  RewriteRule ^acerca-de-2/?$ /nosotros.html [R=301,L]
+  RewriteRule ^3684-2/?$ / [R=301,L]
+</IfModule>
