@@ -137,6 +137,12 @@
   --pattern-opacity-dark: 0.1;
   --pattern-opacity-light: 0.035;
 
+  /* Campaña Winners (temporal, hasta el 15 de noviembre de 2026; ver css/v2/promo.css) */
+  --brand-bright: #2f56c9;
+  --mint-a0: rgba(46, 197, 141, 0);
+  --mint-a15: rgba(46, 197, 141, 0.15);
+  --mint-a75: rgba(46, 197, 141, 0.75);
+
   /* Sombras y movimiento */
   --shadow-s: 0 2px 10px rgba(3, 5, 65, 0.06);
   --shadow-m: 0 18px 40px -18px rgba(3, 5, 65, 0.28);

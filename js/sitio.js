@@ -445,6 +445,253 @@
             });
         });
     }
+    /* ── Campaña Winners (temporal, hasta el 15 de noviembre de 2026) ──
+       Franja "Desbloquea tu premio" del inicio ([data-winners]), tarjeta emergente
+       que acompaña al visitante, pestaña para reabrirla y un mensaje en la consola.
+       Pasada la fecha límite todo se oculta solo. Estilos en css/v2/promo.css. */
+    const WINNERS_FIN = new Date("2026-11-15T23:59:59-05:00").getTime();
+    const WINNERS_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfzuVpuCOCwYrydV5xP8MNT9HcMjFY1OmEeRLe7nvnwE5Ehgw/viewform";
+    const WINNERS_CERRADA = "winners-cerrada-hasta"; // localStorage: hasta cuándo no reabrir la emergente
+    const WINNERS_PAUSA_MS = 3 * 86400000;
+    function track(event, props = {}) {
+        const mp = window.mixpanel;
+        try {
+            if (mp && typeof mp.track === "function")
+                mp.track(event, props);
+        }
+        catch {
+            // La analítica nunca debe romper la página.
+        }
+    }
+    function leerPausa() {
+        try {
+            return Number(localStorage.getItem(WINNERS_CERRADA)) || 0;
+        }
+        catch {
+            return 0;
+        }
+    }
+    function guardarPausa(hasta) {
+        try {
+            if (hasta === null)
+                localStorage.removeItem(WINNERS_CERRADA);
+            else
+                localStorage.setItem(WINNERS_CERRADA, String(hasta));
+        }
+        catch {
+            // Sin almacenamiento (modo privado): la emergente simplemente vuelve a salir.
+        }
+    }
+    /* Confeti con los colores de la marca, desde el centro de un elemento */
+    function lanzarConfeti(origen) {
+        if (reduceMotion.matches)
+            return;
+        const canvas = document.createElement("canvas");
+        canvas.className = "winners-confetti";
+        canvas.setAttribute("aria-hidden", "true");
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+            canvas.remove();
+            return;
+        }
+        const lienzo = ctx;
+        const dpr = window.devicePixelRatio || 1;
+        const ancho = window.innerWidth;
+        const alto = window.innerHeight;
+        canvas.width = ancho * dpr;
+        canvas.height = alto * dpr;
+        lienzo.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const estilos = getComputedStyle(document.documentElement);
+        const colores = ["--mint", "--brand", "--sun", "--white", "--brand-bright", "--mint-soft"].map(function (v) { return estilos.getPropertyValue(v).trim(); });
+        const r = origen.getBoundingClientRect();
+        const piezas = Array.from({ length: 120 }, function (_, i) {
+            const ang = Math.random() * Math.PI * 2;
+            const vel = 4 + Math.random() * 8;
+            return { x: r.left + r.width / 2, y: r.top + r.height / 3, vx: Math.cos(ang) * vel, vy: Math.sin(ang) * vel - 6, w: 5 + Math.random() * 6, h: 3 + Math.random() * 4, rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.4, c: colores[i % colores.length] };
+        });
+        const inicio = performance.now();
+        const duracion = 2000;
+        function frame(now) {
+            const t = now - inicio;
+            lienzo.clearRect(0, 0, ancho, alto);
+            piezas.forEach(function (p) {
+                p.vy += 0.28;
+                p.vx *= 0.985;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.rot += p.vr;
+                lienzo.save();
+                lienzo.globalAlpha = Math.max(0, 1 - t / duracion);
+                lienzo.translate(p.x, p.y);
+                lienzo.rotate(p.rot);
+                lienzo.fillStyle = p.c;
+                lienzo.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                lienzo.restore();
+            });
+            if (t < duracion)
+                requestAnimationFrame(frame);
+            else
+                canvas.remove();
+        }
+        requestAnimationFrame(frame);
+    }
+    function initWinners() {
+        const strip = document.querySelector("[data-winners]");
+        if (Date.now() > WINNERS_FIN) {
+            strip?.remove();
+            return;
+        }
+        // Clics en "Reclamar mi premio" (franja o emergente)
+        document.addEventListener("click", function (e) {
+            const cta = e.target?.closest("[data-winners-cta]");
+            if (cta)
+                track("Winners: clic en aplicar", { ubicacion: cta.dataset.winnersCta });
+        });
+        // Franja del hero: arranca "bloqueada" y se abre al tocar la medalla
+        if (strip) {
+            const banda = strip;
+            const medalla = banda.querySelector(".winners-medal");
+            banda.classList.add("is-locked");
+            banda.querySelectorAll("[data-winners-unlock]").forEach(function (btn) {
+                btn.hidden = false;
+                btn.addEventListener("click", function (e) {
+                    if (banda.classList.contains("is-open"))
+                        return;
+                    banda.classList.remove("is-locked");
+                    banda.classList.add("is-open");
+                    medalla?.setAttribute("aria-label", "Premio desbloqueado");
+                    track("Winners: medalla tocada");
+                    if (medalla)
+                        lanzarConfeti(medalla);
+                    // Con teclado, el foco pasa al botón que acaba de aparecer
+                    if (e.detail === 0)
+                        banda.querySelector("[data-winners-cta]")?.focus({ preventScroll: true });
+                });
+            });
+        }
+        // Emergente: no en el formulario de inscripción ni en la página de gracias
+        const ruta = location.pathname;
+        const sinEmergente = /(solicita-informacion|gracias)\.html$/.test(ruta);
+        let pop = null;
+        let tab = null;
+        if (!sinEmergente) {
+            const aside = document.createElement("aside");
+            aside.className = "winners-pop has-pattern";
+            aside.setAttribute("aria-label", "Promoción Winners");
+            aside.hidden = true;
+            aside.innerHTML =
+                '<button class="winners-pop-close" type="button" aria-label="Cerrar promoción">✕</button>' +
+                    '<img class="winners-pop-medal" src="img/winners-medalla.svg" alt="" width="120" height="130">' +
+                    '<div class="winners-pop-head"><span class="winners-tag">★ Promoción exclusiva</span>' +
+                    '<p class="winners-pop-title">¿Ganaste un hackathon? Hasta <em>$700</em> de descuento</p></div>' +
+                    '<div class="winners-pop-foot">' +
+                    '<div class="winners-cd" role="timer" aria-label="Tiempo para aplicar: hasta el 15 de noviembre"><span><b data-winners-cd="d"></b>d</span><span><b data-winners-cd="h"></b>h</span><span><b data-winners-cd="m"></b>m</span><span><b data-winners-cd="s"></b>s</span></div>' +
+                    '<a class="btn btn--mint" href="' + WINNERS_FORM + '" target="_blank" rel="noopener" data-winners-cta="emergente">Reclamar mi premio</a>' +
+                    "</div>";
+            const boton = document.createElement("button");
+            boton.className = "winners-tab";
+            boton.type = "button";
+            boton.hidden = true;
+            boton.setAttribute("aria-label", "Abrir promoción Winners: hasta 700 dólares de descuento");
+            boton.innerHTML = '<img src="img/winners-medalla.svg" alt="" width="120" height="130"><b>$700</b>';
+            const wa = document.querySelector(".wa-float");
+            document.body.insertBefore(aside, wa);
+            document.body.insertBefore(boton, wa);
+            pop = aside;
+            tab = boton;
+        }
+        let mostrada = false;
+        function mostrar() {
+            if (!pop || !tab)
+                return;
+            if (Date.now() < leerPausa()) {
+                pop.hidden = true;
+                tab.hidden = false;
+                return;
+            }
+            tab.hidden = true;
+            if (!pop.hidden)
+                return;
+            pop.hidden = false;
+            if (!mostrada) {
+                mostrada = true;
+                track("Winners: emergente mostrada", { pagina: ruta });
+            }
+        }
+        function ocultar() {
+            if (pop)
+                pop.hidden = true;
+            if (tab)
+                tab.hidden = true;
+        }
+        if (pop && tab) {
+            const emergente = pop;
+            const pestana = tab;
+            function cerrar() {
+                guardarPausa(Date.now() + WINNERS_PAUSA_MS);
+                emergente.hidden = true;
+                pestana.hidden = false;
+                pestana.focus({ preventScroll: true });
+                track("Winners: emergente cerrada");
+            }
+            emergente.querySelector(".winners-pop-close")?.addEventListener("click", cerrar);
+            emergente.addEventListener("keydown", function (e) { if (e.key === "Escape")
+                cerrar(); });
+            pestana.addEventListener("click", function () {
+                guardarPausa(null);
+                track("Winners: emergente reabierta");
+                mostrar();
+            });
+            // En el inicio aparece cuando la franja ya quedó arriba; en el resto, a los pocos segundos
+            if (strip && "IntersectionObserver" in window) {
+                new IntersectionObserver(function (entries) {
+                    const entry = entries[0];
+                    if (entry.isIntersecting)
+                        ocultar();
+                    else if (entry.boundingClientRect.top < 0)
+                        mostrar();
+                }).observe(strip);
+            }
+            else {
+                window.setTimeout(mostrar, 6000);
+            }
+        }
+        // Cuenta regresiva (franja y emergente)
+        function pad(n) { return String(n).padStart(2, "0"); }
+        function tick() {
+            const ms = WINNERS_FIN - Date.now();
+            if (ms <= 0) {
+                strip?.remove();
+                pop?.remove();
+                tab?.remove();
+                window.clearInterval(reloj);
+                return;
+            }
+            const v = {
+                d: String(Math.floor(ms / 86400000)),
+                h: pad(Math.floor(ms / 3600000) % 24),
+                m: pad(Math.floor(ms / 60000) % 60),
+                s: pad(Math.floor(ms / 1000) % 60),
+            };
+            document.querySelectorAll("[data-winners-cd]").forEach(function (el) {
+                el.textContent = v[el.dataset.winnersCd || "d"] || "";
+            });
+        }
+        const reloj = window.setInterval(tick, 1000);
+        tick();
+        // Easter egg para developers curiosos
+        try {
+            const tokens = getComputedStyle(document.documentElement);
+            const mint = tokens.getPropertyValue("--mint").trim();
+            const brand = tokens.getPropertyValue("--brand").trim();
+            console.log("%c¿Eres winner? 🏅", "font: 800 22px 'Inter Tight', sans-serif; color: " + mint + ";");
+            console.log("%cSi estás leyendo esto en la consola, ya tienes madera de ganador.\nReclama hasta $700 de descuento → " + WINNERS_FORM, "font: 14px Inter, sans-serif; color: " + brand + ";");
+        }
+        catch {
+            // Sin consola, sin easter egg.
+        }
+    }
     initNav();
     initHeader();
     initReveal();
@@ -456,4 +703,5 @@
     initTabs();
     initRoster();
     initProgramTracking();
+    initWinners();
 })();

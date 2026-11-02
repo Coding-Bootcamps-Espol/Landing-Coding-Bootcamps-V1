@@ -39,7 +39,9 @@
 .btn:hover .btn-arrow { transform: translateX(4px); }
 
 /* Hover del botón por defecto; cada variante de color define el suyo */
-.btn:not(.btn--ghost):not(.btn--light):not(.btn--outline-light):not(.btn--whatsapp):hover { --btn-bg: var(--accent-strong); }
+.btn:not(.btn--ghost):not(.btn--light):not(.btn--outline-light):not(.btn--whatsapp):not(.btn--mint):hover { --btn-bg: var(--accent-strong); }
+.btn--mint { --btn-bg: var(--mint); --btn-fg: var(--ink); font-weight: 700; }
+.btn--mint:hover { --btn-bg: var(--white); }
 .btn--ghost { --btn-bg: transparent; --btn-fg: var(--ink); --btn-border: var(--line-strong); }
 .btn--ghost:hover { --btn-bg: var(--white); --btn-border: var(--accent); --btn-fg: var(--accent); }
 .btn--light { --btn-bg: var(--white); --btn-fg: var(--ink); }
