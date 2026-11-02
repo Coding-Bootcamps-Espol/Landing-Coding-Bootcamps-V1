@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <script async src="https://t.contentsquare.net/uxa/91b7a40541008.js"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8T00EQ2LKJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8T00EQ2LKJ');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Inscríbete en los bootcamps de Coding Bootcamps ESPOL y un asesor te contactará para resolver tus dudas sobre desarrollo web, datos y business data analytics.">
@@ -33,7 +23,7 @@
   for(h=0;h<l.length;h++)t(b,l[h]);var n="set set_once union unset remove delete".split(" ");b.get_group=function(){function d(p){a[p]=function(){b.push([g,[p].concat(Array.prototype.slice.call(arguments,0))])}}for(var a={},g=["get_group"].concat(Array.prototype.slice.call(arguments,0)),m=0;m<n.length;m++)d(n[m]);return a};c._i.push([q,r,f])};c.__SV=1.2;var k=e.createElement("script");k.type="text/javascript";k.async=!0;k.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===
   e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=e.getElementsByTagName("script")[0];e.parentNode.insertBefore(k,e)}})(document,window.mixpanel||[])
 
-  mixpanel.init('21f17a4cf3d1d93ef4dce3abadfc3712', {
+  mixpanel.init('90519913c8cb82f1c589026d887b29a1', {
     autocapture: true,
     record_sessions_percent: 100,
   })
@@ -207,8 +197,7 @@
         if (!data || typeof data.event !== "string") return;
 
         if (data.event === "Tally.FormLoaded") {
-          gtag("event", "form_start", { form_id: "solicita_informacion" });
-          mixpanel.track("Formulario iniciado", { form_id: "solicita_informacion" });
+          try { mixpanel.track("Formulario iniciado", { form_id: "solicita_informacion" }); } catch (err) {}
           return;
         }
 
@@ -219,19 +208,16 @@
           var situacion = getAnswer(fields, "Situación actual");
           var email = getAnswer(fields, "Correo electrónico");
 
-          gtag("event", "generate_lead", {
-            form_id: "solicita_informacion",
-            programa: programa,
-            para_quien: paraQuien
-          });
-
-          if (email) mixpanel.identify(email);
-          mixpanel.track("Solicitud de información enviada", {
-            programa: programa,
-            para_quien: paraQuien,
-            situacion_actual: situacion
-          });
-          mixpanel.track("form_submitted", { form_name: "solicita_informacion" });
+          // Si la analítica falla (p. ej. un bloqueador), la redirección a gracias sigue.
+          try {
+            if (email) mixpanel.identify(email);
+            mixpanel.track("Solicitud de información enviada", {
+              programa: programa,
+              para_quien: paraQuien,
+              situacion_actual: situacion
+            });
+            mixpanel.track("form_submitted", { form_name: "solicita_informacion" });
+          } catch (err) {}
 
           window.location.href = "gracias.html" + (programa ? "?programa=" + encodeURIComponent(programa) : "");
         }

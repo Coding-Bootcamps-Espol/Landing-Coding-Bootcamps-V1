@@ -36,7 +36,7 @@ All public pages use the v2 design system (see "Design system v2" below):
 
 **Shared layout:** there is no templating, so the header (promo bar + nav) and the footer (+ WhatsApp bubble) live in `index.html` between `<!-- layout:header -->…<!-- /layout:header -->` and `<!-- layout:footer -->…<!-- /layout:footer -->`. Edit them only in `index.html` and run `npm run sync:layout` (`scripts/sync-layout.mjs`), which copies them into the other pages and sets `aria-current` on the matching nav link. The staging workflow fails if a page is out of sync. Nav/footer links are absolute (`index.html#metodologia`, `programas.html`) so they work from every page.
 
-**Analytics:** each page keeps its own `<head>` scripts (Contentsquare, GA4 `G-8T00EQ2LKJ`, Mixpanel). Careful: the Mixpanel snippet is preceded by a comment containing the text `</head>`, so any script that splits a page at `</head>` must use the last occurrence.
+**Analytics:** each page keeps its own `<head>` Mixpanel snippet (only tool in use; GA4 and Contentsquare were removed on 2026-11-01 because they belonged to someone else's accounts — the Mixpanel token is being moved to the user's own project). Wrap analytics calls in `try` so a blocked tracker never stops the Tally redirect. Careful: the Mixpanel snippet is preceded by a comment containing the text `</head>`, so any script that splits a page at `</head>` must use the last occurrence.
 
 ### TypeScript → JS
 
