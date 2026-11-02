@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130" width="120" height="130">
+  <!-- Medalla de la campaña Winners (dibujo propio, sin fondo) -->
+  <defs>
+    <linearGradient id="plata" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="0.45" stop-color="#dde1ea"/><stop offset="0.72" stop-color="#a9b1c2"/><stop offset="1" stop-color="#f1f3f7"/></linearGradient>
+    <radialGradient id="disco" cx="0.4" cy="0.32" r="0.85"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cdd4e2"/></radialGradient>
+    <linearGradient id="cinta" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f56c9"/><stop offset="1" stop-color="#213a8e"/></linearGradient>
+  </defs>
+  <path d="M36 0 H52 L64 25 L53 30 Z" fill="url(#cinta)"/>
+  <path d="M84 0 H68 L56 25 L67 30 Z" fill="#16295f"/>
+  <path d="M44 0 H48 L58 22 L55 23 Z" fill="#2ec58d" opacity="0.9"/>
+  <circle cx="60" cy="23" r="5" fill="none" stroke="#b9c0cf" stroke-width="3"/>
+  <path d="M60.00 21.50 Q69.64 11.34 75.22 24.18 Q87.75 17.94 88.60 31.91 Q102.52 30.33 98.54 43.75 Q112.15 47.02 103.82 58.27 Q115.50 66.00 103.82 73.73 Q112.15 84.98 98.54 88.25 Q102.52 101.67 88.60 100.09 Q87.75 114.06 75.22 107.82 Q69.64 120.66 60.00 110.50 Q50.36 120.66 44.78 107.82 Q32.25 114.06 31.40 100.09 Q17.48 101.67 21.46 88.25 Q7.85 84.98 16.18 73.73 Q4.50 66.00 16.18 58.27 Q7.85 47.02 21.46 43.75 Q17.48 30.33 31.40 31.91 Q32.25 17.94 44.78 24.18 Q50.36 11.34 60.00 21.50Z" fill="url(#plata)" stroke="#97a0b4" stroke-width="1"/>
+  <circle cx="60" cy="66" r="33" fill="url(#disco)" stroke="#b6bdcc" stroke-width="1.2"/>
+  <polygon points="60.0,38.5 64.1,49.3 75.7,49.9 66.7,57.2 69.7,68.3 60.0,62.0 50.3,68.3 53.3,57.2 44.3,49.9 55.9,49.3" fill="#213a8e"/>
+  <g fill="none" stroke="#213a8e" stroke-width="1.6" stroke-linecap="round"><path d="M38 52 Q34 70 47 82"/><path d="M82 52 Q86 70 73 82"/></g>
+  <g fill="#213a8e"><ellipse cx="37" cy="58" rx="3.2" ry="1.4" transform="rotate(-70 37 58)"/><ellipse cx="37.5" cy="66" rx="3.2" ry="1.4" transform="rotate(-85 37.5 66)"/><ellipse cx="40" cy="73.5" rx="3.2" ry="1.4" transform="rotate(-115 40 73.5)"/><ellipse cx="44.5" cy="79" rx="3.2" ry="1.4" transform="rotate(-135 44.5 79)"/><ellipse cx="83" cy="58" rx="3.2" ry="1.4" transform="rotate(70 83 58)"/><ellipse cx="82.5" cy="66" rx="3.2" ry="1.4" transform="rotate(85 82.5 66)"/><ellipse cx="80" cy="73.5" rx="3.2" ry="1.4" transform="rotate(115 80 73.5)"/><ellipse cx="75.5" cy="79" rx="3.2" ry="1.4" transform="rotate(135 75.5 79)"/></g>
+  <text x="60" y="79" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="5.6" letter-spacing="0.5" fill="#16295f">HACKATHON</text>
+  <text x="60" y="89" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="9" letter-spacing="0.3" fill="#16295f">WINNER</text>
+</svg>

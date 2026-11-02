@@ -111,6 +111,26 @@
             <img class="hero-photo" src="img/hero-estudiante.webp" alt="Estudiante sonriente con una laptop" width="692" height="780" fetchpriority="high">
             <div class="credential-badge floating"><img src="img/micredencial.webp" alt="Insignia Mi Credencial de ESPOL" width="218" height="343"><p class="sticker sticker--white">Macro Credencial ESPOL</p></div>
           </div>
+
+          <!-- Campaña Winners (temporal, hasta el 15 de noviembre de 2026): ver css/v2/promo.css e initWinners() en ts/sitio.ts -->
+          <aside class="winners has-pattern" id="winners" aria-labelledby="winners-title" data-winners>
+            <button class="winners-medal" type="button" data-winners-unlock aria-label="Toca la medalla para desbloquear tu premio">
+              <span class="winners-pulse" aria-hidden="true"></span>
+              <img src="img/winners-medalla.svg" alt="" width="120" height="130">
+            </button>
+            <div class="winners-body">
+              <span class="winners-tag">★ Promoción exclusiva</span>
+              <p class="winners-title" id="winners-title">¿Ganaste un concurso o hackathon? Recibe hasta <em>$700</em> de descuento</p>
+              <span class="winners-unlocked" aria-live="polite">🎉 ¡Premio desbloqueado! Aplica antes de que termine el tiempo.</span>
+            </div>
+            <div class="winners-side">
+              <div class="winners-cd" role="timer" aria-label="Tiempo para aplicar: hasta el 15 de noviembre">
+                <span><b data-winners-cd="d">13</b>días</span><span><b data-winners-cd="h">00</b>horas</span><span><b data-winners-cd="m">00</b>min</span><span><b data-winners-cd="s">00</b>seg</span>
+              </div>
+              <button class="btn btn--mint winners-unlock-btn" type="button" data-winners-unlock hidden>🏅 Desbloquear mi premio</button>
+              <a class="btn btn--mint winners-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfzuVpuCOCwYrydV5xP8MNT9HcMjFY1OmEeRLe7nvnwE5Ehgw/viewform" target="_blank" rel="noopener" data-winners-cta="hero">Reclamar mi premio <svg class="btn-arrow" width="18" height="18" aria-hidden="true"><use href="img/icons.svg#i-arrow"/></svg></a>
+            </div>
+          </aside>
         </div>
 
         <dl class="stats">
