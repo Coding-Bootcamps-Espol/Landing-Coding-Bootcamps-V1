@@ -67,6 +67,20 @@
     caja.textContent = errores.length > 0 ? errores.join(", ") : "¡Mensaje enviado!";
   }
 
+  // Registra el mensaje en Mixpanel solo cuando la hoja confirmó que lo guardó.
+  // Si Mixpanel no está (p. ej. un bloqueador), no afecta al formulario.
+  function registrarEnMixpanel(email: string): void {
+    const mp = (window as unknown as {
+      mixpanel?: { track?: (event: string, props: object) => void; identify?: (id: string) => void };
+    }).mixpanel;
+    try {
+      if (mp && typeof mp.identify === "function") mp.identify(email.trim());
+      if (mp && typeof mp.track === "function") mp.track("Mensaje de contacto enviado", { form_name: "contacto" });
+    } catch {
+      // La analítica nunca debe romper el envío.
+    }
+  }
+
   // Envía el mensaje a la hoja. Solo devuelve true si Apps Script confirma que lo guardó.
   async function enviarMensaje(datos: ContactForm, website: string): Promise<boolean> {
     try {
@@ -156,6 +170,8 @@
       formStatus.textContent = error;
       return;
     }
+
+    registrarEnMixpanel(datos.email);
 
     mostrarFeedback([]);
     formStatus.textContent = "¡Mensaje enviado! Nos pondremos en contacto contigo pronto.";
