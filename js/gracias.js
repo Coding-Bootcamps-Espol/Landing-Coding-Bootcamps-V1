@@ -8,8 +8,8 @@
     }
     function buildWhatsAppUrl(programa) {
         const mensaje = programa
-            ? `Hola, acabo de solicitar información sobre el programa ${programa} de Coding Bootcamps ESPOL.`
-            : "Hola, acabo de solicitar información sobre Coding Bootcamps ESPOL.";
+            ? `Hola, quiero inscribirme en el programa ${programa} de Coding Bootcamps ESPOL.`
+            : "Hola, quiero inscribirme en Coding Bootcamps ESPOL.";
         return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
     }
     const programa = getPrograma();

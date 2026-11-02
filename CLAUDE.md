@@ -28,7 +28,7 @@ All public pages use the v2 design system (see "Design system v2" below):
 - `gracias.html` — confirmation (`noindex`), confetti + steps; `ts/gracias.ts` fills `#gracias-programa-texto` and the `#whatsapp-directo` link (number `593979631573`).
 - `nosotros.html` — about page (who we are, upskilling/reskilling, mission/vision, stats, team with portraits in `img/equipo/`, industry companies as a `.name-wall` of text wordmarks — real company logos are NOT used on purpose: they are instructors' employers, not partners, and using their marks could imply an endorsement; swap in logos only if the team provides files with permission). Only Dra. Carmen Vaca has a bio (from the brochure); do not invent bios for the rest of the team.
 - `preguntas.html` — full FAQ grouped by topic (`.faq-group` sections with anchors `#programas`, `#clases`, `#admision`, `#pagos`, `#certificacion`, each with a number and question count). A search box in the hero (`[data-faq-search]`, `initFaqSearch`; hidden without JS) filters questions accent-insensitively, hides empty topics and opens answers when 3 or fewer match. On desktop a sticky side index (`.faq-index`, `data-scrollspy`) + help card sit on the left; on mobile the hero chips (`.faq-cats`) replace the index. Answers come only from the brochures/old site or the user; the home shows 4 of them + "Ver todas". Leveling: Full Stack has a JavaScript propedéutico; Data Science and BDA have the Python M0 module.
-- `contacto.html` — contact cards, the (simulated) contact form with `js/contacto.js`, Google Maps embed of the campus and socials. The home `#contacto` is now a short CTA panel.
+- `contacto.html` — contact cards, the contact form with `js/contacto.js` (saved to Google Sheets), Google Maps embed of the campus and socials. The home `#contacto` is now a short CTA panel.
 - `404.html` — custom error page (`noindex`, no analytics).
 - `inscripcion.html` — legacy URL only: redirects to `solicita-informacion.html` keeping the query string.
 - `playground.html` — internal component playground; still on the **old** design (`css/styles.css`, `js/playground.js`, `js/backoffice.js`). It's the only page using the old CSS.
@@ -48,9 +48,9 @@ All public pages use the v2 design system (see "Design system v2" below):
 - `ts/animaciones.ts` — a type-guard helper (`esHTMLElement`) plus `resaltarNavActivo()`, which highlights the current page's nav link on `DOMContentLoaded` by comparing `location.pathname` to each link's `href`. No HTML page actually loads `js/animaciones.js` via `<script>`, so the whole file is still dead code in practice.
 - Each compiled file is loaded via `<script defer>` only on the page(s) that need it — there's no bundler or shared module graph tying them together.
 
-### Forms: one simulated, one real
+### Forms: both real
 
-The contact form on `contacto.html` is still simulated: it only validates client-side and shows an inline success message (then `form.reset()`) — no network request, backend, or email service integration.
+The contact form on `contacto.html` POSTs (form-urlencoded, no preflight) to a Google Apps Script web app (`URL_ENVIO` in `ts/contacto.ts`) bound to the same Google Sheets file the Tally form feeds; it appends a row to the "Contacto" tab and answers `{ok:true|false}`. The success message only shows when `ok` is true. A hidden honeypot field `website` makes the script skip bot submissions. The Apps Script code lives in Google (project "Desviar Preguntas"), not in this repo; changing it requires a new deployment version in Apps Script, and a new deployment would change the URL.
 
 `solicita-informacion.html` is different: its form is an embedded Tally form (external service), so submissions are real and stored by Tally, not simulated. The host page only listens for Tally's `postMessage` events to fire analytics and redirect to `gracias.html` — it does not handle validation or storage itself.
 
