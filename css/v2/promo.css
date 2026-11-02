@@ -1,0 +1,274 @@
+/* ── Campaña Winners (temporal: hasta el 15 de noviembre de 2026) ──
+   · Franja "Desbloquea tu premio" en el hero del inicio (#winners en index.html).
+   · Tarjeta emergente y pestaña en el resto del sitio (.winners-pop / .winners-tab,
+     las crea initWinners() en ts/sitio.ts).
+   Al terminar la campaña se puede borrar: este archivo y su @import en site.css,
+   el bloque #winners de index.html, initWinners() en ts/sitio.ts,
+   img/winners-medalla.svg y los tokens "Campaña Winners" de tokens.css. */
+
+/* ── Franja del hero ── */
+.winners {
+  --winners-medal: 7.5rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--winners-medal) minmax(0, 1fr);
+  gap: 1rem 1.5rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem 1.25rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-m);
+  color: var(--white);
+  /* Fondo azul de marca + borde con brillo verde que se desplaza */
+  background:
+    radial-gradient(130% 160% at 0% 0%, var(--brand-bright) 0%, var(--brand) 45%, var(--brand-deep) 100%) padding-box,
+    linear-gradient(110deg, var(--mint), var(--mint-a15) 30%, var(--white) 50%, var(--mint-a15) 70%, var(--mint)) border-box;
+  background-size: auto, 250% 100%;
+  box-shadow: var(--shadow-l);
+  animation: winners-ring 5s linear infinite, fade-up 800ms 600ms var(--ease-spring) both;
+}
+/* Textura de letras "Coding Bootcamp" en mosaico (ver .has-pattern), más suave que en las bandas */
+.winners.has-pattern,
+.winners-pop.has-pattern { --pattern-opacity: 0.06; }
+.winners.has-pattern::before,
+.winners-pop.has-pattern::before {
+  -webkit-mask: var(--pattern-image) center / 26rem auto repeat;
+  mask: var(--pattern-image) center / 26rem auto repeat;
+}
+
+/* Medalla: botón que "desbloquea" el premio */
+.winners-medal {
+  position: relative;
+  width: var(--winners-medal);
+  height: calc(var(--winners-medal) * 0.8);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+.winners-medal:focus-visible { outline: 3px solid var(--mint); outline-offset: 4px; }
+.winners-medal img {
+  position: absolute;
+  left: -6%;
+  bottom: -4%;
+  width: 112%;
+  height: auto;
+  transform-origin: 50% 0;
+  transform: rotate(-9deg);
+  filter: drop-shadow(0 12px 14px var(--ink-a25));
+  animation: winners-swing 4.5s ease-in-out infinite;
+}
+.winners-medal:hover img { animation-duration: 1.6s; }
+/* Pulso verde que invita a tocar la medalla (solo mientras está "bloqueada") */
+.winners-pulse {
+  position: absolute;
+  left: calc(50% - 3.25rem);
+  top: -1.6rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  pointer-events: none;
+  display: none;
+}
+.winners.is-locked .winners-pulse { display: block; animation: winners-tap 1.8s ease-out infinite; }
+.winners.is-open .winners-medal img { animation: winners-flip 900ms var(--ease-spring) both, winners-swing 4.5s ease-in-out 900ms infinite; }
+
+.winners-body { display: grid; gap: 0.6rem; justify-items: start; min-width: 0; }
+.winners-tag {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--mint);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  animation: winners-glow 2.4s ease-out infinite;
+}
+.winners-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.winners-title em,
+.winners-pop-title em { font-style: normal; color: var(--mint); }
+/* Cuenta regresiva + botón. Bloqueada: "Desbloquear mi premio"; abierta: "Reclamar mi premio" */
+.winners-side { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+.winners-unlocked { display: none; color: var(--mint); font-size: 0.875rem; font-weight: 700; }
+.winners.is-open .winners-unlocked { display: block; animation: fade-up 500ms var(--ease-out) both; }
+.winners.is-locked .winners-cta { display: none; }
+.winners:not(.is-locked) .winners-unlock-btn { display: none; }
+.winners.is-open .winners-cta { animation: pop-in 500ms var(--ease-spring) both; }
+.winners-unlock-btn { animation: winners-glow 2.4s ease-out infinite; }
+.winners-unlock-btn[hidden] { display: none; } /* sin JavaScript no hay nada que desbloquear */
+
+.winners-cd { display: flex; gap: 0.4rem; }
+.winners-cd span {
+  display: grid;
+  justify-items: center;
+  min-width: 3.1rem;
+  padding: 0.4rem 0.4rem 0.3rem;
+  border-radius: var(--radius-s);
+  background: var(--white-a10);
+  color: var(--text-inverse-muted);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.winners-cd b {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Móvil: la franja va justo debajo de los botones del hero.
+   Escritorio: arriba del todo, a lo ancho, para que se vea sin hacer scroll
+   también en portátiles (debajo de la foto quedaría fuera de la primera pantalla). */
+.hero-grid:has(.winners) .hero-visual { order: 2; }
+.hero-grid > .winners { order: 1; }
+
+@media (min-width: 960px) {
+  /* Menos aire arriba: la franja ya separa el menú del título */
+  .hero:has(.winners) { padding-top: calc(var(--top-offset) + clamp(1.5rem, 3vw, 2.5rem)); }
+  .hero-grid > .winners {
+    order: -1;
+    grid-column: 1 / -1;
+    grid-template-columns: var(--winners-medal) minmax(0, 1fr) auto;
+    margin-top: 1.25rem;
+  }
+  .hero-grid:has(.winners) .hero-visual { order: 0; }
+}
+@media (max-width: 640px) {
+  .winners { --winners-medal: 4.75rem; gap: 0.75rem 1rem; padding: 1rem; margin-top: 1rem; }
+  .winners-side { grid-column: 1 / -1; }
+  .winners-cd span { min-width: 2.6rem; }
+  .winners-cd b { font-size: 1.3rem; }
+  .winners-pulse { left: calc(50% - 2.25rem); top: -1rem; width: 4.5rem; height: 4.5rem; }
+}
+
+/* ── Tarjeta emergente (escritorio) / barra inferior (móvil) ── */
+.winners-pop {
+  position: fixed;
+  right: var(--wa-gap);
+  bottom: calc(var(--wa-gap) + var(--wa-size) + 1rem);
+  z-index: 89;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  width: min(21.5rem, calc(100vw - 2 * var(--wa-gap)));
+  padding: 1rem 1.1rem 1.1rem;
+  border-radius: var(--radius-m);
+  color: var(--white);
+  background: radial-gradient(130% 160% at 0% 0%, var(--brand-bright) 0%, var(--brand) 45%, var(--brand-deep) 100%);
+  box-shadow: var(--shadow-l);
+  animation: winners-slide 650ms var(--ease-spring) both;
+}
+.winners-pop[hidden] { display: none; }
+.winners-pop-medal { width: 5rem; height: auto; transform: rotate(-9deg); transform-origin: 50% 0; filter: drop-shadow(0 8px 10px var(--ink-a25)); animation: winners-swing 4.5s ease-in-out infinite; }
+.winners-pop-head { display: grid; gap: 0.5rem; justify-items: start; padding-right: 1.6rem; }
+.winners-pop .winners-tag { font-size: 0.625rem; white-space: nowrap; }
+.winners-pop-title { margin: 0; font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; line-height: 1.18; }
+.winners-pop-foot { grid-column: 1 / -1; display: grid; gap: 0.75rem; justify-items: start; }
+.winners-pop .winners-cd span { min-width: 2.5rem; padding: 0.3rem 0.3rem 0.25rem; }
+.winners-pop .winners-cd b { font-size: 1.25rem; }
+.winners-pop-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white-a20);
+  color: var(--white);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.winners-pop-close:hover { background: var(--white-a40); }
+.winners-pop-close:focus-visible,
+.winners-tab:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+
+/* Pestaña con la medalla para reabrir la emergente tras cerrarla */
+.winners-tab {
+  position: fixed;
+  right: 0;
+  bottom: calc(var(--wa-gap) + var(--wa-size) + 1rem);
+  z-index: 89;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem 0.35rem 0.4rem;
+  border: 0;
+  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+  background: var(--brand);
+  color: var(--white);
+  font: 800 0.875rem var(--font-display);
+  box-shadow: var(--shadow-m);
+  cursor: pointer;
+  animation: winners-slide 500ms var(--ease-out) both;
+}
+.winners-tab[hidden] { display: none; }
+.winners-tab img { width: 2rem; height: auto; }
+.winners-tab b { color: var(--mint); }
+
+@media (max-width: 640px) {
+  /* Barra fina encima de la burbuja de WhatsApp */
+  .winners-pop {
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+    grid-template-columns: 2.6rem minmax(0, 1fr) auto;
+    gap: 0.6rem;
+    padding: 0.6rem 2.6rem 0.6rem 0.6rem;
+    border-radius: var(--radius-s);
+    animation-name: winners-rise;
+  }
+  .winners-pop-medal { width: 2.6rem; margin-top: -0.75rem; }
+  .winners-pop .winners-tag,
+  .winners-pop .winners-cd { display: none; }
+  .winners-pop-title { font-size: 0.875rem; }
+  .winners-pop-foot { grid-column: auto; }
+  .winners-pop .btn { padding: 0.6rem 0.85rem; font-size: 0.8125rem; }
+  .winners-pop-close { top: 50%; transform: translateY(-50%); width: 1.6rem; height: 1.6rem; }
+}
+
+/* Confeti al desbloquear (lienzo temporal sobre toda la página) */
+.winners-confetti { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 95; pointer-events: none; }
+
+@keyframes winners-ring { to { background-position: 0 0, -250% 0; } }
+@keyframes winners-swing { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(-3deg); } }
+@keyframes winners-flip {
+  0% { transform: rotate(-9deg) rotateY(0) scale(1); }
+  50% { transform: rotate(0deg) rotateY(180deg) scale(1.18); }
+  100% { transform: rotate(-9deg) rotateY(360deg) scale(1); }
+}
+@keyframes winners-tap { 0% { box-shadow: 0 0 0 0 var(--mint-a75); } 80%, 100% { box-shadow: 0 0 0 1.1rem var(--mint-a0); } }
+@keyframes winners-glow { 0% { box-shadow: 0 0 0 0 var(--mint-a75); } 70%, 100% { box-shadow: 0 0 0 0.5rem var(--mint-a0); } }
+@keyframes winners-slide { from { opacity: 0; transform: translateX(3rem) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes winners-rise { from { opacity: 0; transform: translateY(2rem); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .winners,
+  .winners-medal img,
+  .winners.is-open .winners-medal img,
+  .winners.is-locked .winners-pulse,
+  .winners-tag,
+  .winners-unlock-btn,
+  .winners.is-open .winners-unlocked,
+  .winners.is-open .winners-cta,
+  .winners-pop,
+  .winners-pop-medal,
+  .winners-tab { animation: none; }
+}

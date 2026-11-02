@@ -1,0 +1,345 @@
+/* ── Header ── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  z-index: 100;
+  height: var(--header-height);
+  background: var(--color-header-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Con banner promocional encima (body.has-promo) el header deja de ser fijo:
+   como sticky queda bajo el banner y se pega arriba al hacer scroll.
+   overflow-x: clip porque, a diferencia del header fijo, el desborde de un
+   sticky (cajón del menú móvil fuera de pantalla) sí genera scroll horizontal.
+   El backdrop-filter pasa a un pseudo-elemento: en el header convertiría a este
+   en contenedor de su descendiente fixed (el cajón arrancaría bajo el banner). */
+.has-promo .site-header {
+  position: sticky;
+  left: auto;
+  right: auto;
+  overflow-x: clip;
+  backdrop-filter: none;
+}
+
+.has-promo .site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(8px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.site-header .logo span:not(.logo-mark) {
+  display: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.theme-toggle-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.logo-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--color-accent-solid);
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.nav-toggle {
+  display: block;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: min(20rem, 85vw);
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  padding: calc(var(--header-height) + 1.5rem) 1.5rem 1.5rem;
+  box-shadow: var(--shadow);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--transition), visibility var(--transition);
+  overflow-y: auto;
+  z-index: 95;
+}
+
+.main-nav[data-open="true"] {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+  z-index: 90;
+}
+
+.nav-overlay[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+  width: 100%;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+  width: 100%;
+}
+
+.nav-trigger,
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+
+.nav-trigger:hover,
+.nav-link:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+nav a.active {
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  transition: var(--transition);
+}
+
+.nav-trigger[aria-expanded="true"] {
+  background: var(--color-surface-alt);
+}
+
+.nav-chevron {
+  width: 0.65rem;
+  height: 0.65rem;
+  transition: transform var(--transition);
+}
+
+.nav-trigger[aria-expanded="true"] .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: static;
+  background: var(--color-surface-alt);
+  border: none;
+  box-shadow: none;
+  list-style: none;
+  padding: 0.35rem;
+  margin-top: 0.25rem;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  display: none;
+}
+
+.dropdown[data-open="true"] {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.dropdown a:hover,
+.dropdown a:focus-visible {
+  background: var(--color-surface-alt);
+}
+
+.btn-ingresar {
+  margin-left: 0;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent-solid);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-ingresar:hover {
+  background: var(--color-accent-solid-hover);
+  color: #fff;
+}
+
+/* ── Footer ── */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 2.5rem 0;
+  background: var(--color-surface);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.footer-logo {
+  justify-self: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+  list-style: none;
+  justify-self: center;
+}
+
+.social-links a {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.social-links a:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-alt);
+  color: var(--color-accent);
+}
+
+.social-links svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: currentColor;
+}
+
+.footer-nav {
+  justify-self: center;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  list-style: none;
+}
+
+.footer-nav-list a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9375rem;
+}
+
+.footer-nav-list a:hover { color: var(--color-accent); }
+
+.footer-nav-list a[aria-current="page"] {
+  color: var(--color-accent);
+  font-weight: 600;
+}
