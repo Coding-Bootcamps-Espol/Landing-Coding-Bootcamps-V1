@@ -29,3 +29,12 @@ Options -Indexes
   RewriteRule ^acerca-de-2/?$ /nosotros.html [R=301,L]
   RewriteRule ^3684-2/?$ / [R=301,L]
 </IfModule>
+
+# HTML, CSS y JS: el navegador puede guardarlos, pero debe preguntar si
+# cambiaron antes de usarlos (responde 304 si no). Así nunca mezcla un CSS
+# viejo con uno nuevo después de un deploy. Imágenes y fuentes se cachean normal.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js|svg)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
