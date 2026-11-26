@@ -527,13 +527,6 @@ html:not(.js) .roster-panel { grid-template-rows: 1fr; }
   background: linear-gradient(135deg, var(--p-from), var(--p-to));
 }
 .enroll-price-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }
-.enroll-price-value {
-  font-family: var(--font-display);
-  font-size: clamp(2.75rem, 6vw, 4rem);
-  font-weight: 800;
-  letter-spacing: var(--tracking-tight);
-  line-height: 1;
-}
 .enroll-price p { opacity: 0.92; }
 @media (min-width: 900px) { .prog-enroll { grid-template-columns: 1.1fr 0.9fr; align-items: center; } }
 
