@@ -1,0 +1,93 @@
+/* ── Efectos y animaciones ──
+   Todo se desactiva con prefers-reduced-motion (ver base.css). Las clases de
+   aparición solo ocultan contenido cuando hay JS (html.js), así la página se
+   ve completa aunque el script falle. */
+
+@keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(0.45em) rotate(3deg); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg)); }
+  50% { transform: translate3d(0, -14px, 0) rotate(var(--rot, 0deg)); }
+}
+@keyframes pop-in { from { transform: scale(0.4); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes check-draw { to { stroke-dashoffset: 0; } }
+@keyframes confetti-fall {
+  0% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { opacity: 0; transform: translate3d(var(--drift, 30px), 70vh, 0) rotate(var(--spin, 540deg)); }
+}
+@keyframes wobble { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg) translateY(-6px); } }
+@keyframes face-in { from { opacity: 0; transform: translateX(-12px) scale(0.8); } to { opacity: 1; transform: none; } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Titular del hero: cada palabra entra por separado (--i en el HTML) */
+.word {
+  display: inline-block;
+  animation: word-in 800ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 150ms);
+}
+.fade-up {
+  animation: fade-up 900ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Aparición al hacer scroll */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js [data-reveal="scale"] { transform: scale(0.94); }
+.js [data-reveal="left"] { transform: translateX(-40px); }
+.js [data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* Flotación suave de formas y tarjetas */
+.floating { animation: float var(--float-dur, 6s) ease-in-out infinite; animation-delay: var(--float-delay, 0s); }
+
+/* Inclinación 3D con el mouse (JS actualiza --rx, --ry, --mx, --my) */
+[data-tilt] {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 400ms var(--ease-out);
+}
+[data-tilt].is-tilting { transition: transform 80ms linear; }
+/* Si la tarjeta también tiene aparición al hacer scroll, al hacerse visible
+   conserva la inclinación en vez de quedar en transform: none. */
+.js [data-reveal][data-tilt].is-visible {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
+[data-tilt]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--white-a30), transparent 45%);
+  opacity: 0;
+  transition: opacity var(--dur);
+}
+[data-tilt].is-tilting::after { opacity: 1; }
+
+/* Franja con desplazamiento infinito */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-dur, 40s) linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track[data-reverse] { animation-direction: reverse; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; transform: none; }
+  .marquee-track { animation: none; }
+  [data-tilt] { transform: none; }
+}
